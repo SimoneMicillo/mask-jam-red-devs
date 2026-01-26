@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=13 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bsr2ai28hfqx4" path="res://Assets/icon.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dyjukqtmrb0qe" path="res://MainScene/ui.gd" id="4_rg2y2"]
+[ext_resource type="Shader" uid="uid://c5e6hn8cfguui" path="res://MainScene/Vignette/vignette.gdshader" id="5_phgjk"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -13,11 +14,25 @@ size = Vector2(20, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
 size = Vector3(20, 0.1, 20)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8f1d"]
+shader = ExtResource("5_phgjk")
+shader_parameter/outerRadius = 3.2450001541375
+shader_parameter/MainAlpha = 1.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_phgjk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rg2y2"]
+size = Vector3(10, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rg2y2"]
+size = Vector3(10, 1, 2)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.744998, 0)
+transform = Transform3D(0.851132, -2.2946372e-08, 0.5249518, -0.5249518, -3.720416e-08, 0.851132, 0, -1, -4.371139e-08, 0, 6.744998, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
@@ -41,6 +56,18 @@ texture = ExtResource("3_h2yge")
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_rg2y2")
 
+[node name="vignette" type="TextureRect" parent="UI"]
+material = SubResource("ShaderMaterial_b8f1d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_phgjk")
+
 [node name="sanity" type="Label" parent="UI"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 2
@@ -51,9 +78,22 @@ offset_top = -40.0
 offset_right = 82.0
 offset_bottom = -17.0
 grow_vertical = 0
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Sanity = "
+
+[node name="maskOnOff" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -102.0
+offset_right = 146.0
+offset_bottom = -57.0
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Mask : "
 
 [node name="GameOver" type="Panel" parent="UI"]
 visible = false
@@ -91,6 +131,33 @@ text = "Retry"
 [node name="quit" type="Button" parent="UI/GameOver/vbox"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Debug_Controls" type="Label" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -109.0
+offset_right = -17.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Space - Mask ON/OFF
+CTRL - Crouch"
+horizontal_alignment = 2
+
+[node name="Crouch Tester" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7418778, -5.5869455)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch Tester"]
+shape = SubResource("BoxShape3D_rg2y2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Crouch Tester"]
+mesh = SubResource("BoxMesh_rg2y2")
 
 [connection signal="pressed" from="UI/GameOver/vbox/retry" to="UI" method="_on_retry_pressed"]
 [connection signal="pressed" from="UI/GameOver/vbox/quit" to="UI" method="_on_quit_pressed"]

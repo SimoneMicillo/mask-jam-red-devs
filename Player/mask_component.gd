@@ -2,6 +2,7 @@ extends Node
 class_name MaskComponent
 
 signal sanityChanged(nSanity : float)
+signal setMask(nVal : bool)
 
 @onready var timer: Timer = $Timer
 var isMaskActive : bool = false
@@ -16,8 +17,10 @@ func _ready() -> void:
 
 func setMaskActive() -> void:
 	isMaskActive = true
+	setMask.emit(true)
 func setMaskInactive() -> void:
 	isMaskActive = false
+	setMask.emit(false)
 
 @onready var player: Player = $".."
 func _on_timer_timeout() -> void:

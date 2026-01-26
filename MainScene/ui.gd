@@ -5,6 +5,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	playerMask.sanityChanged.connect(updateSanityUI)
+	playerMask.setMask.connect(updateMaskUI)
 	player.dead.connect(setGameOver)
 
 func updateSanityUI(nVal : float) -> void:
@@ -18,6 +19,12 @@ func updateSanityUI(nVal : float) -> void:
 			get_tree().create_tween().tween_property($sanity, "modulate", Color(1.0, 1.0, 0.0, 1.0), .25)
 		else:
 			get_tree().create_tween().tween_property($sanity, "modulate", Color(1.0, 1.0, 1.0, 1.0), .25)
+
+func updateMaskUI(val : bool) -> void:
+	if val:
+		$maskOnOff.text = "Mask: ON"
+	else:
+		$maskOnOff.text = "Mask: OFF"
 
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()

@@ -4,6 +4,8 @@ class_name Player
 const SPEED = 7.5
 var isDead : bool = false
 
+var isCrouched : bool = false
+
 func _physics_process(delta: float) -> void:
 	if !isDead:
 		# Add the gravity.
@@ -23,6 +25,9 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 
+@onready var camera_3d: Camera3D = $Camera3D
+@onready var camera_component: Node = $CameraComponent
+@onready var collision: CollisionShape3D = $CollisionShape3D
 func _input(_event: InputEvent) -> void:
 	if !isDead:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -30,6 +35,19 @@ func _input(_event: InputEvent) -> void:
 				$MaskComponent.setMaskInactive()
 			else:
 				$MaskComponent.setMaskActive()
+		
+		if Input.is_action_just_pressed("crouch"):
+			if isCrouched:
+				get_tree().create_tween().tween_property(camera_3d, "position:y",camera_component.standing_y_pos, 0.1)
+				isCrouched = false
+				collision.shape = preload("res://Assets/collisions/standingShape.tres")
+				collision.shape.height = 2.0
+				collision.position = Vector3.ZERO
+			else:
+				get_tree().create_tween().tween_property(camera_3d, "position:y",camera_component.crouch_y_pos, 0.1)
+				collision.shape = preload("res://Assets/collisions/crouchShape.tres")
+				collision.position = Vector3(0,-.45,0)
+				isCrouched = true
 
 signal dead
 func setDead(val : bool) -> void:

@@ -4,6 +4,9 @@ extends Node
 @onready var player: Player = $".."
 @export var cam_sens : float = 1
 
+var standing_y_pos : float = 0.6
+var crouch_y_pos : float = -0.1
+
 func _input(event: InputEvent) -> void:
 	if !player.isDead:
 		if event is InputEventMouseMotion:
