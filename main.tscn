@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c78f8r4vd1t6k"]
+
+[ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bsr2ai28hfqx4" path="res://icon.svg" id="3_h2yge"]
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ig7tw"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(20, 0.1, 20)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.744998, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ig7tw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ig7tw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.4091982, 7.018498)
+billboard = 1
+texture = ExtResource("3_h2yge")
