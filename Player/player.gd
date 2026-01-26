@@ -24,3 +24,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		if $MaskComponent.isMaskActive:
+			$MaskComponent.setMaskInactive()
+		else:
+			$MaskComponent.setMaskActive()

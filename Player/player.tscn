@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyvovyhheeqkm"]
+[gd_scene load_steps=6 format=3 uid="uid://dyvovyhheeqkm"]
 
 [ext_resource type="Script" uid="uid://dmf070vwxscc8" path="res://Player/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://0nit1uqh32tc" path="res://Player/camera_component.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://dqkm1d341lt4e" path="res://Player/mask_component.gd" id="3_btcbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -21,3 +22,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.5)
 
 [node name="CameraComponent" type="Node" parent="."]
 script = ExtResource("2_onrkg")
+
+[node name="MaskComponent" type="Node" parent="."]
+script = ExtResource("3_btcbx")
+
+[node name="Timer" type="Timer" parent="MaskComponent"]
+wait_time = 2.5
+
+[connection signal="timeout" from="MaskComponent/Timer" to="MaskComponent" method="_on_timer_timeout"]
