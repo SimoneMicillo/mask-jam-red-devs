@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://mds354b75q1q"]
+
+[ext_resource type="Script" uid="uid://6jm4rhobx3vj" path="res://UI/Shared/death_screen.gd" id="1_death"]
+
+[node name="DeathScreen" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_death")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0, 0, 0.85)
+
+[node name="DeathPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SkullIcon" type="Label" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 80
+text = "💀"
+horizontal_alignment = 1
+
+[node name="DeathTitle" type="Label" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.1, 0.1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 56
+text = "SEI MORTO"
+horizontal_alignment = 1
+
+[node name="DeathSubtitle" type="Label" parent="DeathPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.6, 0.5, 0.8)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 20
+text = "La maschera ha consumato la tua sanità..."
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="DeathPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="DeathPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "RIPROVA"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="DeathPanel/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "MENU PRINCIPALE"
+flat = true
+
+[connection signal="pressed" from="DeathPanel/VBoxContainer/RetryButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="DeathPanel/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]

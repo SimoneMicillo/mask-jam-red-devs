@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://billboard_prop_template"]
+
+[ext_resource type="Script" path="res://Props/billboard_prop.gd" id="1_prop"]
+
+[node name="BillboardProp" type="Sprite3D"]
+billboard = 1
+alpha_cut = 1
+script = ExtResource("1_prop")
+lock_y_axis = true
+use_custom_billboard = false

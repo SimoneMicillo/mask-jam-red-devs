@@ -18,9 +18,9 @@ func _input(event: InputEvent) -> void:
 			# Usiamo -= perché solitamente il movimento del mouse è invertito rispetto agli assi
 			player.rotate_y(-event.relative.x * sensitivity)
 			
-			## Se vuoi ruotare la camera su/giù (asse X):
-			#camera_3d.rotate_x(-event.relative.y * sensitivity)
-			# Opzionale: limita la rotazione verticale per non far ribaltare la camera
+			# Ruota la camera su/giù (asse X)
+			camera_3d.rotate_x(-event.relative.y * sensitivity)
+			# Limita la rotazione verticale per non far ribaltare la camera
 			camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		
 		if Input.is_action_just_pressed("ui_cancel"):

@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=16 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bsr2ai28hfqx4" path="res://Assets/icon.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dyjukqtmrb0qe" path="res://MainScene/ui.gd" id="4_rg2y2"]
 [ext_resource type="Shader" uid="uid://c5e6hn8cfguui" path="res://MainScene/Vignette/vignette.gdshader" id="5_phgjk"]
+[ext_resource type="Script" uid="uid://bthphnr5tm5xf" path="res://MainScene/Vignette/vignette_controller.gd" id="6_vignette"]
+[ext_resource type="PackedScene" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
+[ext_resource type="PackedScene" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -18,6 +21,8 @@ size = Vector3(20, 0.1, 20)
 shader = ExtResource("5_phgjk")
 shader_parameter/outerRadius = 3.2450001541375
 shader_parameter/MainAlpha = 1.0
+shader_parameter/tintColor = Color(0.8, 0.1, 0.1, 1)
+shader_parameter/tintIntensity = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_phgjk"]
 
@@ -67,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("CanvasTexture_phgjk")
+script = ExtResource("6_vignette")
 
 [node name="sanity" type="Label" parent="UI"]
 modulate = Color(1, 1, 1, 0)
@@ -95,42 +101,26 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Mask : "
 
-[node name="GameOver" type="Panel" parent="UI"]
+[node name="maskCenterText" type="Label" parent="UI"]
 visible = false
-custom_minimum_size = Vector2(200, 150)
+modulate = Color(1, 0.3, 0.3, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 50.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="vbox" type="VBoxContainer" parent="UI/GameOver"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="retry" type="Button" parent="UI/GameOver/vbox"]
-layout_mode = 2
-text = "Retry"
-
-[node name="quit" type="Button" parent="UI/GameOver/vbox"]
-layout_mode = 2
-text = "Quit"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 48
+text = "HAI LA MASCHERA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Debug_Controls" type="Label" parent="UI"]
 anchors_preset = 3
@@ -147,8 +137,13 @@ grow_vertical = 0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Space - Mask ON/OFF
-CTRL - Crouch"
+CTRL - Crouch
+ESC - Pausa"
 horizontal_alignment = 2
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_pause")]
+
+[node name="DeathScreen" parent="." instance=ExtResource("8_death")]
 
 [node name="Crouch Tester" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7418778, -5.5869455)
@@ -158,6 +153,3 @@ shape = SubResource("BoxShape3D_rg2y2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Crouch Tester"]
 mesh = SubResource("BoxMesh_rg2y2")
-
-[connection signal="pressed" from="UI/GameOver/vbox/retry" to="UI" method="_on_retry_pressed"]
-[connection signal="pressed" from="UI/GameOver/vbox/quit" to="UI" method="_on_quit_pressed"]
