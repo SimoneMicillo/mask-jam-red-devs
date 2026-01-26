@@ -27,6 +27,7 @@ script = ExtResource("2_onrkg")
 script = ExtResource("3_btcbx")
 
 [node name="Timer" type="Timer" parent="MaskComponent"]
-wait_time = 2.5
+wait_time = 3.0
+autostart = true
 
 [connection signal="timeout" from="MaskComponent/Timer" to="MaskComponent" method="_on_timer_timeout"]
