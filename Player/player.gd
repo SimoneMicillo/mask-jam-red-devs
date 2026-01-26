@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED = 5.0
+const SPEED = 7.5
 var isDead : bool = false
 
 func _physics_process(delta: float) -> void:
