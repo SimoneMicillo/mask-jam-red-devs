@@ -1,4 +1,4 @@
-# PROJECT NAME CURSED MASK
+# THE CURSED MASK
 
 Implementato per ora:
 
