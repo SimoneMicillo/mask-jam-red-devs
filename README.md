@@ -1,4 +1,4 @@
-# mask-jam-red-devs
+# PROJECT NAME CURSED MASK
 
 Implementato per ora:
 
