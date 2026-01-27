@@ -11,6 +11,10 @@ bottom_radius = 0.75
 radial_segments = 8
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_geojl"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.4
+radial_segments = 8
 
 [node name="Node3D" type="Node3D"]
 
@@ -30,6 +34,6 @@ texture = ExtResource("1_gu4yv")
 mesh = SubResource("CylinderMesh_gu4yv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D/MeshInstance3D"]
-transform = Transform3D(1.0076407, 0, 0, 0, 0.51275665, 0, 0, 0, 0.8041, 0, 2.171, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5225196, 0)
 mesh = SubResource("CylinderMesh_geojl")
 skeleton = NodePath("../../Sprite3D")

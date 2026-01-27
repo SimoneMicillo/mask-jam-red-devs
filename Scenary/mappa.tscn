@@ -581,7 +581,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_6wxhj")
 
 [node name="Node3D" parent="Node3D/StanzaIniziale" instance=ExtResource("1_yaxx7")]
-transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0, -1.0614028, 0.25809)
+transform = Transform3D(0.1, 0, 0, 0, 0.20000002, 0, 0, 0, 0.1, 0, -0.9106034, 0.25809)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 50, -25.154572, 0, -62.997974)
