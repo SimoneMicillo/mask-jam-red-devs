@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bppl16pbx3j84"]
+[gd_scene load_steps=5 format=3 uid="uid://bppl16pbx3j84"]
 
 [ext_resource type="Texture2D" uid="uid://b5nkukpjc7q0k" path="res://Assets/FirtstRoom/piedistallo.png" id="1_gu4yv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ay1vd"]
-size = Vector3(2.8253174, 3.6251373, 2.19635)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gu4yv"]
+radius = 0.72265625
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gu4yv"]
+top_radius = 0.75
+bottom_radius = 0.75
+radial_segments = 8
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_geojl"]
 
@@ -12,14 +17,19 @@ size = Vector3(2.8253174, 3.6251373, 2.19635)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9126587, 1.7422409, -2.9762268)
-shape = SubResource("BoxShape3D_ay1vd")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_gu4yv")
 
 [node name="Sprite3D" type="Sprite3D" parent="StaticBody3D/CollisionShape3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-billboard = 1
+visible = false
+billboard = 2
 texture = ExtResource("1_gu4yv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D/Sprite3D"]
-transform = Transform3D(3.358802, 0, 0, 0, 1.7091887, 0, 0, 0, 2.6803331, -0.23366117, 7.2353277, 0.045279503)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("CylinderMesh_gu4yv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(1.0076407, 0, 0, 0, 0.51275665, 0, 0, 0, 0.8041, 0, 2.171, 0)
 mesh = SubResource("CylinderMesh_geojl")
+skeleton = NodePath("../../Sprite3D")

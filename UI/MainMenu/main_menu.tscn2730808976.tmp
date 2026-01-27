@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jld46"]
 bg_color = Color(0.11119685, 0.11119685, 0.11119678, 1)
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_sliders", "sound_labels")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_sliders")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 sound_sliders = [NodePath("SettingsPanel/VBoxContainer/audio/master_slider"), NodePath("SettingsPanel/VBoxContainer/audio/music_slider"), NodePath("SettingsPanel/VBoxContainer/audio/sfx_slider")]
-sound_labels = [NodePath("SettingsPanel/VBoxContainer/audio/master_label"), NodePath("SettingsPanel/VBoxContainer/audio/music_label"), NodePath("SettingsPanel/VBoxContainer/audio/sfx_label")]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

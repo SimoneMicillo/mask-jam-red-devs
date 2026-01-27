@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://f24pivvnfmpn" path="res://UI/PauseMenu/pause_menu.gd" id="1_pause"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("sound_sliders", "sound_labels")]
 layer = 10
 script = ExtResource("1_pause")
+sound_sliders = [NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/master_slider"), NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/music_slider"), NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/sfx_slider")]
+sound_labels = [NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/master_label"), NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/music_label"), NodePath("PausePanel/SettingsPanel/VBoxContainer/audio/sfx_label")]
 
 [node name="Overlay" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -118,14 +120,43 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="VolumeLabel" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer"]
+[node name="audio" type="VBoxContainer" parent="PausePanel/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="master_label" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
-theme_override_font_sizes/font_size = 18
-text = "Volume: 100%"
+theme_override_font_sizes/font_size = 20
+text = "Master: 100%"
 
-[node name="VolumeSlider" type="HSlider" parent="PausePanel/SettingsPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
+[node name="master_slider" type="HSlider" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="music_label" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+text = "Music: 100%"
+
+[node name="music_slider" type="HSlider" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="sfx_label" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+text = "SFX: 100%"
+
+[node name="sfx_slider" type="HSlider" parent="PausePanel/SettingsPanel/VBoxContainer/audio"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 max_value = 1.0
 step = 0.05
@@ -166,6 +197,5 @@ flat = true
 [connection signal="pressed" from="PausePanel/MainButtons/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePanel/MainButtons/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PausePanel/MainButtons/MainMenuButton" to="." method="_on_main_menu_pressed"]
-[connection signal="value_changed" from="PausePanel/SettingsPanel/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="PausePanel/SettingsPanel/VBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
 [connection signal="pressed" from="PausePanel/SettingsPanel/VBoxContainer/BackButton" to="." method="_on_back_pressed"]

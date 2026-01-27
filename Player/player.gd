@@ -1,14 +1,16 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED: float = 6.5
-const CROUCHED_SPEED: float = 3.5
+@export var SPEED: float = 12.5
+@onready var CROUCHED_SPEED: float = SPEED/2
 var isDead: bool = false
 var isCrouched: bool = false
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var camera_component: Node = $CameraComponent
 @onready var collision: CollisionShape3D = $CollisionShape3D
+
+@onready var pause_menu: CanvasLayer = $"../PauseMenu"
 
 func _ready() -> void:
 	# Connect to global GameManager for game over
@@ -69,16 +71,16 @@ func can_stand_up() -> bool:
 	var result := space.intersect_shape(params, 1)
 	return result.is_empty()
 
-func _input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if isDead:
 		return
 	
 	# Mask toggle - uses global GameManager
-	if Input.is_action_just_pressed("toggle_mask"):
+	if event.is_action_pressed("toggle_mask"):
 		GameManager.toggle_mask()
 	
 	# Crouch toggle
-	if Input.is_action_just_pressed("crouch"):
+	if event.is_action_pressed("crouch"):
 		if isCrouched:
 			if not can_stand_up():
 				return
@@ -93,7 +95,6 @@ func _input(_event: InputEvent) -> void:
 			collision.shape = standing_shape
 			collision.position = Vector3.ZERO
 			isCrouched = false
-
 		else:
 			get_tree().create_tween().tween_property(
 				camera_3d,
@@ -106,11 +107,14 @@ func _input(_event: InputEvent) -> void:
 			collision.position = Vector3(0, -0.45, 0)
 			isCrouched = true
 			
-	if Input.is_action_just_pressed("debug_qte"):
+	if event.is_action_pressed("debug_qte"):
 		if $"../QteSystem".visible:
 			$"../QteSystem"._hide()
 		else:
 			$"../QteSystem"._show()
+	
+	if event.is_action_pressed("ui_cancel") and not GameManager.is_game_over():
+		pause_menu.toggle_pause()
 
 func _on_game_over() -> void:
 	isDead = true
