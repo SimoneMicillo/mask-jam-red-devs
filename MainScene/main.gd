@@ -9,4 +9,3 @@ func _input(event: InputEvent) -> void:
 		var puzzle = $KlotskiPuzzle
 		if puzzle and not puzzle.visible:
 			puzzle.open_puzzle()
-
