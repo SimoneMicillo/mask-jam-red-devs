@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=4 uid="uid://ct2e0h3wxwujt"]
 
-[ext_resource type="Texture2D" uid="uid://cxwu17rbbp2eu" path="res://Assets/FirtstRoom/image.png" id="1_kdisg"]
+[ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
 
@@ -37,7 +37,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e61ps")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b34l7"]
-albedo_texture = ExtResource("1_kdisg")
+albedo_texture = ExtResource("1_b34l7")
 uv1_scale = Vector3(64, 64, 64)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6wxhj"]
