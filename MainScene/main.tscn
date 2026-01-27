@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=14 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -9,14 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cyu6cq5xuu3tj" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
+[ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ig7tw"]
-size = Vector2(20, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
-size = Vector3(20, 0.1, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8f1d"]
 shader = ExtResource("5_phgjk")
@@ -26,12 +21,6 @@ shader_parameter/tintColor = Color(0.8, 0.1, 0.1, 1)
 shader_parameter/tintIntensity = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_phgjk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rg2y2"]
-size = Vector3(10, 1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rg2y2"]
-size = Vector3(10, 1, 2)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ig7tw")
@@ -43,16 +32,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_ig7tw")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_h2yge")
-
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.4091982, 7.018498)
@@ -146,13 +127,7 @@ horizontal_alignment = 2
 
 [node name="DeathScreen" parent="." instance=ExtResource("8_death")]
 
-[node name="Crouch Tester" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7418778, -5.5869455)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch Tester"]
-shape = SubResource("BoxShape3D_rg2y2")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Crouch Tester"]
-mesh = SubResource("BoxMesh_rg2y2")
-
 [node name="QteSystem" parent="." instance=ExtResource("9_0xrwe")]
+
+[node name="mappa" parent="." instance=ExtResource("10_cvl78")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 12, 2, 4)
