@@ -75,7 +75,6 @@ func _update_slider_labels() -> void:
 	if sensitivity_label:
 		sensitivity_label.text = "Sensibilità: " + str(snapped(mouse_sensitivity, 0.1))
 
-
 func _save_settings() -> void:
 	var config := ConfigFile.new()
 	config.set_value("audio", "master_volume", master_volume)
@@ -94,3 +93,20 @@ func _load_settings() -> void:
 			sensitivity_slider.value = mouse_sensitivity
 		
 		AudioServer.set_bus_volume_db(0, linear_to_db(master_volume))
+
+#VIDEO SETTINGS
+func setFs(toggled : bool) -> void:
+	if toggled:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+func setRes(idx : int) -> void:
+	match idx:
+		0:
+			DisplayServer.window_set_size(Vector2(1024,768))
+		1:
+			DisplayServer.window_set_size(Vector2(1280,720))
+		2:
+			DisplayServer.window_set_size(Vector2(1440,900))
+		3:
+			DisplayServer.window_set_size(Vector2(1920,1080))

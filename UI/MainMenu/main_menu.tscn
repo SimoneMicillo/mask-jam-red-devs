@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d0km27f77ykb3" path="res://UI/MainMenu/main_menu.gd" id="1_menu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jld46"]
-bg_color = Color(0.11119685, 0.11119685, 0.11119678, 1)
+bg_color = Color(0.3180199, 0.31801975, 0.31801975, 1)
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("sound_sliders", "sound_labels")]
 layout_mode = 3
@@ -105,32 +105,26 @@ theme_override_font_sizes/font_size = 32
 text = "✕ EXIT"
 flat = true
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="SettingsPanel" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
+offset_left = -199.0
+offset_top = -269.0
+offset_right = 199.0
+offset_bottom = 269.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jld46")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = 30.0
-offset_right = -30.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
 theme_override_constants/separation = 15
 
 [node name="SettingsTitle" type="Label" parent="SettingsPanel/VBoxContainer"]
@@ -210,10 +204,43 @@ value = 1.0
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
+[node name="video" type="VBoxContainer" parent="SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="res_label" type="Label" parent="SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Resolution"
+
+[node name="res_options" type="OptionButton" parent="SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+selected = 1
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "1024x768"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1440x900"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+
+[node name="fs_check" type="CheckBox" parent="SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Full screen"
+
 [node name="BackButton" type="Button" parent="SettingsPanel/VBoxContainer"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_hover_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 24
@@ -242,4 +269,6 @@ horizontal_alignment = 2
 [connection signal="pressed" from="CenterContainer/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="SettingsPanel/VBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="item_selected" from="SettingsPanel/VBoxContainer/video/res_options" to="." method="setRes"]
+[connection signal="toggled" from="SettingsPanel/VBoxContainer/video/fs_check" to="." method="setFs"]
 [connection signal="pressed" from="SettingsPanel/VBoxContainer/BackButton" to="." method="_on_back_pressed"]

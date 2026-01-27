@@ -31,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainButtons" type="VBoxContainer" parent="PausePanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,26 +87,18 @@ theme_override_font_sizes/font_size = 26
 text = "BACK TO MAIN MENU"
 flat = true
 
-[node name="SettingsPanel" type="Control" parent="PausePanel"]
-visible = false
+[node name="SettingsPanel" type="ScrollContainer" parent="PausePanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PausePanel/SettingsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 6
 theme_override_constants/separation = 12
 
 [node name="SettingsTitle" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer"]
@@ -184,6 +177,37 @@ value = 1.0
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
+[node name="video" type="VBoxContainer" parent="PausePanel/SettingsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="res_label" type="Label" parent="PausePanel/SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Resolution"
+
+[node name="res_options" type="OptionButton" parent="PausePanel/SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+selected = 1
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "1024x768"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+popup/item_2/text = "1440x900"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+
+[node name="fs_check" type="CheckBox" parent="PausePanel/SettingsPanel/VBoxContainer/video"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Full screen"
+
 [node name="BackButton" type="Button" parent="PausePanel/SettingsPanel/VBoxContainer"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
@@ -198,4 +222,6 @@ flat = true
 [connection signal="pressed" from="PausePanel/MainButtons/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PausePanel/MainButtons/MainMenuButton" to="." method="_on_main_menu_pressed"]
 [connection signal="value_changed" from="PausePanel/SettingsPanel/VBoxContainer/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="item_selected" from="PausePanel/SettingsPanel/VBoxContainer/video/res_options" to="." method="setRes"]
+[connection signal="toggled" from="PausePanel/SettingsPanel/VBoxContainer/video/fs_check" to="." method="setFs"]
 [connection signal="pressed" from="PausePanel/SettingsPanel/VBoxContainer/BackButton" to="." method="_on_back_pressed"]

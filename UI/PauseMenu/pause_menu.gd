@@ -93,3 +93,20 @@ func _load_settings() -> void:
 		if sensitivity_slider:
 			sensitivity_slider.value = config.get_value("controls", "mouse_sensitivity", 1.0)
 		_update_slider_labels()
+
+#VIDEO
+func setFs(toggled : bool) -> void:
+	if toggled:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+func setRes(idx : int) -> void:
+	match idx:
+		0:
+			DisplayServer.window_set_size(Vector2(1024,768))
+		1:
+			DisplayServer.window_set_size(Vector2(1280,720))
+		2:
+			DisplayServer.window_set_size(Vector2(1440,900))
+		3:
+			DisplayServer.window_set_size(Vector2(1920,1080))
