@@ -1,4 +1,6 @@
-[gd_scene load_steps=65 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=66 format=4 uid="uid://ct2e0h3wxwujt"]
+
+[ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -565,15 +567,18 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="Cube" type="MeshInstance3D" parent="Node3D"]
+[node name="StanzaIniziale" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(13.517934, 0, 0, 0, 5, 0, 0, 0, 13.517934, -30.580051, 0, 0)
 mesh = SubResource("ArrayMesh_10iiq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Cube"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/StanzaIniziale"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Cube/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StanzaIniziale/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6wxhj")
+
+[node name="Node3D" parent="Node3D/StanzaIniziale" instance=ExtResource("1_yaxx7")]
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0, -1.0614028, 0.25809)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 50, -25.154572, 0, -62.997974)

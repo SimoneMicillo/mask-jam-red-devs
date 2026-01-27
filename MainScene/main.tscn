@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=15 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
+[ext_resource type="PackedScene" uid="uid://demon_warning_scene" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -128,6 +129,8 @@ horizontal_alignment = 2
 [node name="DeathScreen" parent="." instance=ExtResource("8_death")]
 
 [node name="QteSystem" parent="." instance=ExtResource("9_0xrwe")]
+
+[node name="DemonWarning" parent="." instance=ExtResource("11_demon")]
 
 [node name="mappa" parent="." instance=ExtResource("10_cvl78")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 12, 2, 4)

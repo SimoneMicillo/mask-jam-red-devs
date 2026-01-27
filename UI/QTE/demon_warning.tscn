@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://demon_warning_scene"]
+
+[ext_resource type="Script" path="res://UI/QTE/demon_warning.gd" id="1_demon"]
+[ext_resource type="Texture2D" path="res://Assets/hud/demone.jpg" id="2_demon_tex"]
+
+[node name="DemonWarning" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_demon")
+
+[node name="DemonContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 600.0
+
+[node name="DemonSprite" type="TextureRect" parent="DemonContainer"]
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 450.0
+texture = ExtResource("2_demon_tex")
+expand_mode = 1
+stretch_mode = 5

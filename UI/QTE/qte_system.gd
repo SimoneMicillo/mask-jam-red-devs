@@ -1,5 +1,6 @@
 ## QTE System
 ## Manages Quick Time Event sequences with multiple key prompts
+## Supports both regular QTE and demon attack QTE
 extends CanvasLayer
 class_name QTESystem
 
@@ -13,7 +14,15 @@ const KEY_SEQUENCE := [
 	{"time": 1.0}   # Third key: 1 second
 ]
 
+# Demon attack configuration - 3 attacks, faster timing
+const DEMON_KEY_SEQUENCE := [
+	{"time": 2.0},  # First attack
+	{"time": 1.5},  # Second attack
+	{"time": 1.0}   # Third attack
+]
+
 @export var sanity_loss_per_fail: float = 10.0
+@export var health_loss_per_demon_attack: float = 5.0  # 5% vita per attacco
 
 # State
 var _is_active: bool = false
@@ -22,6 +31,8 @@ var _failed_keys_count: int = 0
 var _player_reference: Node = null
 var _used_keys: Array[String] = []
 var _waiting_feedback: bool = false  # BLOCK timer during feedback
+var _is_demon_mode: bool = false  # True when demon is attacking
+var _demon_damage_per_fail: float = 5.0
 
 # UI References
 @onready var overlay: ColorRect = $Overlay
@@ -32,6 +43,7 @@ var _waiting_feedback: bool = false  # BLOCK timer during feedback
 @onready var progress_bar: ProgressBar = $QTEPanel/MarginContainer/VBoxContainer/ProgressBar
 @onready var instruction_label: Label = $QTEPanel/MarginContainer/VBoxContainer/InstructionLabel
 @onready var sequence_label: Label = $QTEPanel/MarginContainer/VBoxContainer/SequenceLabel
+@onready var title_label: Label = $QTEPanel/MarginContainer/VBoxContainer/TitleLabel
 
 # Timer for key prompt
 var _current_key: String = ""
@@ -85,28 +97,61 @@ func _process(delta: float) -> void:
 func start_qte() -> void:
 	if _is_active:
 		return
+	_is_demon_mode = false
 	_is_active = true
 	_current_key_index = 0
 	_failed_keys_count = 0
 	_used_keys.clear()
 	visible = true
 	_set_player_input_enabled(false)
+	_update_title()
 	_show_next_key()
 
+## Start a demon attack QTE - 3 attacks, each failed attack = health damage
+func start_demon_qte(damage_per_attack: float = 5.0) -> void:
+	if _is_active:
+		return
+	_is_demon_mode = true
+	_demon_damage_per_fail = damage_per_attack
+	_is_active = true
+	_current_key_index = 0
+	_failed_keys_count = 0
+	_used_keys.clear()
+	visible = true
+	_set_player_input_enabled(false)
+	_update_title()
+	_show_next_key()
+
+func _update_title() -> void:
+	if title_label != null:
+		if _is_demon_mode:
+			title_label.text = "DEMON ATTACK!"
+			title_label.modulate = Color(1.0, 0.1, 0.1)
+		else:
+			title_label.text = "QUICK TIME EVENT"
+			title_label.modulate = Color(1.0, 0.3, 0.3)
+
 func _show_next_key() -> void:
-	if _current_key_index >= KEY_SEQUENCE.size():
+	var current_sequence = DEMON_KEY_SEQUENCE if _is_demon_mode else KEY_SEQUENCE
+	
+	if _current_key_index >= current_sequence.size():
 		_complete_qte()
 		return
 	
 	_current_key = _get_random_unused_key()
 	_used_keys.append(_current_key)
 	
-	_time_limit = KEY_SEQUENCE[_current_key_index]["time"]
+	_time_limit = current_sequence[_current_key_index]["time"]
 	_remaining_time = _time_limit
 	
 	key_label.text = _get_readable_key_name(_current_key)
-	instruction_label.text = "Press the key!"
-	sequence_label.text = "Key %d / %d" % [_current_key_index + 1, KEY_SEQUENCE.size()]
+	
+	if _is_demon_mode:
+		instruction_label.text = "DODGE THE ATTACK!"
+		sequence_label.text = "Attack %d / %d" % [_current_key_index + 1, current_sequence.size()]
+	else:
+		instruction_label.text = "Press the key!"
+		sequence_label.text = "Key %d / %d" % [_current_key_index + 1, current_sequence.size()]
 	
 	progress_bar.max_value = _time_limit
 	progress_bar.value = _time_limit
@@ -128,22 +173,46 @@ func _success_current_key() -> void:
 func _fail_current_key() -> void:
 	_waiting_feedback = true
 	_failed_keys_count += 1
-	GameManager.modify_sanity(-sanity_loss_per_fail)
-	_show_feedback("✗ FAILED!", Color(1.0, 0.2, 0.2))
+	
+	if _is_demon_mode:
+		# Demon attack - damage health and shake camera
+		GameManager.modify_sanity(-_demon_damage_per_fail)
+		_trigger_camera_shake()
+		_show_feedback("✗ HIT! -%.0f%% HP" % _demon_damage_per_fail, Color(1.0, 0.0, 0.0))
+	else:
+		GameManager.modify_sanity(-sanity_loss_per_fail)
+		_show_feedback("✗ FAILED!", Color(1.0, 0.2, 0.2))
+	
 	await get_tree().create_timer(0.5).timeout
 	_current_key_index += 1
 	_waiting_feedback = false
 	_show_next_key()
 
+func _trigger_camera_shake() -> void:
+	if _player_reference == null:
+		_find_player()
+	if _player_reference != null:
+		var camera_comp = _player_reference.get_node_or_null("CameraComponent")
+		if camera_comp != null and camera_comp.has_method("shake"):
+			camera_comp.shake(0.4, 20.0)
+
 func _complete_qte() -> void:
 	_is_active = false
 	if _failed_keys_count == 0:
-		_show_feedback("PERFECT!", Color(0.2, 1.0, 0.2))
+		if _is_demon_mode:
+			_show_feedback("PERFECT DODGE!", Color(0.2, 1.0, 0.2))
+		else:
+			_show_feedback("PERFECT!", Color(0.2, 1.0, 0.2))
 	else:
-		_show_feedback("QTE Complete\n%d Failed" % _failed_keys_count, Color(1.0, 0.8, 0.2))
+		if _is_demon_mode:
+			var total_damage = _failed_keys_count * _demon_damage_per_fail
+			_show_feedback("SURVIVED!\n-%.0f%% HP" % total_damage, Color(1.0, 0.5, 0.2))
+		else:
+			_show_feedback("QTE Complete\n%d Failed" % _failed_keys_count, Color(1.0, 0.8, 0.2))
 	await get_tree().create_timer(1.5).timeout
 	visible = false
 	_set_player_input_enabled(true)
+	_is_demon_mode = false
 	qte_completed.emit(_failed_keys_count)
 
 func _show_feedback(text: String, color: Color) -> void:
