@@ -1,7 +1,11 @@
 [gd_scene load_steps=70 format=4 uid="uid://ct2e0h3wxwujt"]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://cxwu17rbbp2eu" path="res://Assets/FirtstRoom/image.png" id="1_kdisg"]
+=======
+[ext_resource type="Texture2D" uid="uid://c8q4g4y6qufxa" path="res://Assets/Textures/floor/red old wood v3.jpg" id="1_b34l7"]
+>>>>>>> Stashed changes
 =======
 [ext_resource type="Texture2D" uid="uid://c8q4g4y6qufxa" path="res://Assets/Textures/floor/red old wood v3.jpg" id="1_b34l7"]
 >>>>>>> Stashed changes
@@ -585,7 +589,11 @@ size = Vector3(2.0488281, 3.0239258, 2.1166382)
 [node name="StanzaIniziale" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(13.517934, 0, 0, 0, 5, 0, 0, 0, 13.517934, -30.580051, 0, 0)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 gi_mode = 2
+=======
+material_override = SubResource("StandardMaterial3D_re1ck")
+>>>>>>> Stashed changes
 =======
 material_override = SubResource("StandardMaterial3D_re1ck")
 >>>>>>> Stashed changes
