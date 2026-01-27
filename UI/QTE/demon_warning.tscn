@@ -1,22 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://demon_warning_scene"]
+[gd_scene load_steps=3 format=3 uid="uid://bri77n2yk81wa"]
 
-[ext_resource type="Script" path="res://UI/QTE/demon_warning.gd" id="1_demon"]
-[ext_resource type="Texture2D" path="res://Assets/hud/demone.jpg" id="2_demon_tex"]
+[ext_resource type="Script" uid="uid://dvqxdi2jxpkc8" path="res://UI/QTE/demon_warning.gd" id="1_demon"]
+[ext_resource type="Texture2D" uid="uid://byx1c18kmon" path="res://Assets/hud/demone-removebg-preview.png" id="2_qo30p"]
 
 [node name="DemonWarning" type="CanvasLayer"]
 layer = 15
 script = ExtResource("1_demon")
 
 [node name="DemonContainer" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
 offset_bottom = 600.0
 
 [node name="DemonSprite" type="TextureRect" parent="DemonContainer"]
+layout_mode = 0
 offset_left = -200.0
 offset_top = -150.0
 offset_right = 200.0
 offset_bottom = 450.0
-texture = ExtResource("2_demon_tex")
+texture = ExtResource("2_qo30p")
 expand_mode = 1
 stretch_mode = 5

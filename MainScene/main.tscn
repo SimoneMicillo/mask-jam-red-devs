@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
-[ext_resource type="PackedScene" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
+[ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
