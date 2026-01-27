@@ -1,7 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED: float = 7.5
+const SPEED: float = 6.5
+const CROUCHED_SPEED: float = 3.5
 var isDead: bool = false
 var isCrouched: bool = false
 
@@ -21,15 +22,21 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	var actualSpeed := 0.0
+	if isCrouched:
+		actualSpeed = CROUCHED_SPEED
+	else:
+		actualSpeed = SPEED
+	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * actualSpeed
+		velocity.z = direction.z * actualSpeed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, actualSpeed)
+		velocity.z = move_toward(velocity.z, 0, actualSpeed)
 
 	move_and_slide()
 
