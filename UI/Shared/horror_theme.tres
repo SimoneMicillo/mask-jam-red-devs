@@ -1,8 +1,6 @@
-## UITheme - Horror-style theme for THE MASK
-## Shared theme resource for consistent UI styling
 [gd_resource type="Theme" format=3 uid="uid://ui_horror_theme"]
 
-[resource]
+[resource] 
 default_font_size = 24
 
 Button/colors/font_color = Color(0.9, 0.85, 0.8, 1)

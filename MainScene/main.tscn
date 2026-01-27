@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=15 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://bsr2ai28hfqx4" path="res://Assets/icon.svg" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dg5fvi4pq8bft" path="res://Assets/Infernus_Book2_1.png" id="3_0xrwe"]
 [ext_resource type="Script" uid="uid://dyjukqtmrb0qe" path="res://MainScene/ui.gd" id="4_rg2y2"]
 [ext_resource type="Shader" uid="uid://c5e6hn8cfguui" path="res://MainScene/Vignette/vignette.gdshader" id="5_phgjk"]
 [ext_resource type="Script" uid="uid://bthphnr5tm5xf" path="res://MainScene/Vignette/vignette_controller.gd" id="6_vignette"]
 [ext_resource type="PackedScene" uid="uid://cyu6cq5xuu3tj" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
+[ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="9_0xrwe"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -36,7 +37,7 @@ size = Vector3(10, 1, 2)
 script = ExtResource("1_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.851132, -2.2946372e-08, 0.5249518, -0.5249518, -3.720416e-08, 0.851132, 0, -1, -4.371139e-08, 0, 6.744998, 0)
+transform = Transform3D(0.851132, -2.2946372e-08, 0.5249518, -0.5249518, -3.720416e-08, 0.851132, 0, -1, -4.371139e-08, 13.9025755, 19.369743, -19.865116)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -56,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.4091982, 7.018498)
 billboard = 1
-texture = ExtResource("3_h2yge")
+texture = ExtResource("3_0xrwe")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_rg2y2")
@@ -153,3 +154,6 @@ shape = SubResource("BoxShape3D_rg2y2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Crouch Tester"]
 mesh = SubResource("BoxMesh_rg2y2")
+
+[node name="mappa" parent="." instance=ExtResource("9_0xrwe")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 11.068985, 1.8620844, 2.8777928)
