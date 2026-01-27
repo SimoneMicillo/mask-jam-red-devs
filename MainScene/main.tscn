@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=17 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bthphnr5tm5xf" path="res://MainScene/Vignette/vignette_controller.gd" id="6_vignette"]
 [ext_resource type="PackedScene" uid="uid://cyu6cq5xuu3tj" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
+[ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -153,3 +154,5 @@ shape = SubResource("BoxShape3D_rg2y2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Crouch Tester"]
 mesh = SubResource("BoxMesh_rg2y2")
+
+[node name="QteSystem" parent="." instance=ExtResource("9_0xrwe")]

@@ -105,6 +105,12 @@ func _input(_event: InputEvent) -> void:
 			collision.shape = crouch_shape
 			collision.position = Vector3(0, -0.45, 0)
 			isCrouched = true
+			
+	if Input.is_action_just_pressed("debug_qte"):
+		if $"../QteSystem".visible:
+			$"../QteSystem"._hide()
+		else:
+			$"../QteSystem"._show()
 
 func _on_game_over() -> void:
 	isDead = true

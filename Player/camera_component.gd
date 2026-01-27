@@ -8,7 +8,7 @@ var standing_y_pos : float = 0.6
 var crouch_y_pos : float = -0.1
 
 func _input(event: InputEvent) -> void:
-	if !player.isDead:
+	if !player.isDead: #Aggiungere check if qte_system is active
 		if event is InputEventMouseMotion:
 			# Trasformiamo la sensibilità in un valore adatto ai radianti
 			# Moltiplichiamo per un valore piccolo (es. 0.005) per un controllo fine
