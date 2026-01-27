@@ -51,7 +51,7 @@ theme_override_colors/font_color = Color(0.8, 0.1, 0.1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 56
-text = "SEI MORTO"
+text = "YOU'RE DEAD"
 horizontal_alignment = 1
 
 [node name="DeathSubtitle" type="Label" parent="DeathPanel/VBoxContainer"]
@@ -60,7 +60,7 @@ theme_override_colors/font_color = Color(0.7, 0.6, 0.5, 0.8)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 20
-text = "La maschera ha consumato la tua sanità..."
+text = "The mask has consumed your sanity..."
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="DeathPanel/VBoxContainer"]
@@ -75,7 +75,7 @@ theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.2, 0.2, 1)
 theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 28
-text = "RIPROVA"
+text = "TRY AGAIN"
 flat = true
 
 [node name="MainMenuButton" type="Button" parent="DeathPanel/VBoxContainer"]
@@ -86,7 +86,7 @@ theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.2, 0.2, 1)
 theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 28
-text = "MENU PRINCIPALE"
+text = "MAIN MENU"
 flat = true
 
 [connection signal="pressed" from="DeathPanel/VBoxContainer/RetryButton" to="." method="_on_retry_pressed"]

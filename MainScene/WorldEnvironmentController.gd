@@ -51,8 +51,8 @@ func _on_mask_state_changed(is_cursed: bool) -> void:
 
 func _find_world_environment() -> WorldEnvironment:
 	# First check if we ARE a WorldEnvironment
-	if self is WorldEnvironment:
-		return self as WorldEnvironment
+	#if self is WorldEnvironment:
+	#	return self as WorldEnvironment
 	
 	# Check parent
 	var parent: Node = get_parent()

@@ -47,7 +47,7 @@ theme_override_colors/font_color = Color(0.8, 0.1, 0.1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 42
-text = "⏸ PAUSA"
+text = "⏸ PAUSE"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="PausePanel/MainButtons"]
@@ -61,7 +61,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_hover_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 26
-text = "RIPRENDI"
+text = "RESUME"
 flat = true
 
 [node name="SettingsButton" type="Button" parent="PausePanel/MainButtons"]
@@ -71,7 +71,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_hover_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 26
-text = "IMPOSTAZIONI"
+text = "SETTINGS"
 flat = true
 
 [node name="MainMenuButton" type="Button" parent="PausePanel/MainButtons"]
@@ -81,7 +81,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_hover_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 26
-text = "TORNA MENU PRINCIPALE"
+text = "BACK TO MAIN MENU"
 flat = true
 
 [node name="SettingsPanel" type="Control" parent="PausePanel"]
@@ -111,7 +111,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.1, 0.1, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "IMPOSTAZIONI"
+text = "SETTINGS"
 horizontal_alignment = 1
 
 [node name="Spacer1" type="Control" parent="PausePanel/SettingsPanel/VBoxContainer"]
@@ -139,7 +139,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_font_sizes/font_size = 18
-text = "Sensibilità: 1.0"
+text = "Sensitivity: 1.0"
 
 [node name="SensitivitySlider" type="HSlider" parent="PausePanel/SettingsPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
@@ -160,7 +160,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
 theme_override_colors/font_hover_color = Color(1, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 22
-text = "← INDIETRO"
+text = "← GO BACK"
 flat = true
 
 [connection signal="pressed" from="PausePanel/MainButtons/ResumeButton" to="." method="_on_resume_pressed"]
