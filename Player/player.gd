@@ -9,11 +9,9 @@ var isCrouched: bool = false
 @onready var camera_component: Node = $CameraComponent
 @onready var collision: CollisionShape3D = $CollisionShape3D
 
-
 func _ready() -> void:
 	# Connect to global GameManager for game over
 	GameManager.game_over.connect(_on_game_over)
-
 
 func _physics_process(delta: float) -> void:
 	if isDead:
@@ -35,6 +33,34 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+# Function used only for debug purpose
+func get_crouch_height() -> float:
+	var shape := collision.shape
+	if shape is CapsuleShape3D:
+		print(shape.height + shape.radius * 2.0)
+		return shape.height + shape.radius * 2.0
+	
+	return 0.0
+
+@onready var standing_shape: Shape3D = preload("res://Assets/collisions/standingShape.tres")
+@onready var crouch_shape: Shape3D = preload("res://Assets/collisions/crouchShape.tres")
+
+@onready var crouch_height: float = crouch_shape.height + crouch_shape.radius * 2.0
+@onready var standing_height: float = standing_shape.height + standing_shape.radius * 2.0
+@onready var stand_up_offset: float = standing_height - crouch_height
+
+func can_stand_up() -> bool:
+	var space := get_world_3d().direct_space_state
+
+	var params := PhysicsShapeQueryParameters3D.new()
+	params.shape = standing_shape
+	params.transform = global_transform.translated(Vector3.UP * stand_up_offset)
+	params.exclude = [self]
+	
+	params.collision_mask = collision.get_parent().collision_mask
+
+	var result := space.intersect_shape(params, 1)
+	return result.is_empty()
 
 func _input(_event: InputEvent) -> void:
 	if isDead:
@@ -47,22 +73,35 @@ func _input(_event: InputEvent) -> void:
 	# Crouch toggle
 	if Input.is_action_just_pressed("crouch"):
 		if isCrouched:
-			get_tree().create_tween().tween_property(camera_3d, "position:y", camera_component.standing_y_pos, 0.1)
-			isCrouched = false
-			collision.shape = preload("res://Assets/collisions/standingShape.tres")
-			collision.shape.height = 2.0
+			if not can_stand_up():
+				return
+			
+			get_tree().create_tween().tween_property(
+				camera_3d,
+				"position:y",
+				camera_component.standing_y_pos,
+				0.1
+			)
+			
+			collision.shape = standing_shape
 			collision.position = Vector3.ZERO
+			isCrouched = false
+
 		else:
-			get_tree().create_tween().tween_property(camera_3d, "position:y", camera_component.crouch_y_pos, 0.1)
-			collision.shape = preload("res://Assets/collisions/crouchShape.tres")
+			get_tree().create_tween().tween_property(
+				camera_3d,
+				"position:y",
+				camera_component.crouch_y_pos,
+				0.1
+			)
+			
+			collision.shape = crouch_shape
 			collision.position = Vector3(0, -0.45, 0)
 			isCrouched = true
-
 
 func _on_game_over() -> void:
 	isDead = true
 	dead.emit()
-
 
 # Legacy signal for backwards compatibility with UI
 signal dead
