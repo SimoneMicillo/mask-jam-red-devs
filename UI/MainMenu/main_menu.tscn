@@ -106,6 +106,7 @@ text = "✕ EXIT"
 flat = true
 
 [node name="SettingsPanel" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -254,16 +255,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -40.0
-offset_right = -20.0
-offset_bottom = -10.0
+offset_left = -130.0
+offset_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.5, 0.45, 0.4, 0.5)
 theme_override_font_sizes/font_size = 14
 text = "v0.1 - Game Jam"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CenterContainer/SettingsButton" to="." method="_on_settings_pressed"]
