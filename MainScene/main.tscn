@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=16 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
-[ext_resource type="PackedScene" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
+[ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 [ext_resource type="PackedScene" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
 [ext_resource type="PackedScene" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
 

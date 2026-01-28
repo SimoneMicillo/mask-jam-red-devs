@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyvovyhheeqkm"]
+[gd_scene load_steps=10 format=3 uid="uid://dyvovyhheeqkm"]
 
 [ext_resource type="Script" uid="uid://dmf070vwxscc8" path="res://Player/player.gd" id="1_4flbx"]
 [ext_resource type="Shader" path="res://Player/pixel_shader_test.gdshader" id="2_gwnis"]
 [ext_resource type="Script" uid="uid://0nit1uqh32tc" path="res://Player/camera_component.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://b2y4gfypvb46x" path="res://Player/interaction_handler.gd" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -13,6 +14,8 @@ render_priority = -1
 shader = ExtResource("2_gwnis")
 
 [sub_resource type="QuadMesh" id="QuadMesh_btcbx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k53q1"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
@@ -33,3 +36,14 @@ mesh = SubResource("QuadMesh_btcbx")
 
 [node name="CameraComponent" type="Node" parent="."]
 script = ExtResource("2_onrkg")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.87437344)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_gwnis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("BoxShape3D_k53q1")
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]

@@ -122,6 +122,10 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("ui_cancel") and not GameManager.is_game_over():
 		pause_menu.toggle_pause()
+	
+	if event.is_action_pressed("interact"):
+		if $InteractionArea.interactingBody:
+			$InteractionArea.interactingBody.get_node("Door").interacting()
 
 func _on_game_over() -> void:
 	isDead = true

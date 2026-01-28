@@ -1,9 +1,10 @@
-[gd_scene load_steps=71 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=74 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
 [ext_resource type="PackedScene" uid="uid://cewjrhb4coydt" path="res://ComponentNodes/MaskProperties/mask_visual.tscn" id="4_re1ck"]
+[ext_resource type="PackedScene" uid="uid://pohwblnk1ir8" path="res://Scenary/door.tscn" id="5_rcajr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -572,6 +573,12 @@ data = PackedVector3Array(-1, -0.8914, 0.0982, -1, 1, 1, -1, -1, 1, -1, -1, -1, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kdisg"]
 size = Vector3(2.0488281, 3.0239258, 2.1166382)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm0oh"]
+size = Vector3(4, 6.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_re1ck"]
+size = Vector3(4, 6.2, 1)
+
 [node name="mappa" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -761,5 +768,21 @@ shape = SubResource("BoxShape3D_kdisg")
 [node name="MaskVisual" parent="Node3D/Chair" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
 onMaskVisible = true
 collision = NodePath("../StaticBody3D/CollisionShape3D")
+
+[node name="DoorFirstScene" type="StaticBody3D" parent="."]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.787792, -1.4002364, -13.175076)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFirstScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_gm0oh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorFirstScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_re1ck")
+
+[node name="Door" parent="DoorFirstScene" node_paths=PackedStringArray("pivot") instance=ExtResource("5_rcajr")]
+pivot = NodePath("..")
 
 [editable path="Node3D/Chair"]

@@ -11,16 +11,23 @@ func _process(delta: float) -> void:
 	pass
 	
 @export var onMaskVisible: bool
+@export var isDoor: bool
 @export var collision: CollisionShape3D
 	
 func setVisibility(_flag: bool) -> void:
 	if GameManager.is_mask_on and onMaskVisible:
-		print("po")
 		get_parent().show()
 		collision.disabled = false
 	else:
 		get_parent().hide()
 		collision.disabled = true
+		
+	if isDoor and GameManager.is_mask_on:
+		# Implementare logica delle porte; caricare texture porta
+		pass
+	elif isDoor and !GameManager.is_mask_on:
+		#caricare texture muro
+		pass
 
 	
 func linkToggleMask() -> void:
