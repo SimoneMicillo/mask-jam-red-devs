@@ -7,7 +7,8 @@ class_name QTESystem
 signal qte_completed(failed_count: int)
 
 # QTE Configuration
-const KEYS_TO_USE := ["Q", "E", "R", "T", "Y", "U", "I", "O", "P", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"]
+# REMOVED 'P' to avoid conflict with Puzzle debug key
+const KEYS_TO_USE := ["Q", "E", "R", "T", "Y", "U", "I", "O", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"]
 const KEY_SEQUENCE := [
 	{"time": 3.0},  # First key: 3 seconds
 	{"time": 2.0},  # Second key: 2 seconds
@@ -33,6 +34,8 @@ var _used_keys: Array[String] = []
 var _waiting_feedback: bool = false  # BLOCK timer during feedback
 var _is_demon_mode: bool = false  # True when demon is attacking
 var _demon_damage_per_fail: float = 5.0
+var _warmup_timer: float = 0.0  # Delay before input/timer starts to prevent glitches
+var _session_id: int = 0  # Unique ID to track current QTE session and invalidate old callbacks
 
 # UI References
 @onready var overlay: ColorRect = $Overlay
@@ -78,18 +81,34 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_SECTION or event.keycode == KEY_QUOTELEFT:
 			if not _is_active:
 				start_qte()
+				# Consume input to prevent it from propagating
+				get_viewport().set_input_as_handled()
 			return
 		
 		if _is_active:
 			var pressed_key: String = OS.get_keycode_string(event.keycode)
 			if event.keycode == KEY_ESCAPE:
 				return
+			
+			# Ignore inputs if we are in feedback state (prevent spamming)
+			if _waiting_feedback:
+				return
+				
 			_check_key_input(pressed_key)
 
 func _process(delta: float) -> void:
 	if not _is_active or _waiting_feedback:
 		return
-	_remaining_time -= delta
+	
+	# Safety cap on delta to prevent huge jumps if frame hangs
+	var safe_delta = min(delta, 0.1)
+	
+	# Warmup check
+	if _warmup_timer > 0.0:
+		_warmup_timer -= delta
+		return
+	
+	_remaining_time -= safe_delta
 	_update_timer_display()
 	if _remaining_time <= 0.0:
 		_fail_current_key()
@@ -97,12 +116,15 @@ func _process(delta: float) -> void:
 func start_qte() -> void:
 	if _is_active:
 		return
+	_session_id += 1 # New session, invalidates old waits
 	_is_demon_mode = false
 	_is_active = true
 	_current_key_index = 0
 	_failed_keys_count = 0
 	_used_keys.clear()
+	_waiting_feedback = false # Critical fix: ensure we are not waiting for feedback from previous session
 	visible = true
+	_warmup_timer = 0.5 # 0.5s delay to let UI appear and stabilize
 	_set_player_input_enabled(false)
 	_update_title()
 	_show_next_key()
@@ -111,13 +133,16 @@ func start_qte() -> void:
 func start_demon_qte(damage_per_attack: float = 5.0) -> void:
 	if _is_active:
 		return
+	_session_id += 1 # New session
 	_is_demon_mode = true
 	_demon_damage_per_fail = damage_per_attack
 	_is_active = true
 	_current_key_index = 0
 	_failed_keys_count = 0
 	_used_keys.clear()
+	_waiting_feedback = false
 	visible = true
+	_warmup_timer = 0.5 # 0.5s delay
 	_set_player_input_enabled(false)
 	_update_title()
 	_show_next_key()
@@ -163,9 +188,16 @@ func _check_key_input(pressed_key: String) -> void:
 	# Wrong keys are ignored, only timeout counts as fail
 
 func _success_current_key() -> void:
+	if _waiting_feedback: 
+		return
+		
 	_waiting_feedback = true
+	var current_session = _session_id
 	_show_feedback("✓ SUCCESS!", Color(0.2, 1.0, 0.2))
 	await get_tree().create_timer(0.3).timeout
+	
+	if _session_id != current_session: return # Session changed, abort
+	
 	_current_key_index += 1
 	_waiting_feedback = false
 	_show_next_key()
@@ -183,7 +215,11 @@ func _fail_current_key() -> void:
 		GameManager.modify_sanity(-sanity_loss_per_fail)
 		_show_feedback("✗ FAILED!", Color(1.0, 0.2, 0.2))
 	
+	var current_session = _session_id
 	await get_tree().create_timer(0.5).timeout
+	
+	if _session_id != current_session: return # Session changed, abort
+	
 	_current_key_index += 1
 	_waiting_feedback = false
 	_show_next_key()
@@ -223,7 +259,9 @@ func _show_feedback(text: String, color: Color) -> void:
 	timer_label.modulate = Color.TRANSPARENT
 	progress_bar.modulate = Color.TRANSPARENT
 	
+	var current_session = _session_id
 	await get_tree().create_timer(0.1).timeout
+	if _session_id != current_session: return
 	
 	key_label.modulate = Color.WHITE
 	# Timer and progress bar colors will be updated by _update_timer_display

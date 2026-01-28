@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 [ext_resource type="PackedScene" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
 [ext_resource type="PackedScene" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
-[ext_resource type="PackedScene" path="res://UI/Puzzles/klotski_puzzle2.tscn" id="15_klotski2"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 
@@ -132,7 +131,5 @@ horizontal_alignment = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="KlotskiPuzzle" parent="." instance=ExtResource("14_klotski")]
-
-[node name="KlotskiPuzzle2" parent="." instance=ExtResource("15_klotski2")]
 
 [node name="FragmentsHUD" parent="." instance=ExtResource("13_fragments")]

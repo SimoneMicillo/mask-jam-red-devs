@@ -105,17 +105,25 @@ func _setup_default_puzzle() -> void:
 	_pieces.clear()
 	_initialize_grid()
 	
-	# Layout with wood colors (no labels except F)
-	_add_piece("A", PieceType.VERTICAL, 0, 0, WOOD_COLORS[0])
-	_add_piece("F", PieceType.FRAGMENT, 1, 0, FRAGMENT_COLOR)  # Golden Fragment
-	_add_piece("B", PieceType.VERTICAL, 3, 0, WOOD_COLORS[1])
-	_add_piece("C", PieceType.VERTICAL, 0, 2, WOOD_COLORS[2])
-	_add_piece("D", PieceType.HORIZONTAL, 1, 2, WOOD_COLORS[3])
-	_add_piece("E", PieceType.VERTICAL, 3, 2, WOOD_COLORS[4])
-	_add_piece("G", PieceType.SINGLE, 1, 3, WOOD_COLORS[5])
-	_add_piece("H", PieceType.SINGLE, 2, 3, WOOD_COLORS[0])
-	_add_piece("I", PieceType.SINGLE, 0, 4, WOOD_COLORS[1])
-	_add_piece("J", PieceType.SINGLE, 3, 4, WOOD_COLORS[2])
+	# EASIER Layout - Fragment in original position, all other blocks are 1x1
+	_add_piece("F", PieceType.FRAGMENT, 1, 0, FRAGMENT_COLOR)  # Golden Fragment - original position
+	_add_piece("O", PieceType.VERTICAL, 0, 0, WOOD_COLORS[1])
+	#_add_piece("A", PieceType.SINGLE, 0, 1, WOOD_COLORS[0])
+	_add_piece("B", PieceType.SINGLE, 0, 2, WOOD_COLORS[1])
+	_add_piece("C", PieceType.SINGLE, 0, 3, WOOD_COLORS[2])
+	#_add_piece("D", PieceType.SINGLE, 0, 4, WOOD_COLORS[3])
+	#_add_piece("E", PieceType.SINGLE, 3, 0, WOOD_COLORS[4])
+	#_add_piece("G", PieceType.SINGLE, 3, 1, WOOD_COLORS[5])
+	_add_piece("E", PieceType.VERTICAL, 3, 0, WOOD_COLORS[1])
+
+	_add_piece("H", PieceType.SINGLE, 3, 2, WOOD_COLORS[0])
+	_add_piece("I", PieceType.SINGLE, 3, 3, WOOD_COLORS[1])
+	#_add_piece("J", PieceType.SINGLE, 3, 4, WOOD_COLORS[5])
+	_add_piece("K", PieceType.SINGLE, 1, 2, WOOD_COLORS[0])
+	_add_piece("L", PieceType.SINGLE, 1, 3, WOOD_COLORS[1])
+	_add_piece("M", PieceType.SINGLE, 2, 2, WOOD_COLORS[0])
+	_add_piece("N", PieceType.SINGLE, 2, 3, WOOD_COLORS[1])
+	# All blocks are 1x1, easier to move around the Fragment!
 
 func _add_piece(id: String, type: PieceType, grid_x: int, grid_y: int, color: Color) -> void:
 	var piece = PuzzlePiece.new(id, type, grid_x, grid_y, color)
