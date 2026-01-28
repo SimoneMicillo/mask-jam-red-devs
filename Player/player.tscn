@@ -13,8 +13,9 @@ render_priority = -1
 shader = ExtResource("2_gwnis")
 
 [sub_resource type="QuadMesh" id="QuadMesh_btcbx"]
+size = Vector2(2, 2)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["PlayerGroup"]]
 collision_layer = 3
 script = ExtResource("1_4flbx")
 
@@ -28,8 +29,7 @@ mesh = SubResource("CapsuleMesh_sh265")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.42859656)
 
 [node name="shader_pixel" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -0.5165982)
-visible = false
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -0.3585074)
 material_override = SubResource("ShaderMaterial_k53q1")
 mesh = SubResource("QuadMesh_btcbx")
 

@@ -23,11 +23,11 @@ func setVisibility(_flag: bool) -> void:
 			get_parent().hide()
 			collision.disabled = true
 	else:
-		if GameManager.is_mask_on:
+		if (GameManager.is_mask_on and onMaskVisible) or (!GameManager.is_mask_on and !onMaskVisible):
 			# Implementare logica delle porte; caricare texture porta
 			get_parent().show()
 			pass
-		elif !GameManager.is_mask_on:
+		else:
 			#caricare texture muro
 			get_parent().hide()
 			pass

@@ -1,5 +1,6 @@
-[gd_scene load_steps=76 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=83 format=4 uid="uid://ct2e0h3wxwujt"]
 
+[ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
@@ -7,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://pohwblnk1ir8" path="res://Scenary/door.tscn" id="5_rcajr"]
 [ext_resource type="PackedScene" uid="uid://dms7hrkg7b8ee" path="res://Scripts/interaction_area.tscn" id="6_pvwoy"]
 [ext_resource type="PackedScene" uid="uid://b8sp2wj1b7jyt" path="res://Assets/3d_models/Desk.fbx" id="6_trkcp"]
+[ext_resource type="PackedScene" uid="uid://boq5cu1egva3g" path="res://Scenary/Teleporter/teleporter.tscn" id="8_pvwoy"]
+[ext_resource type="PackedScene" uid="uid://cy84i5trpac0r" path="res://Scenary/Lights/candle_light.tscn" id="9_fygwf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -581,9 +584,34 @@ size = Vector3(4, 6.2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_re1ck"]
 size = Vector3(4, 6.2, 1)
 
+[sub_resource type="FogMaterial" id="FogMaterial_pvwoy"]
+density = 5.0
+edge_fade = 2.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_trkcp"]
+density = 5.0
+edge_fade = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fygwf"]
+radius = 0.98956263
+
+[sub_resource type="Environment" id="Environment_fygwf"]
+ambient_light_source = 1
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.014999998, 0.014999998, 0.1, 1)
+fog_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.015686275, 0.015686275, 0.101960786, 1)
+volumetric_fog_anisotropy = 0.0
+adjustment_enabled = true
+adjustment_saturation = 1.25
+
 [node name="mappa" type="Node3D"]
+script = ExtResource("1_7fy3a")
 
 [node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="StanzaIniziale" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(13.517934, 0, 0, 0, 5, 0, 0, 0, 13.517934, -30.580051, 0, 0)
@@ -601,7 +629,7 @@ shape = SubResource("ConcavePolygonShape3D_6wxhj")
 transform = Transform3D(0.1, 0, 0, 0, 0.20000002, 0, 0, 0, 0.1, 0, -0.9106034, 0.25809)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 50, -25.154572, 0, -62.997974)
+transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 50, -25.155, 0, -63.515)
 mesh = SubResource("ArrayMesh_jm0mh")
 skeleton = NodePath("")
 
@@ -632,6 +660,7 @@ shape = SubResource("ConcavePolygonShape3D_b34l7")
 
 [node name="Cube_019" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(2.0817256, 0, 0, 0, 3.0639763, 0, 0, 0, 1, -24.918478, -1.37253, -112.69096)
+visible = false
 mesh = SubResource("ArrayMesh_to4cl")
 skeleton = NodePath("")
 
@@ -772,9 +801,7 @@ onMaskVisible = true
 collision = NodePath("../StaticBody3D/CollisionShape3D")
 
 [node name="DoorFirstScene" type="StaticBody3D" parent="."]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.77791, -1.4002364, -13.175076)
-collision_layer = 3
-collision_mask = 3
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.778, 3.5, -13.175)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFirstScene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -800,8 +827,90 @@ collision = NodePath("../CollisionShape3D")
 doorNode = NodePath("../Door")
 maskVisual = NodePath("../MaskVisual")
 
+[node name="DoorLoopRoom" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.032, 3.5, -103.96)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLoopRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_gm0oh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorLoopRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = SubResource("BoxMesh_re1ck")
+
+[node name="Door" parent="DoorLoopRoom" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
+pivot = NodePath("..")
+interactionArea = NodePath("../InteractionArea")
+close_deg_target_y = -90.0
+
+[node name="MaskVisual" parent="DoorLoopRoom" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
+isDoor = true
+collision = NodePath("../CollisionShape3D")
+
+[node name="InteractionArea" parent="DoorLoopRoom" node_paths=PackedStringArray("collision", "doorNode", "maskVisual") instance=ExtResource("6_pvwoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+collision = NodePath("../CollisionShape3D")
+doorNode = NodePath("../Door")
+maskVisual = NodePath("../MaskVisual")
+
 [node name="Desk" parent="." instance=ExtResource("6_trkcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.137413, -2.0514598, -8.930269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.137413, 2.9441032, -8.930269)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.15423, 5, -108.057884)
+size = Vector3(8.973633, 10.365625, 14.075537)
+material = SubResource("FogMaterial_pvwoy")
+
+[node name="FogVolume2" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.15423, 5, -18.234306)
+size = Vector3(0.1, 0.1, 0.1)
+material = SubResource("FogMaterial_trkcp")
+
+[node name="player_collider" type="Area3D" parent="FogVolume2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0702934, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FogVolume2/player_collider"]
+shape = SubResource("SphereShape3D_fygwf")
+
+[node name="Teleporter" parent="." instance=ExtResource("8_pvwoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.189552, 5, -109.29006)
+target_pos = Vector3(-25.18465, 2.3203673, -18.779762)
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fygwf")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="candle_light" parent="Lights" instance=ExtResource("9_fygwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -65.6397)
+omni_range = 15.0
+omni_attenuation = 0.5
+energy_min_value = 1.0
+
+[node name="candle_light3" parent="Lights" instance=ExtResource("9_fygwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -41.302017)
+omni_range = 15.0
+omni_attenuation = 0.5
+energy_min_value = 1.0
+
+[node name="candle_light4" parent="Lights" instance=ExtResource("9_fygwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -91.910225)
+omni_range = 15.0
+omni_attenuation = 0.5
+energy_min_value = 1.0
+
+[node name="candle_light2" parent="Lights" instance=ExtResource("9_fygwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.869617, 8.065767, 1.6074541)
+light_color = Color(0.9714102, 0.7745349, 0.58082783, 1)
+light_energy = 15.0
+omni_range = 20.0
+omni_attenuation = 0.5
+energy_min_value = 15.0
+
+[connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 
 [editable path="Node3D/Chair"]
 [editable path="DoorFirstScene/InteractionArea"]
+[editable path="DoorLoopRoom/InteractionArea"]

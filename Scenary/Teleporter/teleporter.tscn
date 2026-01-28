@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://boq5cu1egva3g"]
+
+[ext_resource type="Script" uid="uid://k57vjw8i5v61" path="res://Scenary/Teleporter/teleporter.gd" id="1_5i4l8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_trkcp"]
+radius = 2.1345465
+
+[node name="Teleporter" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5i4l8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_trkcp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
