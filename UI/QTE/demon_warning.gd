@@ -115,32 +115,44 @@ func _grow_demon() -> void:
 	# Calculate new scale
 	var new_scale = initial_scale + (scale_increment * _current_growth_stage)
 	
-	# Animate growth with shake effect
+	# Animate growth - SMOOTHER and SLOWER
+	# Duration increased to 1.5s to fill most of the interval
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(demon_sprite, "scale", Vector2(new_scale, new_scale), 0.3).set_ease(Tween.EASE_OUT)
-	tween.tween_property(demon_sprite, "modulate:a", min(0.7 + (_current_growth_stage * 0.1), 1.0), 0.3)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
 	
-	# Move closer to center
+	tween.tween_property(demon_sprite, "scale", Vector2(new_scale, new_scale), 1.5)
+	tween.tween_property(demon_sprite, "modulate:a", min(0.7 + (_current_growth_stage * 0.1), 1.0), 1.5)
+	
+	# Move closer to center - Smoother
 	var move_amount = 50.0
 	tween.tween_property(demon_container, "position:x", 
-		demon_container.position.x - move_amount, 0.3)
+		demon_container.position.x - move_amount, 1.5)
 	
-	# Add shake to demon
-	_shake_demon()
+	# Subtle floating shake instead of glitchy shake
+	_start_continuous_float()
 	
 	# Check if max growth reached - trigger attack
 	if _current_growth_stage >= max_growth_stages:
 		await tween.finished
 		_trigger_demon_attack()
 
+func _start_continuous_float() -> void:
+	# Adds a subtle floating motion
+	if demon_sprite.has_meta("floating") and demon_sprite.get_meta("floating"):
+		return
+		
+	demon_sprite.set_meta("floating", true)
+	var original_y = demon_sprite.position.y
+	
+	var float_tween = create_tween().set_loops()
+	float_tween.tween_property(demon_sprite, "position:y", original_y - 10, 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	float_tween.tween_property(demon_sprite, "position:y", original_y + 10, 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+# Superseded by _start_continuous_float for smoother effect
 func _shake_demon() -> void:
-	var original_pos = demon_sprite.position
-	var shake_tween = create_tween()
-	shake_tween.tween_property(demon_sprite, "position", original_pos + Vector2(10, 0), 0.05)
-	shake_tween.tween_property(demon_sprite, "position", original_pos + Vector2(-10, 0), 0.05)
-	shake_tween.tween_property(demon_sprite, "position", original_pos + Vector2(5, 0), 0.05)
-	shake_tween.tween_property(demon_sprite, "position", original_pos, 0.05)
+	pass
 
 func _trigger_demon_attack() -> void:
 	_is_attacking = true

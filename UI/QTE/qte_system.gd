@@ -74,8 +74,8 @@ func _find_player() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		# Debug trigger: Backtick key
-		if event.keycode == KEY_SECTION:
+		# Debug trigger: Backtick or Section key (ù on IT layout often behaves like this)
+		if event.keycode == KEY_SECTION or event.keycode == KEY_QUOTELEFT:
 			if not _is_active:
 				start_qte()
 			return
@@ -218,13 +218,16 @@ func _complete_qte() -> void:
 func _show_feedback(text: String, color: Color) -> void:
 	instruction_label.text = text
 	instruction_label.modulate = color
-	key_label.visible = false
-	timer_label.visible = false
-	progress_bar.visible = false
+	# Use transparency instead of visibility to prevent layout shifts (glitches)
+	key_label.modulate = Color.TRANSPARENT
+	timer_label.modulate = Color.TRANSPARENT
+	progress_bar.modulate = Color.TRANSPARENT
+	
 	await get_tree().create_timer(0.1).timeout
-	key_label.visible = true
-	timer_label.visible = true
-	progress_bar.visible = true
+	
+	key_label.modulate = Color.WHITE
+	# Timer and progress bar colors will be updated by _update_timer_display
+	_update_timer_display()
 
 func _update_timer_display() -> void:
 	timer_label.text = "%.1f s" % max(_remaining_time, 0.0)
