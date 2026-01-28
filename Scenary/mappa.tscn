@@ -1,10 +1,12 @@
-[gd_scene load_steps=74 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=76 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
 [ext_resource type="PackedScene" uid="uid://cewjrhb4coydt" path="res://ComponentNodes/MaskProperties/mask_visual.tscn" id="4_re1ck"]
 [ext_resource type="PackedScene" uid="uid://pohwblnk1ir8" path="res://Scenary/door.tscn" id="5_rcajr"]
+[ext_resource type="PackedScene" uid="uid://dms7hrkg7b8ee" path="res://Scripts/interaction_area.tscn" id="6_pvwoy"]
+[ext_resource type="PackedScene" uid="uid://b8sp2wj1b7jyt" path="res://Assets/3d_models/Desk.fbx" id="6_trkcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -770,7 +772,7 @@ onMaskVisible = true
 collision = NodePath("../StaticBody3D/CollisionShape3D")
 
 [node name="DoorFirstScene" type="StaticBody3D" parent="."]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.787792, -1.4002364, -13.175076)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.77791, -1.4002364, -13.175076)
 collision_layer = 3
 collision_mask = 3
 
@@ -782,7 +784,24 @@ shape = SubResource("BoxShape3D_gm0oh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 mesh = SubResource("BoxMesh_re1ck")
 
-[node name="Door" parent="DoorFirstScene" node_paths=PackedStringArray("pivot") instance=ExtResource("5_rcajr")]
+[node name="Door" parent="DoorFirstScene" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
 pivot = NodePath("..")
+interactionArea = NodePath("../InteractionArea")
+open_deg_target_y = 90.0
+
+[node name="MaskVisual" parent="DoorFirstScene" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
+onMaskVisible = true
+isDoor = true
+collision = NodePath("../CollisionShape3D")
+
+[node name="InteractionArea" parent="DoorFirstScene" node_paths=PackedStringArray("collision", "doorNode", "maskVisual") instance=ExtResource("6_pvwoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+collision = NodePath("../CollisionShape3D")
+doorNode = NodePath("../Door")
+maskVisual = NodePath("../MaskVisual")
+
+[node name="Desk" parent="." instance=ExtResource("6_trkcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.137413, -2.0514598, -8.930269)
 
 [editable path="Node3D/Chair"]
+[editable path="DoorFirstScene/InteractionArea"]

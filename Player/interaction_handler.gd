@@ -1,18 +1,27 @@
 extends Area3D
+class_name InteractionArea
 
+var canInteract: bool = false
+@export var collision : CollisionShape3D
 
-# Called when the node enters the scene tree for the first time.
+@export var doorNode : DoorLogic
+@export var maskVisual : MaskVisual
+
 func _ready() -> void:
-	pass # Replace with function body.
+	setCollision()
 
+func setCollision() -> void:
+	position = collision.position
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_body_entered(_body: Node3D) -> void:
+	if GameManager.is_mask_on and maskVisual.onMaskVisible:
+		canInteract = true
 
-var interactingBody: Node3D
+func _on_body_exited(_body: Node3D) -> void:
+	if GameManager.is_mask_on and maskVisual.onMaskVisible:
+		canInteract = false
 
-func _on_body_entered(body: Node3D) -> void:
-	if body.has_node("Door"):
-		body.get_node("Door").canInteract = true
-		interactingBody = body
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and canInteract:
+		if doorNode != null:
+			doorNode.interacting()

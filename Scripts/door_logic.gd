@@ -1,28 +1,28 @@
 extends Node
+class_name DoorLogic
 
 @export var pivot: StaticBody3D
-var canInteract: bool = false
 var isOpen: bool = false
 
-func setCanInteract(value: bool) -> void:
-	canInteract = value
-	pass
-	
-func interacting() -> void:
-	if !isOpen and canInteract:
-		# apri
-		get_tree().create_tween().tween_property(pivot, "rotation:y", 90, .25)
-		isOpen = true
-	elif isOpen and canInteract:
-		# chiudi
-		get_tree().create_tween().tween_property(pivot, "rotation:y", -90, .25)
-		isOpen = false
+@export var interactionArea : InteractionArea
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	findInteractionArea()
 
+func findInteractionArea() -> void:
+	if get_parent().has_node("InteractionArea"):
+		interactionArea = get_parent().get_node("InteractionArea")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export_category("Animation Params")
+@export var open_deg_target_y : float
+@export var close_deg_target_y : float
+@export var anim_duration : float = .75
+func interacting() -> void:
+	if !isOpen and interactionArea.canInteract:
+		# apri
+		get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", open_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
+		isOpen = true
+	elif isOpen and interactionArea.canInteract:
+		# chiudi
+		get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", close_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
+		isOpen = false
