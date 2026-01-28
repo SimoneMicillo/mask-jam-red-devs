@@ -1,5 +1,5 @@
 ## Klotski Puzzle
-## A sliding block puzzle where the player must move pieces to free the Fragment (F)
+## A sliding block puzzle where the player must move pieces to free the Shred
 ## Classic Klotski-style puzzle game
 extends CanvasLayer
 class_name KlotskiPuzzle
@@ -123,7 +123,7 @@ func _setup_default_puzzle() -> void:
 	_add_piece("L", PieceType.SINGLE, 1, 3, WOOD_COLORS[1])
 	_add_piece("M", PieceType.SINGLE, 2, 2, WOOD_COLORS[0])
 	_add_piece("N", PieceType.SINGLE, 2, 3, WOOD_COLORS[1])
-	# All blocks are 1x1, easier to move around the Fragment!
+	# All blocks are 1x1, easier to move around the Shred!
 
 func _add_piece(id: String, type: PieceType, grid_x: int, grid_y: int, color: Color) -> void:
 	var piece = PuzzlePiece.new(id, type, grid_x, grid_y, color)
@@ -159,7 +159,7 @@ func _create_piece_visual(piece: PuzzlePiece) -> void:
 		style.shadow_color = piece.color.darkened(0.15)
 		style.shadow_size = 2
 	else:
-		# Golden Fragment - special styling
+		# Golden Shred - special styling
 		style.border_color = Color(1.0, 0.6, 0.0)
 		style.shadow_color = Color(1.0, 0.9, 0.5, 0.5)
 		style.shadow_size = 8
@@ -397,14 +397,14 @@ func _show_intro() -> void:
 	center.add_child(vbox)
 	
 	var text_label = Label.new()
-	text_label.text = "Sembra che ci sia un frammento incastrato nel muro... Provo a liberarlo!"
+	text_label.text = "It looks like there's a shred stuck in the wall... I'll try to free it!"
 	text_label.add_theme_font_size_override("font_size", 24)
 	text_label.add_theme_color_override("font_color", Color(0.95, 0.9, 0.8))
 	text_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vbox.add_child(text_label)
 	
 	var continue_btn = Button.new()
-	continue_btn.text = "Continua"
+	continue_btn.text = "Continue"
 	continue_btn.custom_minimum_size = Vector2(150, 40)
 	continue_btn.pressed.connect(_on_intro_continue)
 	vbox.add_child(continue_btn)
@@ -419,7 +419,7 @@ func _on_intro_continue() -> void:
 	_setup_default_puzzle()
 	
 	if hint_label:
-		hint_label.text = "Trascina i blocchi per liberare il Frammento (F)"
+		hint_label.text = "Drag the blocks to release the shred!"
 		hint_label.modulate = Color.WHITE
 
 func close_puzzle() -> void:

@@ -54,4 +54,3 @@ func _input(event: InputEvent) -> void:
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			else:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-

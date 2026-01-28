@@ -12,7 +12,7 @@ signal all_fragments_collected()
 
 # --- Exported Properties ---
 @export var max_sanity: float = 100.0
-@export var sanity_drain_rate: float = 5.0  # Sanity lost per second when mask is ON
+@export var sanity_drain_rate: float = 1.0  # Sanity lost per second when mask is ON
 
 # --- Constants ---
 const TOTAL_FRAGMENTS: int = 3
@@ -24,7 +24,6 @@ var _is_game_over: bool = false
 var _sanity_drain_paused: bool = false  # Pause drain during QTE
 var _fragments_collected: int = 0
 var _completed_puzzles: Array[String] = []  # Track which puzzles are done
-
 
 func _ready() -> void:
 	reset_game_state()
@@ -130,5 +129,3 @@ func _trigger_game_over() -> void:
 	_is_game_over = true
 	set_mask_state(false)  # Turn off mask on death
 	game_over.emit()
-
-

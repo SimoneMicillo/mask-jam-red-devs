@@ -40,7 +40,7 @@ theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_colors/font_outline_color = Color(0.3, 0.15, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "LIBERA IL FRAMMENTO"
+text = "FREE THE SHRED"
 horizontal_alignment = 1
 
 [node name="PuzzleContainer" type="Control" parent="PuzzlePanel"]
@@ -86,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
 theme_override_font_sizes/font_size = 18
-text = "Trascina i blocchi per liberare il Frammento (F)"
+text = "Drag the blocks to release the shred"
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="PuzzlePanel"]

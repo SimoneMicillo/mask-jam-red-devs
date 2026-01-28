@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cewjrhb4coydt"]
+
+[ext_resource type="Script" uid="uid://bifoahyh17ene" path="res://ComponentNodes/MaskProperties/mask_visual.gd" id="1_tcgp3"]
+
+[node name="MaskVisual" type="Node"]
+script = ExtResource("1_tcgp3")

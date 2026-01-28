@@ -2,7 +2,10 @@ extends CharacterBody3D
 class_name Player
 
 @export var SPEED: float = 12.5
+@export var MASKED_SPEED: float = 19
 @onready var CROUCHED_SPEED: float = SPEED/2
+@onready var MASKED_CROUCHED_SPEED: float = MASKED_SPEED/2
+
 var isDead: bool = false
 var isCrouched: bool = false
 
@@ -25,10 +28,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	var actualSpeed := 0.0
-	if isCrouched:
-		actualSpeed = CROUCHED_SPEED
-	else:
+	if !isCrouched and !GameManager.is_mask_on:
 		actualSpeed = SPEED
+	elif isCrouched and !GameManager.is_mask_on:
+		actualSpeed = CROUCHED_SPEED
+	elif !isCrouched and GameManager.is_mask_on:
+		actualSpeed = MASKED_SPEED
+	else:
+		actualSpeed = MASKED_CROUCHED_SPEED
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
