@@ -28,7 +28,6 @@ var _completed_puzzles: Array[String] = []  # Track which puzzles are done
 func _ready() -> void:
 	reset_game_state()
 
-
 func _process(delta: float) -> void:
 	if _is_game_over:
 		return
@@ -36,13 +35,11 @@ func _process(delta: float) -> void:
 	if is_mask_on and not _sanity_drain_paused:
 		_drain_sanity(delta)
 
-
 # --- Public API ---
 
 ## Toggle the mask between ON and OFF states.
 func toggle_mask() -> void:
 	set_mask_state(!is_mask_on)
-
 
 ## Set the mask to a specific state.
 func set_mask_state(active: bool) -> void:

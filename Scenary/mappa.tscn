@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=84 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b8sp2wj1b7jyt" path="res://Assets/3d_models/Desk.fbx" id="6_trkcp"]
 [ext_resource type="PackedScene" uid="uid://boq5cu1egva3g" path="res://Scenary/Teleporter/teleporter.tscn" id="8_pvwoy"]
 [ext_resource type="PackedScene" uid="uid://cy84i5trpac0r" path="res://Scenary/Lights/candle_light.tscn" id="9_fygwf"]
+[ext_resource type="PackedScene" uid="uid://cgej0f1bs442a" path="res://Assets/3d_models/Camino/Camino.glb" id="11_pnysp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -595,17 +596,8 @@ edge_fade = 2.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_fygwf"]
 radius = 0.98956263
 
-[sub_resource type="Environment" id="Environment_fygwf"]
-ambient_light_source = 1
-tonemap_mode = 3
-fog_enabled = true
-fog_light_color = Color(0.014999998, 0.014999998, 0.1, 1)
-fog_density = 0.1
-volumetric_fog_enabled = true
-volumetric_fog_emission = Color(0.015686275, 0.015686275, 0.101960786, 1)
-volumetric_fog_anisotropy = 0.0
-adjustment_enabled = true
-adjustment_saturation = 1.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_pnysp"]
+size = Vector3(0.8613281, 0.79589844, 0.33483887)
 
 [node name="mappa" type="Node3D"]
 script = ExtResource("1_7fy3a")
@@ -814,6 +806,7 @@ mesh = SubResource("BoxMesh_re1ck")
 [node name="Door" parent="DoorFirstScene" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
 pivot = NodePath("..")
 interactionArea = NodePath("../InteractionArea")
+open_pos_target = Vector3(-27.778, 3.5, -13.175)
 open_deg_target_y = 90.0
 
 [node name="MaskVisual" parent="DoorFirstScene" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
@@ -828,7 +821,7 @@ doorNode = NodePath("../Door")
 maskVisual = NodePath("../MaskVisual")
 
 [node name="DoorLoopRoom" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.032, 3.5, -103.96)
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.082, 3.571, -103.96)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLoopRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -838,20 +831,8 @@ shape = SubResource("BoxShape3D_gm0oh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 mesh = SubResource("BoxMesh_re1ck")
 
-[node name="Door" parent="DoorLoopRoom" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
-pivot = NodePath("..")
-interactionArea = NodePath("../InteractionArea")
-close_deg_target_y = -90.0
-
 [node name="MaskVisual" parent="DoorLoopRoom" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
-isDoor = true
 collision = NodePath("../CollisionShape3D")
-
-[node name="InteractionArea" parent="DoorLoopRoom" node_paths=PackedStringArray("collision", "doorNode", "maskVisual") instance=ExtResource("6_pvwoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-collision = NodePath("../CollisionShape3D")
-doorNode = NodePath("../Door")
-maskVisual = NodePath("../MaskVisual")
 
 [node name="Desk" parent="." instance=ExtResource("6_trkcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.137413, 2.9441032, -8.930269)
@@ -877,9 +858,6 @@ shape = SubResource("SphereShape3D_fygwf")
 [node name="Teleporter" parent="." instance=ExtResource("8_pvwoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.189552, 5, -109.29006)
 target_pos = Vector3(-25.18465, 2.3203673, -18.779762)
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fygwf")
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -909,8 +887,29 @@ omni_range = 20.0
 omni_attenuation = 0.5
 energy_min_value = 15.0
 
+[node name="Camino" parent="." instance=ExtResource("11_pnysp")]
+transform = Transform3D(-3.496911e-07, 0, -8, 0, 8, 0, 8, 0, -3.496911e-07, 16.450508, 0.43250036, -88.03409)
+
+[node name="InteractionArea" parent="Camino" node_paths=PackedStringArray("collision", "doorNode") instance=ExtResource("6_pvwoy")]
+collision = NodePath("../StaticBody3D/CollisionShape3D")
+doorNode = NodePath("../Door")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camino"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2735717, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camino/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10205078, 0.023864746)
+shape = SubResource("BoxShape3D_pnysp")
+
+[node name="Door" parent="Camino" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
+pivot = NodePath("..")
+interactionArea = NodePath("../InteractionArea")
+open_pos_target = Vector3(16.450508, 0.43250036, -93.49076)
+open_deg_target_y = -90.0
+close_deg_target_y = -90.0
+anim_duration = 5.0
+
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 
 [editable path="Node3D/Chair"]
 [editable path="DoorFirstScene/InteractionArea"]
-[editable path="DoorLoopRoom/InteractionArea"]

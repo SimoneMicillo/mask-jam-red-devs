@@ -1,7 +1,9 @@
 extends Node3D
 
+@export var starting_point : Vector3 = Vector3(-30.691,2.5,9.5)
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$Player.position = starting_point
 
 func _input(event: InputEvent) -> void:
 	# Block puzzle inputs if QTE is active

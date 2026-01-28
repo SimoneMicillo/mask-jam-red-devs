@@ -98,8 +98,18 @@ func _load_settings() -> void:
 func setFs(toggled : bool) -> void:
 	if toggled:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		$SettingsPanel/VBoxContainer/video/res_options.select(3)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		match DisplayServer.window_get_size()[0]:
+			1024:
+				$SettingsPanel/VBoxContainer/video/res_options.select(0)
+			1280:
+				$SettingsPanel/VBoxContainer/video/res_options.select(1)
+			1440:
+				$SettingsPanel/VBoxContainer/video/res_options.select(2)
+			1920:
+				$SettingsPanel/VBoxContainer/video/res_options.select(3)
 func setRes(idx : int) -> void:
 	match idx:
 		0:
