@@ -6,7 +6,7 @@ func _ready() -> void:
 	if energy_min_value != light_energy: #SE DIVERSO DAL VALORE DI DEFAULT (VEDI EDITOR) PARTE L'ANIMAZIONE
 		setAnim()
 
-var animationDuration : float = 1.5
+@export var animationDuration : float = 1.5
 func setAnim() -> void:
 	var tween : Tween = create_tween()
 	tween.set_loops()

@@ -39,6 +39,7 @@ script = ExtResource("1_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9208046, -6.24791e-10, 0.3900242, -0.3900242, -1.5576636e-09, 0.9208046, 3.2219536e-11, -1, -1.6779866e-09, 0, 6.744998, 0)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ig7tw")
@@ -77,6 +78,7 @@ theme_override_font_sizes/font_size = 32
 text = "Sanity = "
 
 [node name="maskOnOff" type="Label" parent="UI"]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

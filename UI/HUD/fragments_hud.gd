@@ -23,4 +23,3 @@ func _play_collect_animation() -> void:
 		var tween = create_tween()
 		tween.tween_property(fragment_panel, "scale", Vector2(1.2, 1.2), 0.1)
 		tween.tween_property(fragment_panel, "scale", Vector2(1.0, 1.0), 0.1)
-
