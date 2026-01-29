@@ -112,12 +112,10 @@ func reset_game_state() -> void:
 func is_game_over() -> bool:
 	return _is_game_over
 
-
 # --- Private Methods ---
 
 func _drain_sanity(delta: float) -> void:
 	modify_sanity(-sanity_drain_rate * delta)
-
 
 func _trigger_game_over() -> void:
 	if _is_game_over:

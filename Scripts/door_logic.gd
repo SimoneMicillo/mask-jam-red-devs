@@ -15,10 +15,9 @@ func _ready() -> void:
 
 func _on_interaction_entered():
 	InteractionDot.show_dot()
-
 func _on_interaction_exited():
 	InteractionDot.hide_dot()
-	
+
 func findInteractionArea() -> void:
 	if get_parent().has_node("InteractionArea"):
 		interactionArea = get_parent().get_node("InteractionArea")

@@ -18,7 +18,8 @@ func setCollision() -> void:
 func _on_body_entered(_body: Node3D) -> void:
 	var was_interactable := canInteract
 	canInteract = false
-
+	emit_signal("interaction_exited")
+	
 	if maskVisual:
 		if GameManager.is_mask_on:
 			if maskVisual.onMaskVisible:
@@ -28,10 +29,9 @@ func _on_body_entered(_body: Node3D) -> void:
 				canInteract = true
 	else:
 		canInteract = true
-
+	
 	if !was_interactable and canInteract:
 		emit_signal("interaction_entered")
-
 
 func checkInsideArea() -> void:
 	if get_overlapping_bodies().size() > 0:

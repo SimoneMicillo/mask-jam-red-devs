@@ -1,6 +1,6 @@
 [gd_scene load_steps=84 format=4 uid="uid://ct2e0h3wxwujt"]
 
-[ext_resource type="Script" path="res://Scenary/mappa.gd" id="1_7fy3a"]
+[ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
@@ -606,7 +606,7 @@ script = ExtResource("1_7fy3a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="Cube_001" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 165.35474, -25.155, 0, -175.962)
+transform = Transform3D(4.088, 0, 0, 0, 5.111, 0, 0, 0, 49.5, -25.56, 0, -63.391)
 mesh = SubResource("ArrayMesh_jm0mh")
 skeleton = NodePath("")
 
@@ -616,7 +616,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_yaxx7")
 
 [node name="StanzaIniziale" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(13.517934, 0, 0, 0, 5, 0, 0, 0, 13.517934, -30.580051, 0, 0)
+transform = Transform3D(13.517934, 0, 0, 0, 5, 0, 0, 0, 13.517934, -31.025, 0, -0.33)
 gi_mode = 2
 mesh = SubResource("ArrayMesh_10iiq")
 skeleton = NodePath("")
@@ -793,7 +793,7 @@ onMaskVisible = true
 collision = NodePath("../StaticBody3D/CollisionShape3D")
 
 [node name="DoorFirstScene" type="StaticBody3D" parent="."]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -27.778, 3.5, -13.175)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -28.197, 3.5, -13.495)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFirstScene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -821,14 +821,14 @@ doorNode = NodePath("../Door")
 maskVisual = NodePath("../MaskVisual")
 
 [node name="DoorLoopRoom" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.082, 3.571, -103.96)
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.361, 3.571, -103.459)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLoopRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 shape = SubResource("BoxShape3D_gm0oh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="DoorLoopRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 2.0088577, 0.03473282, 0)
 mesh = SubResource("BoxMesh_re1ck")
 
 [node name="MaskVisual" parent="DoorLoopRoom" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
@@ -867,24 +867,19 @@ target_pos = Vector3(-25.18465, 2.3203673, -18.779762)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -65.6397)
 omni_range = 15.0
 omni_attenuation = 0.5
-energy_min_value = 1.0
 
 [node name="candle_light3" parent="Lights" instance=ExtResource("9_fygwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -41.302017)
 omni_range = 15.0
 omni_attenuation = 0.5
-energy_min_value = 1.0
 
 [node name="candle_light4" parent="Lights" instance=ExtResource("9_fygwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.46861, 6.9934864, -91.910225)
 omni_range = 15.0
 omni_attenuation = 0.5
-energy_min_value = 1.0
 
 [node name="candle_light2" parent="Lights" instance=ExtResource("9_fygwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.869617, 8.065767, 1.6074541)
-light_color = Color(0.9714102, 0.7745349, 0.58082783, 1)
-light_energy = 15.0
 omni_range = 20.0
 omni_attenuation = 0.5
 energy_min_value = 15.0

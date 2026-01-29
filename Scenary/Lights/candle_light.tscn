@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://60li8opmch14" path="res://Scenary/Lights/candle_light.gd" id="1_4wdww"]
 
 [node name="candle_light" type="OmniLight3D"]
-light_color = Color(0.972549, 0.7764706, 0.5803922, 1)
+light_color = Color(0.91764706, 0.45882353, 0.21960784, 1)
+light_energy = 3.0
 light_volumetric_fog_energy = 0.0
 omni_range = 10.0
 script = ExtResource("1_4wdww")
+energy_min_value = 1.0
