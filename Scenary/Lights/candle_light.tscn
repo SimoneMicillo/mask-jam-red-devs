@@ -4,8 +4,11 @@
 
 [node name="candle_light" type="OmniLight3D"]
 light_color = Color(0.91764706, 0.45882353, 0.21960784, 1)
-light_energy = 3.0
+light_energy = 5.0
 light_volumetric_fog_energy = 0.0
-omni_range = 10.0
+shadow_enabled = true
+shadow_opacity = 0.15
+shadow_blur = 10.0
+omni_range = 15.0
 script = ExtResource("1_4wdww")
-energy_min_value = 1.0
+energy_min_value = 4.0

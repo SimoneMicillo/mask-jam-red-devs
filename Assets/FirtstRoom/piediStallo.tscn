@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bppl16pbx3j84"]
+[gd_scene load_steps=7 format=3 uid="uid://bppl16pbx3j84"]
 
 [ext_resource type="Texture2D" uid="uid://b5nkukpjc7q0k" path="res://Assets/FirtstRoom/piedistallo.png" id="1_gu4yv"]
+[ext_resource type="Texture2D" uid="uid://njqtv0paj5l3" path="res://Assets/obj_models/Textures/Floor-Tiles.png" id="2_ay1vd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gu4yv"]
 radius = 0.72265625
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geojl"]
+albedo_texture = ExtResource("2_ay1vd")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gu4yv"]
 top_radius = 0.75
@@ -31,6 +36,7 @@ billboard = 2
 texture = ExtResource("1_gu4yv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_geojl")
 mesh = SubResource("CylinderMesh_gu4yv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D/MeshInstance3D"]

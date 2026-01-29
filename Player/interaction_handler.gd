@@ -5,7 +5,7 @@ signal interaction_entered
 signal interaction_exited
 
 var canInteract: bool = false
-@export var collision : CollisionShape3D
+@export var collision : CollisionShape3D = null
 @export var doorNode : DoorLogic = null
 @export var maskVisual : MaskVisual = null
 
@@ -13,7 +13,8 @@ func _ready() -> void:
 	setCollision()
 
 func setCollision() -> void:
-	position = collision.position
+	if collision:
+		position = collision.position
 
 func _on_body_entered(_body: Node3D) -> void:
 	var was_interactable := canInteract

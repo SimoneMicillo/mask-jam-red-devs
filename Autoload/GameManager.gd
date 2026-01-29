@@ -50,7 +50,6 @@ func _input(event: InputEvent) -> void:
 			fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
 			print("DEBUG: Removed fragment. Total: ", _fragments_collected)
 
-
 # --- Public API ---
 
 ## Toggle the mask between ON and OFF states.

@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://c333ujdm2lt5n"]
+
+[ext_resource type="PackedScene" uid="uid://w1v007s43btm" path="res://Assets/3d_models/Candle.fbx" id="1_1h2do"]
+[ext_resource type="PackedScene" uid="uid://cy84i5trpac0r" path="res://Scenary/Lights/candle_light.tscn" id="2_vg34v"]
+[ext_resource type="Texture2D" uid="uid://chwu30xloqryx" path="res://Assets/Textures/animations/Pixel Fire Asset Pack v3.2 Red/Group 4 - 3/Group 4 - 3.png" id="3_fjphv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlfo8"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7mh7"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woknl"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0inmq"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktqo8"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36nmp"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rh5h"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvj0q"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amc5j"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqvpq"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfa1x"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(320, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lphu"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(352, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwhij"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(384, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfujo"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(416, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8hhx"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(448, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvapn"]
+atlas = ExtResource("3_fjphv")
+region = Rect2(480, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juq6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlfo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7mh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woknl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0inmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktqo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36nmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rh5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvj0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amc5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqvpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfa1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lphu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwhij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfujo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8hhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvapn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Candle_Scene" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Candle" parent="." instance=ExtResource("1_1h2do")]
+
+[node name="Camera" parent="Candle" index="0"]
+visible = false
+
+[node name="Light" parent="Candle" index="3"]
+light_energy = 0.1
+omni_range = 1.0
+
+[node name="candle_light" parent="." instance=ExtResource("2_vg34v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.961254, 0)
+shadow_opacity = 0.1
+
+[node name="Sprite3D" type="AnimatedSprite3D" parent="candle_light"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.10256657, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_juq6r")
+autoplay = "default"
+frame_progress = 0.3344146
+
+[editable path="Candle"]

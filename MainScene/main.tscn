@@ -17,12 +17,15 @@
 ambient_light_source = 1
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.014999998, 0.014999998, 0.1, 1)
+fog_light_color = Color(0.007843138, 0.007843138, 0.05490196, 1)
+fog_light_energy = 0.75
 fog_density = 0.1
 volumetric_fog_enabled = true
-volumetric_fog_emission = Color(0.015686275, 0.015686275, 0.101960786, 1)
+volumetric_fog_density = 0.06
+volumetric_fog_emission = Color(0.006515201, 0.0065146037, 0.05384679, 1)
 volumetric_fog_anisotropy = 0.0
 adjustment_enabled = true
+adjustment_brightness = 1.5
 adjustment_saturation = 1.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8f1d"]

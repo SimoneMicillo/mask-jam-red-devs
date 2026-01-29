@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfwri0indh8eu"]
+
+[ext_resource type="Script" uid="uid://suxmj0t12mt7" path="res://Assets/Paintings/painting_scene.gd" id="1_6q5qn"]
+[ext_resource type="Texture2D" uid="uid://3ej1ccn7kx8a" path="res://Assets/Paintings/obrazy.jpg" id="1_54bqw"]
+[ext_resource type="Texture2D" uid="uid://cqqn8oarst58a" path="res://Assets/Paintings/cursed_obrazy.jpg" id="3_31mgp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6q5qn"]
+size = Vector3(5.555, 5.365, -0.005)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54bqw"]
+albedo_color = Color(0.43137255, 0.25882354, 0, 1)
+
+[node name="Painting" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_6q5qn")
+surface_material_override/0 = SubResource("StandardMaterial3D_54bqw")
+script = ExtResource("1_6q5qn")
+sprites = Array[Texture2D]([ExtResource("1_54bqw"), ExtResource("3_31mgp")])
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_54bqw")
+hframes = 2
+vframes = 2
