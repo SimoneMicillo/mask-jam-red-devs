@@ -331,7 +331,7 @@ func _solve_puzzle() -> void:
 	if hint_label:
 		var collected = GameManager.get_fragments_collected()
 		var total = GameManager.get_total_fragments()
-		hint_label.text = "FRAMMENTO OTTENUTO! (%d/%d)" % [collected, total]
+		hint_label.text = "SHREDS OBTAINED! (%d/%d)" % [collected, total]
 		hint_label.modulate = Color(0.2, 1.0, 0.2)
 	
 	await get_tree().create_timer(2.0).timeout

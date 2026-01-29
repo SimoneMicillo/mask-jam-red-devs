@@ -16,7 +16,7 @@ func _on_fragment_collected(current: int, total: int) -> void:
 
 func _update_display(current: int, total: int) -> void:
 	if fragment_label:
-		fragment_label.text = "Frammenti: %d/%d" % [current, total]
+		fragment_label.text = "Shreds: %d/%d" % [current, total]
 
 func _play_collect_animation() -> void:
 	if fragment_panel:

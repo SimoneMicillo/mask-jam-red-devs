@@ -8,11 +8,20 @@ var isOpen: bool = false
 
 func _ready() -> void:
 	findInteractionArea()
+	
+	if interactionArea:
+		interactionArea.interaction_entered.connect(_on_interaction_entered)
+		interactionArea.interaction_exited.connect(_on_interaction_exited)
 
+func _on_interaction_entered():
+	InteractionDot.show_dot()
+
+func _on_interaction_exited():
+	InteractionDot.hide_dot()
+	
 func findInteractionArea() -> void:
 	if get_parent().has_node("InteractionArea"):
 		interactionArea = get_parent().get_node("InteractionArea")
-
 
 @export_category("Animation Params")
 @export var open_pos_target : Vector3

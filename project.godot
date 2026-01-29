@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://c66x2lvrkek7a"
 
 GameManager="*res://Autoload/GameManager.gd"
 SceneLoader="*res://Autoload/SceneLoader.gd"
+InteractionDot="*res://Autoload/InteractionDot.tscn"
 
 [display]
 
