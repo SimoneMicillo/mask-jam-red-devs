@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
 [ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 [ext_resource type="PackedScene" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
-[ext_resource type="PackedScene" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
+[ext_resource type="PackedScene" uid="uid://cv7fhl8qauyr4" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 ambient_light_source = 1
