@@ -30,7 +30,6 @@ var _is_attacking: bool = false
 func _ready() -> void:
 	# Hide initially
 	visible = false
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# Connect to GameManager
 	GameManager.mask_state_changed.connect(_on_mask_state_changed)
