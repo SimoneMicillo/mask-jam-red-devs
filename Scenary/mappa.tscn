@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=88 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="1_b34l7"]
@@ -8,9 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://pohwblnk1ir8" path="res://Scenary/door.tscn" id="5_rcajr"]
 [ext_resource type="PackedScene" uid="uid://dms7hrkg7b8ee" path="res://Scripts/interaction_area.tscn" id="6_pvwoy"]
 [ext_resource type="PackedScene" uid="uid://b8sp2wj1b7jyt" path="res://Assets/3d_models/Desk.fbx" id="6_trkcp"]
+[ext_resource type="ArrayMesh" uid="uid://qmyr0nq862xe" path="res://Assets/obj_models/porta.obj" id="8_63672"]
 [ext_resource type="PackedScene" uid="uid://boq5cu1egva3g" path="res://Scenary/Teleporter/teleporter.tscn" id="8_pvwoy"]
 [ext_resource type="PackedScene" uid="uid://cy84i5trpac0r" path="res://Scenary/Lights/candle_light.tscn" id="9_fygwf"]
 [ext_resource type="PackedScene" uid="uid://cgej0f1bs442a" path="res://Assets/3d_models/Camino/Camino.glb" id="11_pnysp"]
+[ext_resource type="PackedScene" uid="uid://br65tknqpinf5" path="res://Scenary/labirinto.tscn" id="12_lab"]
+[ext_resource type="Script" uid="uid://bs5svfojv6xlq" path="res://Scripts/labyrinth_pedestal.gd" id="13_ped"]
+[ext_resource type="Script" uid="uid://cn7dtm52xrxss" path="res://Scripts/labyrinth_trigger.gd" id="14_trig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl3ld"]
 
@@ -366,6 +370,9 @@ shadow_mesh = SubResource("ArrayMesh_ltv7t")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fygwf"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 0.3094, -0.3617, 1, -1, -1, 1, -0.9162, -0.3617, 1, -0.9162, 0.6792, 1, -0.9162, -0.3617, 1, -1, -1, 1, 0.3094, -0.3617, 1, 1, -1, 1, -1, -1, 1, -0.9162, 0.6792, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 0.3094, -0.3617, 1, 1, 1, 1, 1, 1, 1, -0.9162, 0.6792, 1, -1, 1, 1, 1, 1, 1, 0.3094, -0.3617, 1, 0.3094, 0.6792, 1, 1, 1, 1, 0.3094, 0.6792, 1, -0.9162, 0.6792, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 0.95809996, 1, 0.9364, 1, 1, -1, 1, 1, 1, -1, 1, 1, 0.95809996, 1, 0.9364, 1, 1, 1, 0.95809996, 1, 0.9364, 0.95809996, 1, -0.9364, 1, 1, -1, -1, 1, 1, -0.95809996, 1, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, 1, 1, -1, 0.95809996, 1, -0.9364, -1, 1, 1, -0.95809996, 1, -0.9364, -0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, -1, 1, -1, 1, 1, -1, -0.95809996, 1, -0.9364, -1, 1, 1, -1, 1, -1, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, 1, -0.9364, 0.95809996, -0.91349995, -0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, 1, -0.9364, 0.95809996, 1, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, 0.3094, 0.6792, 0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.6792, 0.95809996, 0.3094, 0.6792, 0.95809996, 1, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, 1, 0.9364, 0.95809996, 0.3094, 0.6792, 0.95809996, 1, -0.9364, 0.95809996, 1, -0.9364, 0.95809996, 0.3094, 0.6792, 0.95809996, 0.3094, -0.3617, 0.95809996, 1, -0.9364, 0.95809996, 0.3094, -0.3617, 0.95809996, -0.91349995, -0.3617, 0.95809996, 1, -0.9364, 0.95809996, -0.91349995, -0.3617, 0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, 0.9364, 0.6701, -0.91349995, -0.3617, 0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, -0.3617, 0.6701, -0.91349995, -0.3617, -0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, -0.9364, -0.95809996, -0.91349995, 0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, -0.91349995, 0.9364, 0.6701, -0.91349995, -0.3617, 0.6701, -0.91349995, 0.6792, -0.95809996, -0.91349995, 0.9364, 0.6701, -0.91349995, 0.6792, 0.95809996, -0.91349995, 0.6792, -0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.6792, 0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.6792, 1, 0.3094, 0.6792, 0.95809996, 0.3094, 0.6792, 0.95809996, -0.91349995, 0.6792, 1, -0.9162, 0.6792, 1, 0.3094, 0.6792, 1, -0.9162, 0.6792, 0.95809996, -0.91349995, 0.6792, 0.6701, -0.91349995, 0.6792, 1, -0.9162, 0.6792, 0.6701, -0.91349995, 0.6792, 0.6701, -0.9162, 0.6792, 0.6701, -0.91349995, 0.6792, 0.6701, -0.9162, -0.3617, 0.6701, -0.9162, 0.6792, 0.6701, -0.91349995, 0.6792, 0.6701, -0.91349995, -0.3617, 0.6701, -0.9162, -0.3617, 0.95809996, -0.91349995, -0.3617, 0.6701, -0.9162, -0.3617, 0.6701, -0.91349995, -0.3617, 0.95809996, -0.91349995, -0.3617, 1, -0.9162, -0.3617, 0.6701, -0.9162, -0.3617, 1, -0.9162, -0.3617, 0.95809996, -0.91349995, -0.3617, 0.95809996, 0.3094, -0.3617, 1, -0.9162, -0.3617, 0.95809996, 0.3094, -0.3617, 1, 0.3094, -0.3617, 1, -0.9162, -0.3617, 0.6701, -0.9162, 0.6792, 0.6701, -0.9162, -0.3617, 1, -0.9162, -0.3617, 1, -0.9162, 0.6792, 0.6701, -0.9162, 0.6792, 0.95809996, 0.3094, -0.3617, 1, 0.3094, 0.6792, 1, 0.3094, -0.3617, 0.95809996, 0.3094, -0.3617, 0.95809996, 0.3094, 0.6792, 1, 0.3094, 0.6792)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm0oh"]
+size = Vector3(4, 6.2, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7smsi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_44csu"]
@@ -579,25 +586,19 @@ data = PackedVector3Array(-1, -0.8914, 0.0982, -1, 1, 1, -1, -1, 1, -1, -1, -1, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kdisg"]
 size = Vector3(2.0488281, 3.0239258, 2.1166382)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gm0oh"]
-size = Vector3(4, 6.2, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_re1ck"]
 size = Vector3(4, 6.2, 1)
-
-[sub_resource type="FogMaterial" id="FogMaterial_pvwoy"]
-density = 5.0
-edge_fade = 2.0
-
-[sub_resource type="FogMaterial" id="FogMaterial_trkcp"]
-density = 5.0
-edge_fade = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fygwf"]
 radius = 0.98956263
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnysp"]
 size = Vector3(0.8613281, 0.79589844, 0.33483887)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ped"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ped"]
+size = Vector3(0.5, 1, 0.5)
 
 [node name="mappa" type="Node3D"]
 script = ExtResource("1_7fy3a")
@@ -713,6 +714,16 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_010/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fygwf")
 
+[node name="LabyrinthTrigger" type="Area3D" parent="Node3D/Node3D/Cube_010" node_paths=PackedStringArray("labyrinth_spawn_node")]
+transform = Transform3D(0.4109612, 0, 0, 0, 0.2, 0, 0, 0, 1.3017576, 0.08672953, -0.02893871, 0.19038677)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("14_trig")
+labyrinth_spawn_node = NodePath("../../../../Labyrinth/LabyrinthSpawnPoint")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_010/LabyrinthTrigger"]
+shape = SubResource("BoxShape3D_gm0oh")
+
 [node name="Cube_011" type="MeshInstance3D" parent="Node3D/Node3D"]
 transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 4, 19.996834, 0.14469288, -23.25738)
 mesh = SubResource("ArrayMesh_co6ym")
@@ -820,32 +831,53 @@ collision = NodePath("../CollisionShape3D")
 doorNode = NodePath("../Door")
 maskVisual = NodePath("../MaskVisual")
 
-[node name="DoorLoopRoom" type="StaticBody3D" parent="."]
+[node name="DoorLoopRoom_Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.082, 3.571, -103.96)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLoopRoom_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_gm0oh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorLoopRoom_Wall"]
+transform = Transform3D(2.8086398, 0, -4.973799e-14, 0, 2.8571486, 0, 4.2632564e-14, 0, 0.95259476, 12.168274, -3.129527, -2.5596447)
+mesh = ExtResource("8_63672")
+
+[node name="MaskVisual" parent="DoorLoopRoom_Wall" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
+collision = NodePath("../CollisionShape3D")
+
+[node name="DoorLoopRoom" type="Node3D" parent="."]
+transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, -21.082, 3.571, -103.96)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorLoopRoom"]
+transform = Transform3D(2.8086398, 0, -4.973799e-14, 0, 2.8571486, 0, 4.2632564e-14, 0, 0.95259476, 12.168274, -3.129527, -2.5596447)
+mesh = ExtResource("8_63672")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLoopRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 shape = SubResource("BoxShape3D_gm0oh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorLoopRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = SubResource("BoxMesh_re1ck")
+[node name="Door" parent="DoorLoopRoom" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
+pivot = NodePath("..")
+interactionArea = NodePath("../InteractionArea")
+open_pos_target = Vector3(-21.082, 3.571, -103.96)
+open_deg_target_y = 90.0
 
 [node name="MaskVisual" parent="DoorLoopRoom" node_paths=PackedStringArray("collision") instance=ExtResource("4_re1ck")]
+onMaskVisible = true
+isDoor = true
 collision = NodePath("../CollisionShape3D")
+
+[node name="InteractionArea" parent="DoorLoopRoom" node_paths=PackedStringArray("collision", "doorNode", "maskVisual") instance=ExtResource("6_pvwoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+collision = NodePath("../CollisionShape3D")
+doorNode = NodePath("../Door")
+maskVisual = NodePath("../MaskVisual")
 
 [node name="Desk" parent="." instance=ExtResource("6_trkcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.137413, 2.9441032, -8.930269)
 
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.15423, 5, -108.057884)
-size = Vector3(8.973633, 10.365625, 14.075537)
-material = SubResource("FogMaterial_pvwoy")
-
-[node name="FogVolume2" type="FogVolume" parent="."]
+[node name="FogVolume2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.15423, 5, -18.234306)
-size = Vector3(0.1, 0.1, 0.1)
-material = SubResource("FogMaterial_trkcp")
 
 [node name="player_collider" type="Area3D" parent="FogVolume2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0702934, 0)
@@ -908,6 +940,31 @@ open_pos_target = Vector3(16.450508, 0.43250036, -93.49076)
 open_deg_target_y = -90.0
 close_deg_target_y = -90.0
 anim_duration = 5.0
+
+[node name="Labyrinth" parent="." instance=ExtResource("12_lab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="LabyrinthSpawnPoint" type="Marker3D" parent="Labyrinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.323284, 4.7991486, -71.43068)
+
+[node name="ReturnSpawnPoint" type="Marker3D" parent="Labyrinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.138214, 103.50223, -90.080315)
+
+[node name="LabyrinthPedestal" type="Node3D" parent="Labyrinth" node_paths=PackedStringArray("interaction_area", "return_spawn_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.61926, 1, -3.0001416)
+script = ExtResource("13_ped")
+interaction_area = NodePath("Area3D")
+return_spawn_node = NodePath("../ReturnSpawnPoint")
+
+[node name="Area3D" type="Area3D" parent="Labyrinth/LabyrinthPedestal"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Labyrinth/LabyrinthPedestal/Area3D"]
+shape = SubResource("SphereShape3D_ped")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Labyrinth/LabyrinthPedestal"]
+mesh = SubResource("BoxMesh_ped")
 
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 
