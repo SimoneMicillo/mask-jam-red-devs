@@ -13,9 +13,9 @@ dest_files=["res://.godot/imported/mappa.glb-73fb9da40426ad351feb6829d310cb0d.sc
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
-nodes/root_script=null
+nodes/root_type="Node3D"
+nodes/root_name="mappa"
+nodes/root_script=Resource("uid://bgwdvx1x2q1bk", "res://Scenary/mappa.gd")
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
