@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=125 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
@@ -30,13 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ipny43txaov" path="res://Assets/3d_models/soiTavern/Shelves/trn_Pantry.fbx" id="22_57yjc"]
 [ext_resource type="PackedScene" uid="uid://cnlh0u6lnhtrp" path="res://Assets/3d_models/soiTavern/Shelves/trn_Rack.fbx" id="23_ccpk6"]
 [ext_resource type="Texture2D" uid="uid://eeywme5d0gnp" path="res://Assets/hud/frammento1.png" id="26_8278k"]
-[ext_resource type="AudioStream" uid="uid://d1gxbgsd5jm2y" path="res://Audio/book_read.mp3" id="35_xp3h4"]
-[ext_resource type="AudioStream" uid="uid://slwtnh6jamhi" path="res://Audio/chimney.mp3" id="36_6xoyh"]
-[ext_resource type="AudioStream" uid="uid://jgeci0cxswca" path="res://Audio/demonic_shred_obtained.mp3" id="37_t8eoo"]
-[ext_resource type="AudioStream" uid="uid://d2l6bm2bbht8b" path="res://Audio/demon_approaching.mp3" id="38_mwg7y"]
-[ext_resource type="AudioStream" uid="uid://tpls6aeree68" path="res://Audio/lever.mp3" id="39_de333"]
-[ext_resource type="AudioStream" uid="uid://8tm4eplxm04u" path="res://Audio/mask_pulled.mp3" id="40_l0g5s"]
-[ext_resource type="AudioStream" uid="uid://dvl3o7pkp4hql" path="res://Audio/shreds_united.mp3" id="41_sa7en"]
+[ext_resource type="PackedScene" uid="uid://dpj6iinprd8ao" path="res://Scenary/sounds.tscn" id="36_6xoyh"]
 [ext_resource type="PackedScene" uid="uid://b8x6y708bab0c" path="res://UI/Shared/dialogue_ui.tscn" id="dialogue_ui_scn"]
 [ext_resource type="Script" uid="uid://voj3desueb0i" path="res://Scripts/FireplaceAutomation.gd" id="fireplace_automation_script"]
 [ext_resource type="Script" uid="uid://db3qpj3wbyx07" path="res://Scripts/LeverLogic.gd" id="lever_logic_script"]
@@ -668,7 +662,8 @@ radius = 0.10449219
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnysp"]
 size = Vector3(0.8613281, 0.79589844, 0.33483887)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ped"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_8278k"]
+radius = 1.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_ped"]
 size = Vector3(0.5, 1, 0.5)
@@ -1364,7 +1359,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Labyrinth/LabyrinthPedestal/Area3D"]
-shape = SubResource("SphereShape3D_ped")
+shape = SubResource("SphereShape3D_8278k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Labyrinth/LabyrinthPedestal"]
 mesh = SubResource("BoxMesh_ped")
@@ -1445,39 +1440,7 @@ interaction_area = NodePath("../PiedistalloFirstRoom/InteractionArea")
 mask_visual_node = NodePath("../PiedistalloFirstRoom/StaticBody3D/CollisionShape3D/MeshInstance3D/mask")
 dialogue_controller = NodePath("../DialogueUI")
 
-[node name="Sounds" type="Node3D" parent="."]
-
-[node name="bookSound" type="AudioStreamPlayer3D" parent="Sounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.056479, 3.052309, -85.29691)
-stream = ExtResource("35_xp3h4")
-volume_db = 10.0
-bus = &"SFX"
-
-[node name="camino" type="AudioStreamPlayer3D" parent="Sounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.015022, 3.2604895, -92.31429)
-stream = ExtResource("36_6xoyh")
-bus = &"SFX"
-
-[node name="shredobtained" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("37_t8eoo")
-bus = &"SFX"
-
-[node name="demonapproach" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("38_mwg7y")
-bus = &"SFX"
-
-[node name="leverSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("39_de333")
-bus = &"SFX"
-
-[node name="maskpulled" type="AudioStreamPlayer3D" parent="Sounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.36951, 2.863477, 0.52477753)
-stream = ExtResource("40_l0g5s")
-bus = &"SFX"
-
-[node name="shredsUnited" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("41_sa7en")
-bus = &"SFX"
+[node name="Sounds" parent="." instance=ExtResource("36_6xoyh")]
 
 [connection signal="body_entered" from="Node3D/Node3D/Cube_017/Area3D" to="." method="lastRoomTrigger"]
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]

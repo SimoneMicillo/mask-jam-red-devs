@@ -31,6 +31,7 @@ func _on_normal_lever_activated() -> void:
 func check_puzzle_state() -> void:
 	# Requirement: "leva normal visibile solo quando abbiamo premuto almeno due leve con la maschera"
 	# We interpret this as: 2 masked levers actiavted -> show normal lever.
+	Sounds.get_node("leverSound").play()
 	
 	var masked_activated = 0
 	for lever in levers_masked:

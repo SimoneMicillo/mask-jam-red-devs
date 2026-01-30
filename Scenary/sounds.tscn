@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpj6iinprd8ao"]
+
+[ext_resource type="AudioStream" uid="uid://d1gxbgsd5jm2y" path="res://Audio/book_read.mp3" id="1_yuqf3"]
+[ext_resource type="AudioStream" uid="uid://slwtnh6jamhi" path="res://Audio/chimney.mp3" id="2_tltr7"]
+[ext_resource type="AudioStream" uid="uid://jgeci0cxswca" path="res://Audio/demonic_shred_obtained.mp3" id="3_2nqet"]
+[ext_resource type="AudioStream" uid="uid://d2l6bm2bbht8b" path="res://Audio/demon_approaching.mp3" id="4_v6ws3"]
+[ext_resource type="AudioStream" uid="uid://tpls6aeree68" path="res://Audio/lever.mp3" id="5_wnqtv"]
+[ext_resource type="AudioStream" uid="uid://8tm4eplxm04u" path="res://Audio/mask_pulled.mp3" id="6_74mdp"]
+[ext_resource type="AudioStream" uid="uid://dvl3o7pkp4hql" path="res://Audio/shreds_united.mp3" id="7_8kn6v"]
+
+[node name="Sounds" type="Node3D"]
+
+[node name="bookSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.056479, 3.052309, -85.29691)
+stream = ExtResource("1_yuqf3")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="camino" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.015022, 3.2604895, -92.31429)
+stream = ExtResource("2_tltr7")
+bus = &"SFX"
+
+[node name="shredobtained" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2nqet")
+bus = &"SFX"
+
+[node name="demonapproach" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v6ws3")
+bus = &"SFX"
+
+[node name="leverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wnqtv")
+bus = &"SFX"
+
+[node name="maskpulled" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.36951, 2.863477, 0.52477753)
+stream = ExtResource("6_74mdp")
+bus = &"SFX"
+
+[node name="shredsUnited" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8kn6v")
+bus = &"SFX"

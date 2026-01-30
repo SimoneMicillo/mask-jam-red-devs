@@ -101,8 +101,12 @@ func collect_fragment(puzzle_id: String) -> void:
 	_fragments_collected += 1
 	fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
 	
+	
 	if _fragments_collected >= TOTAL_FRAGMENTS:
 		all_fragments_collected.emit()
+		Sounds.get_node("shredsUnited").play()
+	else:
+		Sounds.get_node("shredobtained").play()
 
 
 ## Check if a puzzle has been completed

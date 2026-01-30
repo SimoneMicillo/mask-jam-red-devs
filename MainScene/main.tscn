@@ -134,14 +134,18 @@ ESC - Pause"
 horizontal_alignment = 2
 
 [node name="lastRoomLabl" type="Label" parent="UI"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 16.0
-offset_right = 20.0
-offset_bottom = 39.0
+offset_left = -378.5
+offset_top = 40.0
+offset_right = 378.5
+offset_bottom = 63.0
 grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "I need to find a way to continue to the next room... Maybe there is a button or a lever around here"
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_pause")]
 

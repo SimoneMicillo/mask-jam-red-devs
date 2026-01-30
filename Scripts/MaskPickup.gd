@@ -48,6 +48,7 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if event.is_action_pressed("interact") and $"../PiedistalloFirstRoom".position.distance_to(player.position) < 3:
+		Sounds.get_node("maskpulled").play()
 		if GameManager.is_mask_on_pedestal:
 			_start_pickup_sequence()
 		elif GameManager.get_fragments_collected() >= GameManager.TOTAL_FRAGMENTS:

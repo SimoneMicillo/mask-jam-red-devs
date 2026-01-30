@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 		_on_interact()
 
 func _on_interact() -> void:
+	$"../../../Sounds/bookSound".play()
 	GameManager.request_open_puzzle.emit(PUZZLE_ID)
 
 func _on_fragment_collected(_current: int, _total: int) -> void:
