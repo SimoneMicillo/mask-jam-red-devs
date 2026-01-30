@@ -105,7 +105,10 @@ func collect_fragment(puzzle_id: String) -> void:
 	if _fragments_collected >= TOTAL_FRAGMENTS:
 		all_fragments_collected.emit()
 		Sounds.get_node("shredsUnited").play()
-		ui.get_node("GameOver").show()
+		# Try to find UI in the current scene safely
+		var ui = get_tree().current_scene.find_child("UI", true, false)
+		if ui and ui.has_node("GameOver"):
+			ui.get_node("GameOver").show()
 	else:
 		Sounds.get_node("shredobtained").play()
 

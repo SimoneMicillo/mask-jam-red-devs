@@ -17,10 +17,12 @@ func setVisibility(_flag: bool) -> void:
 	if !isDoor:
 		if (GameManager.is_mask_on and onMaskVisible) or (!GameManager.is_mask_on and !onMaskVisible):
 			get_parent().show()
-			collision.disabled = false
+			if collision:
+				collision.disabled = false
 		else:
 			get_parent().hide()
-			collision.disabled = true
+			if collision:
+				collision.disabled = true
 	else:
 		if (GameManager.is_mask_on and onMaskVisible) or (!GameManager.is_mask_on and !onMaskVisible):
 			# Implementare logica delle porte; caricare texture porta
