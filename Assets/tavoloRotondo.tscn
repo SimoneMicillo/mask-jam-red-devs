@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b05vep6xe30jh"]
+
+[ext_resource type="PackedScene" uid="uid://dguaklbn4hmsw" path="res://Assets/3d_models/soiTavern/Tables/trn_TableRound_COL.fbx" id="1_xpw1l"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="trn_TableRound_COL" parent="." instance=ExtResource("1_xpw1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75854075, 0, 0.64625096)

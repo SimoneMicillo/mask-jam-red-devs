@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://csfoahxnlh1gl"]
+
+[ext_resource type="PackedScene" uid="uid://dj2nffw2obovv" path="res://Assets/3d_models/soiTavern/Apple/trn_Apple.fbx" id="1_824nh"]
+
+[node name="trn_Apple" instance=ExtResource("1_824nh")]

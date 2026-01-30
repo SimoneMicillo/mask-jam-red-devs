@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr1pjr1tupwpb"]
+
+[ext_resource type="PackedScene" uid="uid://w1v007s43btm" path="res://Assets/3d_models/Candle.fbx" id="1_n8xny"]
+
+[node name="Candle" instance=ExtResource("1_n8xny")]
+
+[node name="Light" parent="." index="3"]
+visible = false

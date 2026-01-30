@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://bi1bvldi3o06v"]
+
+[ext_resource type="PackedScene" uid="uid://bo2b6i6dftjq6" path="res://Assets/3d_models/soiTavern/Tables/trn_TableExtraLong.fbx" id="1_yj0l3"]
+[ext_resource type="PackedScene" uid="uid://dw1cfex66tnnr" path="res://Assets/3d_models/soiTavern/CandleStand/trn_CandleStand.fbx" id="2_2qv6h"]
+[ext_resource type="PackedScene" uid="uid://cr1pjr1tupwpb" path="res://Assets/3d_models/soiTavern/Candles/candle.tscn" id="3_ndauu"]
+[ext_resource type="PackedScene" uid="uid://di88b60b0xka0" path="res://Assets/3d_models/soiTavern/Candles/trn_CandleFlame.fbx" id="4_51nml"]
+[ext_resource type="PackedScene" uid="uid://bk545ynqpfoii" path="res://Assets/3d_models/soiTavern/Cups/trn_CupCeramic.fbx" id="5_s475l"]
+[ext_resource type="PackedScene" uid="uid://csvl4a6ix2glr" path="res://Assets/3d_models/soiTavern/panchina.tscn" id="6_8q7ba"]
+[ext_resource type="PackedScene" uid="uid://bpgvm6s14j52u" path="res://Assets/3d_models/Chair.glb" id="7_w0pk3"]
+[ext_resource type="PackedScene" uid="uid://begn2jtprco1u" path="res://Assets/3d_models/soiTavern/Cups/trn_CupMetal.fbx" id="8_1144k"]
+
+[node name="tavolaImbandita" type="Node3D"]
+
+[node name="trn_TableExtraLong" parent="." instance=ExtResource("1_yj0l3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.051238, 1.1920929e-07, 2.9822528)
+
+[node name="trn_CandleStand" parent="." instance=ExtResource("2_2qv6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31213725, 0.8449917, 3.0899005)
+
+[node name="Candle" parent="." instance=ExtResource("3_ndauu")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.29641193, 1.4744561, 3.080706)
+
+[node name="trn_CandleFlame" parent="." instance=ExtResource("4_51nml")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.2907068, 1.5691243, 3.0744216)
+
+[node name="trn_CupCeramic" parent="." instance=ExtResource("5_s475l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.365335, 0.8545406, 3.381833)
+
+[node name="trn_Bench" parent="." instance=ExtResource("6_8q7ba")]
+transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, -3.0695453, -2.3841858e-07, 3.9006958)
+
+[node name="trn_Bench2" parent="." instance=ExtResource("6_8q7ba")]
+transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, -0.9732163, -2.3841858e-07, 3.9006958)
+
+[node name="trn_Bench3" parent="." instance=ExtResource("6_8q7ba")]
+transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, -3.0695453, -2.3841858e-07, 1.9581223)
+
+[node name="trn_Bench4" parent="." instance=ExtResource("6_8q7ba")]
+transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, -0.9732163, -2.3841858e-07, 1.9581223)
+
+[node name="Chair" parent="." instance=ExtResource("7_w0pk3")]
+transform = Transform3D(-0.014873907, 0, -0.19944616, 0, 0.2, 0, 0.19944616, 0, -0.014873907, 0.45421183, 0.43097568, 2.9916337)
+
+[node name="trn_CandleStand2" parent="." instance=ExtResource("2_2qv6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0486593, 0.8449917, 3.0899005)
+
+[node name="Candle2" parent="." instance=ExtResource("3_ndauu")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -2.032934, 1.4744561, 3.080706)
+
+[node name="trn_CandleFlame2" parent="." instance=ExtResource("4_51nml")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -2.0272288, 1.5691243, 3.0744216)
+
+[node name="trn_CandleStand3" parent="." instance=ExtResource("2_2qv6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.638791, 0.8449917, 3.0899005)
+
+[node name="Candle3" parent="." instance=ExtResource("3_ndauu")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -3.623066, 1.4744561, 3.080706)
+
+[node name="trn_CandleFlame3" parent="." instance=ExtResource("4_51nml")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -3.6173608, 1.5691243, 3.0744216)
+
+[node name="trn_CupMetal" parent="." instance=ExtResource("8_1144k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0912225, 0.8421937, 3.3700697)
+
+[node name="trn_CupMetal2" parent="." instance=ExtResource("8_1144k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8169481, 0.8421937, 2.6126394)
+
+[node name="trn_CupMetal3" parent="." instance=ExtResource("8_1144k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0088692, 0.8421937, 2.6231058)
+
+[node name="trn_CupCeramic2" parent="." instance=ExtResource("5_s475l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1314206, 0.8545406, 2.8774304)
+
+[node name="trn_CupCeramic3" parent="." instance=ExtResource("5_s475l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026563168, 0.8545406, 2.8309562)
