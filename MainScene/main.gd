@@ -25,3 +25,12 @@ func _input(event: InputEvent) -> void:
 		
 	if qte_active:
 		return
+
+func _on_retry_pressed() -> void:
+	get_tree().reload_current_scene()
+func _on_quit_pressed() -> void:
+	get_tree().change_scene_to_file("res://UI/MainMenu/main_menu.tscn")
+func _on_tutorial_trigger_body_entered(body: Node3D) -> void:
+	$UI/tutlabel.show()
+	await get_tree().create_timer(3).timeout
+	$UI/tutlabel.show()
