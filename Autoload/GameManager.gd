@@ -47,16 +47,16 @@ func _process(delta: float) -> void:
 	if is_mask_on and not _sanity_drain_paused:
 		_drain_sanity(delta)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_L:
-			_fragments_collected += 1
-			fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
-			print("DEBUG: Added fragment. Total: ", _fragments_collected)
-		elif event.keycode == KEY_K:
-			_fragments_collected = max(0, _fragments_collected - 1)
-			fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
-			print("DEBUG: Removed fragment. Total: ", _fragments_collected)
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventKey and event.pressed:
+		#if event.keycode == KEY_L:
+			#_fragments_collected += 1
+			#fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
+			#print("DEBUG: Added fragment. Total: ", _fragments_collected)
+		#elif event.keycode == KEY_K:
+			#_fragments_collected = max(0, _fragments_collected - 1)
+			#fragment_collected.emit(_fragments_collected, TOTAL_FRAGMENTS)
+			#print("DEBUG: Removed fragment. Total: ", _fragments_collected)
 
 # --- Public API ---
 

@@ -78,12 +78,12 @@ func _find_player() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		# Debug trigger: Backtick or Section key (ù on IT layout often behaves like this)
-		if event.keycode == KEY_SECTION or event.keycode == KEY_QUOTELEFT:
-			if not _is_active:
-				start_qte()
+		#if event.keycode == KEY_SECTION or event.keycode == KEY_QUOTELEFT:
+			#if not _is_active:
+				#start_qte()
 				# Consume input to prevent it from propagating
-				get_viewport().set_input_as_handled()
-			return
+				#get_viewport().set_input_as_handled()
+			#return
 		
 		if _is_active:
 			var pressed_key: String = OS.get_keycode_string(event.keycode)
