@@ -91,9 +91,9 @@ func modify_sanity(amount: float) -> void:
 func set_sanity_drain_paused(paused: bool) -> void:
 	_sanity_drain_paused = paused
 
-@onready var ui: CanvasLayer = $UI
 ## Collect a fragment from a puzzle
 func collect_fragment(puzzle_id: String) -> void:
+	var ui: CanvasLayer = $UI
 	if puzzle_id in _completed_puzzles:
 		return  # Already collected
 	
