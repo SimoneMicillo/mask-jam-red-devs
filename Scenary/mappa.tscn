@@ -1024,7 +1024,6 @@ mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
 [node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/1-normal" instance=ExtResource("9_fygwf")]
-light_energy = 2.0
 
 [node name="2-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
 transform = Transform3D(0.048681058, 0, 0.0032016605, 0, 0.15, 0, -0.029933926, 0, 0.047529794, -0.10221481, -0.7059672, 0.07620144)
@@ -1041,7 +1040,6 @@ mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
 [node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/2-masked" instance=ExtResource("9_fygwf")]
-light_energy = 2.0
 
 [node name="3-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
 transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.13038588, 0.37602007, -0.9232782)
@@ -1058,7 +1056,6 @@ mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
 [node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/3-masked" instance=ExtResource("9_fygwf")]
-light_energy = 2.0
 
 [node name="4-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
 transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.5163238, -0.7156496, 0.9058801)
@@ -1075,7 +1072,6 @@ mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
 [node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/4-masked" instance=ExtResource("9_fygwf")]
-light_energy = 2.0
 
 [node name="Area3D" type="Area3D" parent="Node3D/Node3D/Cube_017"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.93200934, -0.7581045, -0.1038332)
