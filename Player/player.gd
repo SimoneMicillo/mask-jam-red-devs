@@ -93,6 +93,7 @@ func can_stand_up() -> bool:
 	var result := space.intersect_shape(params, 1)
 	return result.is_empty()
 
+@onready var ui: CanvasLayer = $"../UI"
 func _input(event: InputEvent) -> void:
 	if isDead:
 		return
@@ -100,10 +101,10 @@ func _input(event: InputEvent) -> void:
 	# Mask toggle - uses global GameManager
 	if event.is_action_pressed("toggle_mask"):
 		GameManager.toggle_mask()
-		if $UI/maskCenterText.visible:
-			$UI/maskCenterText.hide()
+		if ui.get_node("maskCenterText").visible:
+			ui.get_node("maskCenterText").hide()
 		else:
-			$UI/maskCenterText.show()
+			ui.get_node("maskCenterText").show()
 	
 	# Crouch toggle
 	if event.is_action_pressed("crouch"):
