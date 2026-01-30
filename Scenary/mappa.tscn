@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=122 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
@@ -30,11 +30,10 @@
 [ext_resource type="PackedScene" uid="uid://b0ipny43txaov" path="res://Assets/3d_models/soiTavern/Shelves/trn_Pantry.fbx" id="22_57yjc"]
 [ext_resource type="PackedScene" uid="uid://cnlh0u6lnhtrp" path="res://Assets/3d_models/soiTavern/Shelves/trn_Rack.fbx" id="23_ccpk6"]
 [ext_resource type="PackedScene" uid="uid://b8x6y708bab0c" path="res://UI/Shared/dialogue_ui.tscn" id="dialogue_ui_scn"]
+[ext_resource type="Script" uid="uid://voj3desueb0i" path="res://Scripts/FireplaceAutomation.gd" id="fireplace_automation_script"]
+[ext_resource type="Script" uid="uid://db3qpj3wbyx07" path="res://Scripts/LeverLogic.gd" id="lever_logic_script"]
+[ext_resource type="Script" uid="uid://csepxhl75ernt" path="res://Scripts/LeverPuzzle.gd" id="lever_puzzle_script"]
 [ext_resource type="Script" uid="uid://cn17xjqo7orae" path="res://Scripts/MaskPickup.gd" id="mask_pickup_script"]
-
-[ext_resource type="Script" path="res://Scripts/LeverPuzzle.gd" id="lever_puzzle_script"]
-[ext_resource type="Script" path="res://Scripts/LeverLogic.gd" id="lever_logic_script"]
-[ext_resource type="Script" path="res://Scripts/FireplaceAutomation.gd" id="fireplace_automation_script"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkiov"]
 
@@ -115,6 +114,8 @@ shadow_mesh = SubResource("ArrayMesh_e61ps")
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 0.5093, 0.3383, -1, 1, 1, -1, 0.5093, 0.3383, -1, 0.5093, 0.3383, -1, 0.5093, -0.88729995, -1, 1, 1, -1, -1, 1, -1, 0.5093, 0.3383, -1, 1, 1, -1, 1, 1, -1, 0.5093, -0.88729995, -1, 1, -1, -1, 0.5093, -0.88729995, -1, 1, -1, -1, 0.5093, -0.88729995, -1, 0.2013, -0.88729995, -1, 1, -1, -1, 0.5093, -0.88729995, -1, -1, 1, -1, 0.2013, 0.3383, -1, 0.5093, 0.3383, -1, 0.2013, -0.88729995, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, -1, 1, -1, -1, -1, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, -1, -1, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, -1, -1, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 0.95809996, 1, 0.9364, 1, 1, -1, 1, 1, 1, -1, 1, 1, 0.95809996, 1, 0.9364, 1, 1, 1, 0.95809996, 1, 0.9364, 0.95809996, 1, -0.9364, 1, 1, -1, -1, 1, 1, -0.95809996, 1, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, 1, 1, -1, 0.95809996, 1, -0.9364, -1, 1, 1, -0.95809996, 1, -0.9364, -0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, -1, 1, -1, 1, 1, -1, -0.95809996, 1, -0.9364, -1, 1, 1, -1, 1, -1, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, 1, -0.9364, -0.95809996, -0.91349995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.95809996, 1, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.95809996, 1, -0.9364, 0.5093, -0.88729995, -0.9364, 0.5093, 0.3383, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.95809996, 1, -0.9364, 0.5093, 0.3383, -0.9364, 0.5093, 0.3383, -0.9364, -0.95809996, -0.91349995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.2013, 0.3383, -0.9364, 0.95809996, 1, -0.9364, 0.5093, 0.3383, -0.9364, -0.95809996, -0.91349995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, -0.95809996, -0.91349995, -0.9364, -0.95809996, 1, -0.9364, 0.2013, 0.3383, -0.9364, -0.95809996, 1, -0.9364, 0.95809996, 1, -0.9364, 0.2013, -0.88729995, -0.9364, -0.95809996, 1, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, -0.95809996, 1, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, 1, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, 1, -0.9364, 0.95809996, 1, 0.9364, 0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, 0.9364, -0.95809996, -0.91349995, 0.9364, -0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, -0.9364, 0.95809996, -0.91349995, 0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, 0.3383, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -1, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -1, 0.2013, 0.3383, -1, 0.2013, 0.3383, -0.9364, 0.2013, 0.3383, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -1, 0.2013, -0.88729995, -1, 0.5093, -0.88729995, -1, 0.5093, -0.88729995, -0.9364, 0.5093, -0.88729995, -1, 0.5093, -0.88729995, -1, 0.5093, -0.88729995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.5093, -0.88729995, -1, 0.5093, 0.3383, -1, 0.5093, -0.88729995, -0.9364, 0.5093, -0.88729995, -0.9364, 0.5093, 0.3383, -1, 0.5093, 0.3383, -0.9364, 0.5093, -0.88729995, -0.9364, 0.2013, -0.88729995, -1, 0.5093, -0.88729995, -1, 0.5093, -0.88729995, -0.9364, 0.2013, -0.88729995, -0.9364, 0.2013, -0.88729995, -1, 0.2013, 0.3383, -0.9364, 0.5093, 0.3383, -1, 0.2013, 0.3383, -1, 0.5093, 0.3383, -0.9364, 0.5093, 0.3383, -1, 0.2013, 0.3383, -0.9364, 0.5093, 0.3383, -1, 0.5093, 0.3383, -0.9364, 0.5093, 0.3383, -0.9364, 0.5093, 0.3383, -1, 0.5093, 0.3383, -0.9364, 0.5093, 0.3383, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khn8p"]
+albedo_texture = ExtResource("7_6uo41")
+uv1_scale = Vector3(32, 32, 32)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0faiv"]
 _surfaces = [{
@@ -153,6 +154,8 @@ data = PackedVector3Array(-1, 0.3342, -0.7093, -1, -1, -1, -1, 1, -1, -1, 0.3342
 size = Vector3(4.232422, 2.6304932, 2.555664)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi8th"]
+albedo_texture = ExtResource("7_6uo41")
+uv1_scale = Vector3(32, 32, 32)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_v1uac"]
 _surfaces = [{
@@ -610,6 +613,24 @@ shadow_mesh = SubResource("ArrayMesh_8qlc5")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uw4c1"]
 data = PackedVector3Array(-1, -0.8914, 0.0982, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -0.8914, 0.0982, -1, -1, 1, -1, 0.3342, 0.0982, -1, 1, 1, -1, -0.8914, 0.0982, -1, -1, -1, -1, -0.8914, -0.25849998, -1, -0.8914, 0.0982, -1, 1, 1, -1, 0.3342, 0.0982, -1, 1, -1, -1, 1, -1, -1, -0.8914, -0.25849998, -1, -1, -1, -1, 1, -1, -1, 0.3342, 0.0982, -1, 0.3342, -0.25849998, -1, 1, -1, -1, 0.3342, -0.25849998, -1, -0.8914, -0.25849998, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 0.95809996, 1, 0.9364, 1, 1, -1, 1, 1, 1, -1, 1, 1, 0.95809996, 1, 0.9364, 1, 1, 1, 0.95809996, 1, 0.9364, 0.95809996, 1, -0.93649995, 1, 1, -1, -1, 1, 1, -0.95809996, 1, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, -0.93649995, 1, 1, -1, 0.95809996, 1, -0.93649995, -1, 1, 1, -0.95809996, 1, -0.93649995, -0.95809996, 1, 0.9364, -0.95809996, 1, -0.93649995, -1, 1, -1, 1, 1, -1, -0.95809996, 1, -0.93649995, -1, 1, 1, -1, 1, -1, -0.95809996, 0.3342, -0.25849998, -0.95809996, -0.91349995, -0.93649995, -0.95809996, -0.8914, -0.25849998, -0.95809996, -0.8914, 0.0982, -0.95809996, -0.8914, -0.25849998, -0.95809996, -0.91349995, -0.93649995, -0.95809996, 0.3342, -0.25849998, -0.95809996, 1, -0.93649995, -0.95809996, -0.91349995, -0.93649995, -0.95809996, -0.8914, 0.0982, -0.95809996, -0.91349995, -0.93649995, -0.95809996, -0.91349995, 0.9364, -0.95809996, 1, -0.93649995, -0.95809996, 0.3342, -0.25849998, -0.95809996, 1, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.8914, 0.0982, -0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, 0.3342, -0.25849998, -0.95809996, 0.3342, 0.0982, -0.95809996, 1, 0.9364, -0.95809996, 0.3342, 0.0982, -0.95809996, -0.8914, 0.0982, -0.95809996, 1, -0.93649995, 0.95809996, -0.91349995, -0.93649995, -0.95809996, -0.91349995, -0.93649995, -0.95809996, 1, -0.93649995, 0.95809996, 1, -0.93649995, 0.95809996, -0.91349995, -0.93649995, 0.95809996, -0.91349995, -0.93649995, 0.95809996, 1, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, -0.93649995, 0.95809996, 1, -0.93649995, 0.95809996, 1, 0.9364, 0.95809996, -0.91349995, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, 0.9364, 0.95809996, -0.91349995, 0.9364, 0.95809996, 1, 0.9364, -0.95809996, 1, 0.9364, -0.95809996, -0.91349995, -0.93649995, 0.95809996, -0.91349995, 0.9364, -0.95809996, -0.91349995, 0.9364, -0.95809996, -0.91349995, -0.93649995, 0.95809996, -0.91349995, -0.93649995, 0.95809996, -0.91349995, 0.9364, -0.95809996, -0.8914, 0.0982, -1, 0.3342, 0.0982, -1, -0.8914, 0.0982, -0.95809996, -0.8914, 0.0982, -0.95809996, 0.3342, 0.0982, -1, 0.3342, 0.0982, -0.95809996, 0.3342, -0.25849998, -1, -0.8914, -0.25849998, -1, 0.3342, -0.25849998, -0.95809996, 0.3342, -0.25849998, -0.95809996, -0.8914, -0.25849998, -1, -0.8914, -0.25849998, -1, -0.8914, -0.25849998, -0.95809996, -0.8914, 0.0982, -1, -0.8914, 0.0982, -1, -0.8914, -0.25849998, -0.95809996, -0.8914, -0.25849998, -0.95809996, -0.8914, 0.0982, -0.95809996, 0.3342, 0.0982, -1, 0.3342, -0.25849998, -1, 0.3342, 0.0982, -0.95809996, 0.3342, 0.0982, -0.95809996, 0.3342, -0.25849998, -1, 0.3342, -0.25849998)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8eoo"]
+size = Vector3(1.3197632, 0.8099365, 0.118774414)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwg7y"]
+size = Vector3(0.35116577, 0.2546997, 0.09277344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_de333"]
+size = Vector3(0.8808212, 0.40286255, 0.2998047)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xp3h4"]
+size = Vector3(0.2960205, 1, 0.3470459)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xoyh"]
+size = Vector3(0.08581543, 0.5, 0.16992188)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d2itg"]
+radius = 0.076629065
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2oeq"]
 size = Vector3(5.0632324, 5.7158203, 4.5334473)
 
@@ -633,9 +654,6 @@ albedo_color = Color(1, 0.8784314, 0.5686275, 1)
 height = 2.4641113
 radius = 0.10449219
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dcswn"]
-size = Vector3(1.1601563, 1, 0.6156006)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnysp"]
 size = Vector3(0.8613281, 0.79589844, 0.33483887)
 
@@ -643,6 +661,13 @@ size = Vector3(0.8613281, 0.79589844, 0.33483887)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ped"]
 size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d2itg"]
+size = Vector3(5, 5, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2itg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d2itg"]
 
 [node name="mappa" type="Node3D"]
 script = ExtResource("1_7fy3a")
@@ -744,7 +769,7 @@ shape = SubResource("BoxShape3D_mmqkf")
 transform = Transform3D(-4.371139e-09, 0, 0.100000024, 0, 0.100000024, 0, -0.10000002, 0, -4.37114e-09, 0.11769539, -0.41920596, 0.6358428)
 
 [node name="Cube_004" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 13.517934, 28.081213, 0.026341036, -93.95877)
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 13.517934, 28.496, 0.026, -93.959)
 mesh = SubResource("ArrayMesh_jpuiv")
 skeleton = NodePath("")
 
@@ -886,12 +911,31 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uw4c1")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.013519287, -0.4260863, 0.85275495)
+shape = SubResource("BoxShape3D_t8eoo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.8926041, -0.7660663, 0.6559147)
+shape = SubResource("BoxShape3D_mwg7y")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.03437519, -0.5702045, -0.80074155)
+shape = SubResource("BoxShape3D_mwg7y")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.086708546, -0.7030628, 0.07139921)
+shape = SubResource("BoxShape3D_de333")
+
 [node name="Node3D" type="Node3D" parent="Node3D/Node3D/Cube_017"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/Node3D"]
 
 [node name="tavolaImbandita" parent="Node3D/Node3D/Cube_017" instance=ExtResource("5_4t882")]
 transform = Transform3D(0.2, 0, 0, 0, 0.464, 0, 0, 0, 0.262, 0.3241884, -0.91910636, -0.7094407)
+
+[node name="trn_Bench" parent="Node3D/Node3D/Cube_017/tavolaImbandita" index="5"]
+transform = Transform3D(1, 0, 0, 0, -1.19209275e-07, 0.9999999, 0, -0.9999998, -1.1920929e-07, -3.0695448, -2.8312206e-07, 4.497824)
 
 [node name="barili" type="Node3D" parent="Node3D/Node3D/Cube_017"]
 
@@ -925,6 +969,20 @@ transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.70545495, -0.
 [node name="trn_Barrel10" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
 transform = Transform3D(0.099902816, 0.015713869, -0.00343766, -0.0038288843, 0.3992457, 0.008252646, 0.0021833603, -0.018867448, 0.17176753, -0.9169767, -0.91349995, -0.45244384)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Node3D/Cube_017/barili"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/barili/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.80382276, -0.53881407, -0.7228067)
+shape = SubResource("BoxShape3D_xp3h4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/barili/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.905516, -0.955753, -0.4549297)
+shape = SubResource("BoxShape3D_6xoyh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/barili/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.60879636, -0.955753, -0.8050133)
+shape = SubResource("BoxShape3D_6xoyh")
+
 [node name="leve" type="Node3D" parent="Node3D/Node3D/Cube_017" node_paths=PackedStringArray("levers_masked", "lever_normal")]
 script = ExtResource("lever_puzzle_script")
 levers_masked = [NodePath("2-masked/LeverLogic"), NodePath("3-masked/LeverLogic"), NodePath("4-masked/LeverLogic")]
@@ -944,8 +1002,11 @@ script = ExtResource("lever_logic_script")
 mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
+[node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/1-normal" instance=ExtResource("9_fygwf")]
+light_energy = 0.5
+
 [node name="2-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
-transform = Transform3D(0.048681058, 0, 0.0032016605, 0, 0.15, 0, -0.029933926, 0, 0.047529794, -0.10221481, -0.70596725, 0.076268554)
+transform = Transform3D(0.048681058, 0, 0.0032016605, 0, 0.15, 0, -0.029933926, 0, 0.047529794, -0.10221481, -0.7059672, 0.07620144)
 mesh = ExtResource("13_yaesc")
 skeleton = NodePath("../../../..")
 
@@ -957,6 +1018,9 @@ requires_aim = true
 script = ExtResource("lever_logic_script")
 mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
+
+[node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/2-masked" instance=ExtResource("9_fygwf")]
+light_energy = 0.5
 
 [node name="3-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
 transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.13038588, 0.37602007, -0.9232782)
@@ -972,6 +1036,9 @@ script = ExtResource("lever_logic_script")
 mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
 
+[node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/3-masked" instance=ExtResource("9_fygwf")]
+light_energy = 0.5
+
 [node name="4-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
 transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.5163238, -0.7156496, 0.9058801)
 mesh = ExtResource("13_yaesc")
@@ -985,6 +1052,18 @@ requires_aim = true
 script = ExtResource("lever_logic_script")
 mesh_instance = NodePath("..")
 interaction_area = NodePath("../InteractionArea")
+
+[node name="candle_light" parent="Node3D/Node3D/Cube_017/leve/4-masked" instance=ExtResource("9_fygwf")]
+light_energy = 0.5
+
+[node name="Area3D" type="Area3D" parent="Node3D/Node3D/Cube_017"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.93200934, -0.7581045, -0.1038332)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("SphereShape3D_d2itg")
 
 [node name="Chair" parent="Node3D" instance=ExtResource("2_kdisg")]
 transform = Transform3D(-3.278354e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.278354e-08, -40.110947, -3.0093102, -9.158634)
@@ -1180,13 +1259,14 @@ omni_range = 18.80565
 energy_min_value = 3.0
 
 [node name="candle_light6" parent="Lights" instance=ExtResource("9_fygwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2821264, 9.30743, -94.11158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8866577, 9.30743, -101.28803)
+light_energy = 15.0
 omni_range = 30.224388
 energy_min_value = 3.0
 
 [node name="candle_light7" parent="Lights" instance=ExtResource("9_fygwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.149483, 9.30743, -94.11158)
-omni_range = 30.224388
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.971521, 5.2734995, -94.00314)
+light_energy = 10.0
 energy_min_value = 3.0
 
 [node name="candle_light8" parent="Lights" instance=ExtResource("9_fygwf")]
@@ -1200,28 +1280,37 @@ omni_range = 30.224388
 energy_min_value = 3.0
 
 [node name="candle_light10" parent="Lights" instance=ExtResource("9_fygwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.53929, 9.30743, -15.575432)
-omni_range = 30.224388
-energy_min_value = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.51896, 9.30743, -15.575432)
+light_energy = 10.0
+energy_min_value = 5.0
+
+[node name="candle_light15" parent="Lights" instance=ExtResource("9_fygwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.2431, 9.30743, -15.575432)
+light_energy = 10.0
+energy_min_value = 5.0
 
 [node name="candle_light11" parent="Lights" instance=ExtResource("9_fygwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.445473, -88.552704, -18.24056)
-omni_range = 30.224388
+light_energy = 10.0
+omni_range = 50.0
 energy_min_value = 3.0
 
 [node name="candle_light12" parent="Lights" instance=ExtResource("9_fygwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.342766, -88.552704, -46.976433)
-omni_range = 30.224388
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.577713, -88.552704, -57.202663)
+light_energy = 10.0
+omni_range = 50.0
 energy_min_value = 3.0
 
 [node name="candle_light13" parent="Lights" instance=ExtResource("9_fygwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5726, -88.552704, -46.453705)
-omni_range = 30.224388
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5726, -88.552704, -55.852386)
+light_energy = 10.0
+omni_range = 50.0
 energy_min_value = 3.0
 
 [node name="candle_light14" parent="Lights" instance=ExtResource("9_fygwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.531204, -88.552704, -19.890108)
-omni_range = 30.224388
+light_energy = 10.0
+omni_range = 50.0
 energy_min_value = 3.0
 
 [node name="Camino" parent="." node_paths=PackedStringArray("door_logic") instance=ExtResource("11_pnysp")]
@@ -1236,9 +1325,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2735717, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10205078, 0.023864746)
 shape = SubResource("BoxShape3D_pnysp")
 
-[node name="Door" parent="Camino" node_paths=PackedStringArray("pivot", "interactionArea") instance=ExtResource("5_rcajr")]
+[node name="Door" parent="Camino" node_paths=PackedStringArray("pivot") instance=ExtResource("5_rcajr")]
 pivot = NodePath("..")
-interactionArea = NodePath("../InteractionArea")
 open_pos_target = Vector3(16.450508, 0.43250036, -93.49076)
 open_deg_target_y = -90.0
 close_deg_target_y = -90.0
@@ -1268,6 +1356,16 @@ shape = SubResource("SphereShape3D_ped")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Labyrinth/LabyrinthPedestal"]
 mesh = SubResource("BoxMesh_ped")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Labyrinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.503, 2.473, -74.433)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Labyrinth/StaticBody3D"]
+mesh = SubResource("BoxMesh_d2itg")
+surface_material_override/0 = SubResource("StandardMaterial3D_d2itg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Labyrinth/StaticBody3D"]
+shape = SubResource("BoxShape3D_d2itg")
 
 [node name="trn_TableRound" parent="." instance=ExtResource("17_6uo41")]
 transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, 1.5, 0, -1.5, -6.556708e-08, 67.29343, 0.7738907, -21.996597)
@@ -1325,9 +1423,11 @@ interaction_area = NodePath("../PiedistalloFirstRoom/InteractionArea")
 mask_visual_node = NodePath("../PiedistalloFirstRoom/StaticBody3D/CollisionShape3D/MeshInstance3D/mask")
 dialogue_controller = NodePath("../DialogueUI")
 
+[connection signal="body_entered" from="Node3D/Node3D/Cube_017/Area3D" to="." method="lastRoomTrigger"]
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 
 [editable path="Node3D/CorridorLoop/Furnitures/Chair2"]
+[editable path="Node3D/Node3D/Cube_017/tavolaImbandita"]
 [editable path="Node3D/Chair"]
 [editable path="DoorFirstScene/InteractionArea"]
 [editable path="Lights/Candle_Scene"]
@@ -1338,4 +1438,3 @@ dialogue_controller = NodePath("../DialogueUI")
 [editable path="Lights/Candle_Scene2/Candle"]
 [editable path="Lights/Lamp_Scene/Candle_Scene2"]
 [editable path="Lights/Lamp_Scene/Candle_Scene2/Candle"]
-[editable path="Camino/InteractionArea"]

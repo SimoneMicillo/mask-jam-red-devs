@@ -42,11 +42,12 @@ func _on_interaction_entered() -> void:
 func _on_interaction_exited() -> void:
 	InteractionDot.hide_dot()
 
+@onready var player = get_tree().current_scene.get_node("Player")
 func _input(event: InputEvent) -> void:
 	if not interaction_area or not interaction_area.canInteract:
 		return
 		
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and $"../PiedistalloFirstRoom".position.distance_to(player.position) < 3:
 		if GameManager.is_mask_on_pedestal:
 			_start_pickup_sequence()
 		elif GameManager.get_fragments_collected() >= GameManager.TOTAL_FRAGMENTS:

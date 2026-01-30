@@ -1,11 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bppl16pbx3j84"]
+[gd_scene load_steps=8 format=3 uid="uid://bppl16pbx3j84"]
 
 [ext_resource type="Texture2D" uid="uid://b5nkukpjc7q0k" path="res://Assets/FirtstRoom/piedistallo.png" id="1_gu4yv"]
 [ext_resource type="ArrayMesh" uid="uid://3dxuyx7fptm0" path="res://Assets/obj_models/mask/fae5b612dd61e510ca5379c2afd16c84.obj" id="2_geojl"]
 [ext_resource type="ArrayMesh" uid="uid://covflasgq2v2k" path="res://Assets/obj_models/piedistallo/e9b0a42d04e64e1cb1a69b9752f4df0b.obj" id="3_h3i0k"]
+[ext_resource type="Texture2D" uid="uid://crlvdrvovcnvf" path="res://Assets/obj_models/mask/texture_pbr_20250901.png" id="3_no5rn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gu4yv"]
 radius = 0.72265625
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etoyq"]
+albedo_texture = ExtResource("3_no5rn")
+emission_enabled = true
+emission_energy_multiplier = 1.5
+emission_texture = ExtResource("3_no5rn")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_no5rn"]
 
@@ -29,6 +36,7 @@ texture = ExtResource("1_gu4yv")
 transform = Transform3D(1, 0, 0, 0, 0.8467136, 0.532049, 0, -0.532049, 0.8467136, 0, 1.1041079, 0.45611227)
 mesh = ExtResource("2_geojl")
 skeleton = NodePath("../../Sprite3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_etoyq")
 
 [node name="mazzaMask" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D/MeshInstance3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.479, 0, 0, 0, 0.2, 0, 1.0998843, 0)
