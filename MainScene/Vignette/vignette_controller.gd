@@ -10,7 +10,6 @@ extends TextureRect
 
 var _shader_material: ShaderMaterial
 
-
 func _ready() -> void:
 	_shader_material = material as ShaderMaterial
 	

@@ -100,6 +100,10 @@ func _input(event: InputEvent) -> void:
 	# Mask toggle - uses global GameManager
 	if event.is_action_pressed("toggle_mask"):
 		GameManager.toggle_mask()
+		if $UI/maskCenterText.visible:
+			$UI/maskCenterText.hide()
+		else:
+			$UI/maskCenterText.show()
 	
 	# Crouch toggle
 	if event.is_action_pressed("crouch"):

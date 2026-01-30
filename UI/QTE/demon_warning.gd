@@ -87,7 +87,7 @@ func _start_warning() -> void:
 		get_viewport().get_visible_rect().size.y * 0.3)
 	demon_sprite.scale = Vector2(initial_scale, initial_scale)
 	demon_sprite.modulate.a = 0.0
-	Sounds.get_node("demonapproac").play()
+	Sounds.get_node("demonapproach").play()
 	
 	# Animate in from right side
 	var tween = create_tween()
