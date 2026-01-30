@@ -9,6 +9,12 @@ signal sanity_changed(new_sanity: float)
 signal game_over()
 signal fragment_collected(current: int, total: int)
 signal all_fragments_collected()
+signal request_open_puzzle(puzzle_name: String)
+signal klotski_solved() # Emitted when Klotski is solved
+
+func emit_klotski_solved():
+	print("DEBUG: GameManager emitting klotski_solved")
+	klotski_solved.emit()
 
 # --- Exported Properties ---
 @export var max_sanity: float = 100.0
@@ -24,7 +30,9 @@ var _is_game_over: bool = false
 var _sanity_drain_paused: bool = false  # Pause drain during QTE
 var _fragments_collected: int = 0
 var _completed_puzzles: Array[String] = []  # Track which puzzles are done
-var is_mask_locked: bool = false # If true, mask cannot be toggled
+var is_mask_locked: bool = false # If true, mask cannot be toggled (e.g. cutscenes)
+var is_mask_unlocked: bool = false # Player has acquired the mask
+var is_mask_on_pedestal: bool = true # Mask is physically on the pedestal
 
 func _ready() -> void:
 	reset_game_state()
@@ -54,7 +62,7 @@ func _input(event: InputEvent) -> void:
 
 ## Toggle the mask between ON and OFF states.
 func toggle_mask() -> void:
-	if is_mask_locked:
+	if is_mask_locked or not is_mask_unlocked:
 		return
 	set_mask_state(!is_mask_on)
 
@@ -119,6 +127,9 @@ func reset_game_state() -> void:
 	_is_game_over = false
 	_sanity_drain_paused = false
 	_fragments_collected = 0
+	# Reset progress flags
+	is_mask_unlocked = false
+	is_mask_on_pedestal = true
 	_completed_puzzles.clear()
 	sanity_changed.emit(current_sanity)
 	mask_state_changed.emit(is_mask_on)

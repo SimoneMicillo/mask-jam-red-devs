@@ -4,6 +4,16 @@ extends Node3D
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$Player.position = starting_point
+	GameManager.request_open_puzzle.connect(_on_request_open_puzzle)
+
+func _on_request_open_puzzle(puzzle_name: String) -> void:
+	if puzzle_name == "Klotski":
+		open_klotski_puzzle()
+
+func open_klotski_puzzle() -> void:
+	var puzzle = $KlotskiPuzzle
+	if puzzle and not puzzle.visible:
+		puzzle.open_puzzle()
 
 func _input(event: InputEvent) -> void:
 	# Block puzzle inputs if QTE is active
@@ -14,14 +24,4 @@ func _input(event: InputEvent) -> void:
 			qte_active = true
 		
 	if qte_active:
-		# If QTE is active, DO NOT allow opening puzzles
-		if event is InputEventKey and event.pressed and event.keycode == KEY_P:
-			# print("DEBUG: Puzzle input BLOCKED because QTE is active") # Optional debug
-			pass
 		return
-	
-	# Debug: Press P to open Klotski puzzle 1
-	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
-		var puzzle = $KlotskiPuzzle
-		if puzzle and not puzzle.visible:
-			puzzle.open_puzzle()

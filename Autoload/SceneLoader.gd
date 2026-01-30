@@ -71,7 +71,7 @@ func _perform_transition(path: String) -> void:
 		GameManager.reset_game_state()
 	
 	# Change scene
-	var error: Error = get_tree().change_scene_to_file(path)
+	var error: int = get_tree().change_scene_to_file(path)
 	if error != OK:
 		push_error("SceneLoader: Failed to change scene. Error: " + str(error))
 		_cleanup_fade_overlay()

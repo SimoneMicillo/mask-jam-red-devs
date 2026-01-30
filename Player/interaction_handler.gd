@@ -8,9 +8,12 @@ var canInteract: bool = false
 @export var collision : CollisionShape3D = null
 @export var doorNode : DoorLogic = null
 @export var maskVisual : MaskVisual = null
+@export var requires_aim: bool = false # If true, requires RayCast aim to interact
 
 func _ready() -> void:
 	setCollision()
+	if requires_aim:
+		collision_layer = 2 # Enable collision layer so RayCast (mask 2) can hit it
 
 func setCollision() -> void:
 	if collision:
@@ -32,7 +35,17 @@ func _on_body_entered(_body: Node3D) -> void:
 		canInteract = true
 	
 	if !was_interactable and canInteract:
+		if not requires_aim:
+			emit_signal("interaction_entered")
+
+func check_aim(is_aiming: bool) -> void:
+	if not requires_aim or not canInteract:
+		return
+		
+	if is_aiming:
 		emit_signal("interaction_entered")
+	else:
+		emit_signal("interaction_exited")
 
 func checkInsideArea() -> void:
 	if get_overlapping_bodies().size() > 0:

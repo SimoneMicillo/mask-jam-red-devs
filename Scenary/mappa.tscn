@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://ct2e0h3wxwujt"]
+[gd_scene load_steps=111 format=4 uid="uid://ct2e0h3wxwujt"]
 
 [ext_resource type="Script" uid="uid://bgwdvx1x2q1bk" path="res://Scenary/mappa.gd" id="1_7fy3a"]
 [ext_resource type="PackedScene" uid="uid://bppl16pbx3j84" path="res://Assets/FirtstRoom/piediStallo.tscn" id="1_yaxx7"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://br65tknqpinf5" path="res://Scenary/labirinto.tscn" id="12_lab"]
 [ext_resource type="PackedScene" uid="uid://c333ujdm2lt5n" path="res://Scenary/Lights/candle_scene.tscn" id="12_uw4c1"]
 [ext_resource type="Script" uid="uid://bs5svfojv6xlq" path="res://Scripts/labyrinth_pedestal.gd" id="13_ped"]
+[ext_resource type="ArrayMesh" uid="uid://5vfusw7yjd35" path="res://Assets/obj_models/leva/039736a4b802e534d8a9e41a3d3d024c.obj" id="13_yaesc"]
 [ext_resource type="Script" uid="uid://cn7dtm52xrxss" path="res://Scripts/labyrinth_trigger.gd" id="14_trig"]
 [ext_resource type="PackedScene" uid="uid://bfwri0indh8eu" path="res://Assets/Paintings/painting_scene.tscn" id="17_4t882"]
 [ext_resource type="PackedScene" uid="uid://byc42x7isxl2j" path="res://Assets/3d_models/soiTavern/Tables/trn_table_round.tscn" id="17_6uo41"]
@@ -28,6 +29,12 @@
 [ext_resource type="PackedScene" uid="uid://bkiv2dnwpbdpj" path="res://Assets/3d_models/soiTavern/Shelves/trn_Cupboard.fbx" id="21_n3x3x"]
 [ext_resource type="PackedScene" uid="uid://b0ipny43txaov" path="res://Assets/3d_models/soiTavern/Shelves/trn_Pantry.fbx" id="22_57yjc"]
 [ext_resource type="PackedScene" uid="uid://cnlh0u6lnhtrp" path="res://Assets/3d_models/soiTavern/Shelves/trn_Rack.fbx" id="23_ccpk6"]
+[ext_resource type="PackedScene" uid="uid://b8x6y708bab0c" path="res://UI/Shared/dialogue_ui.tscn" id="dialogue_ui_scn"]
+[ext_resource type="Script" uid="uid://cn17xjqo7orae" path="res://Scripts/MaskPickup.gd" id="mask_pickup_script"]
+
+[ext_resource type="Script" path="res://Scripts/LeverPuzzle.gd" id="lever_puzzle_script"]
+[ext_resource type="Script" path="res://Scripts/LeverLogic.gd" id="lever_logic_script"]
+[ext_resource type="Script" path="res://Scripts/FireplaceAutomation.gd" id="fireplace_automation_script"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkiov"]
 
@@ -714,9 +721,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StanzaIniziale/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6wxhj")
 
-[node name="Node3D" parent="Node3D/StanzaIniziale" instance=ExtResource("1_yaxx7")]
-transform = Transform3D(0.1, 0, 0, 0, 0.20000002, 0, 0, 0, 0.1, 0, -0.9106034, 0.25809)
-
 [node name="KlopskiRoom" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(20, 0, 0, 0, 5, 0, 0, 0, 13.517934, -1.48559, 0.020135999, -93.95877)
 mesh = SubResource("ArrayMesh_lddls")
@@ -920,6 +924,67 @@ transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.70545495, -0.
 
 [node name="trn_Barrel10" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
 transform = Transform3D(0.099902816, 0.015713869, -0.00343766, -0.0038288843, 0.3992457, 0.008252646, 0.0021833603, -0.018867448, 0.17176753, -0.9169767, -0.91349995, -0.45244384)
+
+[node name="leve" type="Node3D" parent="Node3D/Node3D/Cube_017" node_paths=PackedStringArray("levers_masked", "lever_normal")]
+script = ExtResource("lever_puzzle_script")
+levers_masked = [NodePath("2-masked/LeverLogic"), NodePath("3-masked/LeverLogic"), NodePath("4-masked/LeverLogic")]
+lever_normal = NodePath("1-normal/LeverLogic")
+
+[node name="1-normal" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
+transform = Transform3D(0.021113299, 0, 0.03099159, 0, 0.15, 0, -0.053104732, 0, 0.036178075, -0.9076923, -0.7912806, 0.7309512)
+mesh = ExtResource("13_yaesc")
+skeleton = NodePath("../../../..")
+
+[node name="InteractionArea" parent="Node3D/Node3D/Cube_017/leve/1-normal" instance=ExtResource("6_pvwoy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+requires_aim = true
+
+[node name="LeverLogic" type="Node" parent="Node3D/Node3D/Cube_017/leve/1-normal" node_paths=PackedStringArray("mesh_instance", "interaction_area")]
+script = ExtResource("lever_logic_script")
+mesh_instance = NodePath("..")
+interaction_area = NodePath("../InteractionArea")
+
+[node name="2-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
+transform = Transform3D(0.048681058, 0, 0.0032016605, 0, 0.15, 0, -0.029933926, 0, 0.047529794, -0.10221481, -0.70596725, 0.076268554)
+mesh = ExtResource("13_yaesc")
+skeleton = NodePath("../../../..")
+
+[node name="InteractionArea" parent="Node3D/Node3D/Cube_017/leve/2-masked" instance=ExtResource("6_pvwoy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+requires_aim = true
+
+[node name="LeverLogic" type="Node" parent="Node3D/Node3D/Cube_017/leve/2-masked" node_paths=PackedStringArray("mesh_instance", "interaction_area")]
+script = ExtResource("lever_logic_script")
+mesh_instance = NodePath("..")
+interaction_area = NodePath("../InteractionArea")
+
+[node name="3-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
+transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.13038588, 0.37602007, -0.9232782)
+mesh = ExtResource("13_yaesc")
+skeleton = NodePath("../../../..")
+
+[node name="InteractionArea" parent="Node3D/Node3D/Cube_017/leve/3-masked" instance=ExtResource("6_pvwoy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+requires_aim = true
+
+[node name="LeverLogic" type="Node" parent="Node3D/Node3D/Cube_017/leve/3-masked" node_paths=PackedStringArray("mesh_instance", "interaction_area")]
+script = ExtResource("lever_logic_script")
+mesh_instance = NodePath("..")
+interaction_area = NodePath("../InteractionArea")
+
+[node name="4-masked" type="MeshInstance3D" parent="Node3D/Node3D/Cube_017/leve"]
+transform = Transform3D(-0.052955817, 0, 0.0046910658, 0, 0.14999999, 0, 0.021484092, 0, -0.047405973, 0.5163238, -0.7156496, 0.9058801)
+mesh = ExtResource("13_yaesc")
+skeleton = NodePath("../../../..")
+
+[node name="InteractionArea" parent="Node3D/Node3D/Cube_017/leve/4-masked" instance=ExtResource("6_pvwoy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+requires_aim = true
+
+[node name="LeverLogic" type="Node" parent="Node3D/Node3D/Cube_017/leve/4-masked" node_paths=PackedStringArray("mesh_instance", "interaction_area")]
+script = ExtResource("lever_logic_script")
+mesh_instance = NodePath("..")
+interaction_area = NodePath("../InteractionArea")
 
 [node name="Chair" parent="Node3D" instance=ExtResource("2_kdisg")]
 transform = Transform3D(-3.278354e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.278354e-08, -40.110947, -3.0093102, -9.158634)
@@ -1159,16 +1224,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.531204, -88.552704, -19.89
 omni_range = 30.224388
 energy_min_value = 3.0
 
-[node name="Camino" parent="." instance=ExtResource("11_pnysp")]
+[node name="Camino" parent="." node_paths=PackedStringArray("door_logic") instance=ExtResource("11_pnysp")]
 transform = Transform3D(-3.496911e-07, 0, -8, 0, 8, 0, 8, 0, -3.496911e-07, 16.450508, 0.43250036, -88.03409)
-
-[node name="InteractionArea" parent="Camino" node_paths=PackedStringArray("collision", "doorNode") instance=ExtResource("6_pvwoy")]
-collision = NodePath("../StaticBody3D/CollisionShape3D")
-doorNode = NodePath("../Door")
-
-[node name="CollisionShape3D" parent="Camino/InteractionArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117248535, 0.06841183)
-shape = SubResource("BoxShape3D_dcswn")
+script = ExtResource("fireplace_automation_script")
+door_logic = NodePath("Door")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Camino"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2735717, 0)
@@ -1211,46 +1270,60 @@ shape = SubResource("SphereShape3D_ped")
 mesh = SubResource("BoxMesh_ped")
 
 [node name="trn_TableRound" parent="." instance=ExtResource("17_6uo41")]
-transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 67.29343, 0.7738907, -21.996597)
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, 1.5, 0, -1.5, -6.556708e-08, 67.29343, 0.7738907, -21.996597)
 
 [node name="trn_Cauldron" parent="." instance=ExtResource("19_ellns")]
-transform = Transform3D(1.435791, 0, -1.3923018, 0, 2, 0, 1.3923018, 0, 1.435791, 33.701046, 0.77877605, -6.512383)
+transform = Transform3D(1.435791, 0, -1.3923018, 0, 2, 0, 1.3923018, 0, 1.435791, 33.701046, 0.47536778, -6.512383)
 
 [node name="trn_BedsideTable" parent="." instance=ExtResource("20_bbkar")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 51.155136, 0.773891, -4.148305)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 51.155136, 0.42683065, -4.148305)
 
 [node name="trn_Cupboard" parent="." instance=ExtResource("21_n3x3x")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 52.17063, 0.7738905, -25.178066)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 52.17063, 0.44656968, -25.178066)
 
 [node name="trn_Pantry" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 39.425808, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 39.425808, 0.46023738, -3.8901005)
 
 [node name="trn_Rack" parent="." instance=ExtResource("23_ccpk6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 58.492485, 8.734325, -25.18022)
 
 [node name="trn_Pantry2" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42.3904, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42.3904, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry3" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45.320606, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45.320606, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry4" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 48.2852, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 48.2852, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry5" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.095165, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.095165, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry6" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 57.059757, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 57.059757, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry7" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 59.989964, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 59.989964, 0.46023738, -3.8901005)
 
 [node name="trn_Pantry8" parent="." instance=ExtResource("22_57yjc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.954556, 0.7742773, -3.8901005)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.954556, 0.46023738, -3.8901005)
 
 [node name="trn_Rack2" parent="." instance=ExtResource("23_ccpk6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 46.294853, 8.734325, -25.18022)
+
+[node name="DialogueUI" parent="." instance=ExtResource("dialogue_ui_scn")]
+
+[node name="PiedistalloFirstRoom" parent="." instance=ExtResource("1_yaxx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.441175, 0.22242558, 0.46413183)
+
+[node name="InteractionArea" parent="PiedistalloFirstRoom" instance=ExtResource("6_pvwoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.70660853)
+
+[node name="MaskInteractionLogic" type="Node" parent="." node_paths=PackedStringArray("interaction_area", "mask_visual_node", "dialogue_controller")]
+script = ExtResource("mask_pickup_script")
+interaction_area = NodePath("../PiedistalloFirstRoom/InteractionArea")
+mask_visual_node = NodePath("../PiedistalloFirstRoom/StaticBody3D/CollisionShape3D/MeshInstance3D/mask")
+dialogue_controller = NodePath("../DialogueUI")
 
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 

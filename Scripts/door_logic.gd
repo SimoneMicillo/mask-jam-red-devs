@@ -30,11 +30,17 @@ func findInteractionArea() -> void:
 @export var anim_duration : float = .75
 func interacting() -> void:
 	if !isOpen and interactionArea.canInteract:
-		# apri
-		get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", open_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
-		get_tree().create_tween().tween_property(pivot, "position", open_pos_target, anim_duration).set_trans(Tween.TRANS_BACK)
-		isOpen = true
+		force_open()
 	elif isOpen and interactionArea.canInteract:
-		# chiudi
-		get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", close_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
-		isOpen = false
+		force_close()
+
+func force_open() -> void:
+	if isOpen: return
+	get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", open_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
+	get_tree().create_tween().tween_property(pivot, "position", open_pos_target, anim_duration).set_trans(Tween.TRANS_BACK)
+	isOpen = true
+
+func force_close() -> void:
+	if !isOpen: return
+	get_tree().create_tween().tween_property(pivot, "rotation_degrees:y", close_deg_target_y, anim_duration).set_trans(Tween.TRANS_BACK)
+	isOpen = false

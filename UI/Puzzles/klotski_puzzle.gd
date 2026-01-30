@@ -6,7 +6,7 @@ class_name KlotskiPuzzle
 
 signal puzzle_completed()
 
-@export var puzzle_id: String = "klotski_1"  # Unique ID for tracking completion
+@export var puzzle_id: String = "Klotski"  # Unique ID for tracking completion
 
 # Grid configuration - LARGER SIZE
 const GRID_WIDTH: int = 4
@@ -319,6 +319,7 @@ func _solve_puzzle() -> void:
 	
 	# Register fragment collection with GameManager
 	GameManager.collect_fragment(puzzle_id)
+	GameManager.emit_klotski_solved()
 	
 	for piece in _pieces:
 		if piece.id == "F" and piece.control:

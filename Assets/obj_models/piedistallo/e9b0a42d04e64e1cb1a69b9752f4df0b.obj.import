@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://covflasgq2v2k"
+path="res://.godot/imported/e9b0a42d04e64e1cb1a69b9752f4df0b.obj-502c18ccc537df15e26ea7b03a170862.mesh"
+
+[deps]
+
+files=["res://.godot/imported/e9b0a42d04e64e1cb1a69b9752f4df0b.obj-502c18ccc537df15e26ea7b03a170862.mesh"]
+
+source_file="res://Assets/obj_models/piedistallo/e9b0a42d04e64e1cb1a69b9752f4df0b.obj"
+dest_files=["res://.godot/imported/e9b0a42d04e64e1cb1a69b9752f4df0b.obj-502c18ccc537df15e26ea7b03a170862.mesh", "res://.godot/imported/e9b0a42d04e64e1cb1a69b9752f4df0b.obj-502c18ccc537df15e26ea7b03a170862.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

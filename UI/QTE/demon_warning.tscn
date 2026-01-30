@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bri77n2yk81wa"]
 
 [ext_resource type="Script" uid="uid://dvqxdi2jxpkc8" path="res://UI/QTE/demon_warning.gd" id="1_demon"]
-[ext_resource type="Texture2D" uid="uid://byx1c18kmon" path="res://Assets/hud/demone-removebg-preview.png" id="2_qo30p"]
+[ext_resource type="Texture2D" uid="uid://csuociysbreq5" path="res://Assets/hud/demone.png" id="2_qo30p"]
 
 [node name="DemonWarning" type="CanvasLayer"]
 layer = 15

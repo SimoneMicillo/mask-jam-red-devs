@@ -18,6 +18,19 @@ var isCrouched: bool = false
 func _ready() -> void:
 	# Connect to global GameManager for game over
 	GameManager.game_over.connect(_on_game_over)
+	
+	# Create RayCast for aiming interaction
+	_setup_interaction_raycast()
+
+var interaction_raycast: RayCast3D
+
+func _setup_interaction_raycast() -> void:
+	interaction_raycast = RayCast3D.new()
+	interaction_raycast.target_position = Vector3(0, 0, -3.5) # 3.5m range
+	interaction_raycast.collision_mask = 2 # Interaction layer
+	interaction_raycast.enabled = true
+	interaction_raycast.collide_with_areas = true # Important: Interactables are Areas
+	camera_3d.add_child(interaction_raycast)
 
 func _physics_process(delta: float) -> void:
 	if isDead:
@@ -26,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	_handle_interaction_aim()
 	
 	var actualSpeed := 0.0
 	if !isCrouched and !GameManager.is_mask_on:
@@ -129,3 +144,30 @@ func _on_game_over() -> void:
 
 # Legacy signal for backwards compatibility with UI
 signal dead
+
+var last_aimed_interaction: InteractionArea = null
+
+func _handle_interaction_aim() -> void:
+	if not interaction_raycast: return
+	
+	var collider = interaction_raycast.get_collider()
+	var current_interaction: InteractionArea = null
+	
+	if interaction_raycast.is_colliding() and collider is InteractionArea:
+		current_interaction = collider
+	elif interaction_raycast.is_colliding() and collider.get_parent() is InteractionArea:
+		current_interaction = collider.get_parent()
+		
+	if current_interaction != last_aimed_interaction:
+		# Exit previous
+		if last_aimed_interaction and last_aimed_interaction.requires_aim:
+			last_aimed_interaction.check_aim(false)
+		
+		# Enter new
+		if current_interaction and current_interaction.requires_aim:
+			current_interaction.check_aim(true)
+			
+		last_aimed_interaction = current_interaction
+	elif current_interaction and current_interaction.requires_aim:
+		# Maintain aim (ensure it stays visible if conditions met)
+		current_interaction.check_aim(true)

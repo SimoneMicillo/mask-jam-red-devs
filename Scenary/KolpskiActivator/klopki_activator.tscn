@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp0wyc1br5lnp"]
+[gd_scene load_steps=4 format=3 uid="uid://dp0wyc1br5lnp"]
 
 [ext_resource type="PackedScene" uid="uid://8omw84sgweju" path="res://Assets/3d_models/Book/book_model.tscn" id="1_fyprf"]
+[ext_resource type="Script" path="res://Scripts/KlotskiActivator.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dms7hrkg7b8ee" path="res://Scripts/interaction_area.tscn" id="2_area"]
 
-[node name="KlopskiActivator" type="Node3D"]
+[node name="KlopskiActivator" type="Node3D" node_paths=PackedStringArray("interaction_area")]
+script = ExtResource("1_script")
+interaction_area = NodePath("InteractionArea")
 
 [node name="Book" parent="." instance=ExtResource("1_fyprf")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_area")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.2, 0)
+requires_aim = true

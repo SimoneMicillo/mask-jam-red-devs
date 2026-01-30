@@ -8,7 +8,7 @@ var counter : int = 0
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("PlayerGroup"):
 		body.position = target_pos
-		$"../Node3D/Cube_001/Furnitures".rand_pos()
+		$"../Node3D/CorridorLoop/Furnitures".rand_pos()
 		counter += 1
 		
 		if counter == 1:
