@@ -136,6 +136,10 @@ func _input(event: InputEvent) -> void:
 			$"../QteSystem"._show()
 	
 	if event.is_action_pressed("ui_cancel") and not GameManager.is_game_over():
+		# Prevent pausing during QTE/Demon attack
+		if has_node("../QteSystem") and $"../QteSystem".visible:
+			return
+			
 		pause_menu.toggle_pause()
 
 func _on_game_over() -> void:
