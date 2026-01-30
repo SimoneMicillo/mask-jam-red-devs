@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://nttu7hw4fvqw" path="res://Assets/3d_models/Chair.fbx" id="2_kdisg"]
 [ext_resource type="Script" uid="uid://0ei4in0ntbcs" path="res://Scenary/loop_room_furn.gd" id="2_yv8se"]
 [ext_resource type="PackedScene" uid="uid://cewjrhb4coydt" path="res://ComponentNodes/MaskProperties/mask_visual.tscn" id="4_re1ck"]
+[ext_resource type="PackedScene" uid="uid://bi1bvldi3o06v" path="res://Assets/3d_models/soiTavern/Candles/tavola_imbandita.tscn" id="5_4t882"]
 [ext_resource type="PackedScene" uid="uid://pohwblnk1ir8" path="res://Scenary/door.tscn" id="5_rcajr"]
+[ext_resource type="PackedScene" uid="uid://bb2ooq34rsgkn" path="res://Assets/3d_models/soiTavern/Barrel/trn_Barrel.fbx" id="6_etyrs"]
 [ext_resource type="PackedScene" uid="uid://dms7hrkg7b8ee" path="res://Scripts/interaction_area.tscn" id="6_pvwoy"]
 [ext_resource type="PackedScene" uid="uid://b8sp2wj1b7jyt" path="res://Assets/3d_models/Desk.fbx" id="6_trkcp"]
 [ext_resource type="Texture2D" uid="uid://rcsr88fab3jj" path="res://Assets/Textures/floor/old wood v2.jpg" id="7_6uo41"]
@@ -20,6 +22,12 @@
 [ext_resource type="Script" uid="uid://bs5svfojv6xlq" path="res://Scripts/labyrinth_pedestal.gd" id="13_ped"]
 [ext_resource type="Script" uid="uid://cn7dtm52xrxss" path="res://Scripts/labyrinth_trigger.gd" id="14_trig"]
 [ext_resource type="PackedScene" uid="uid://bfwri0indh8eu" path="res://Assets/Paintings/painting_scene.tscn" id="17_4t882"]
+[ext_resource type="PackedScene" uid="uid://byc42x7isxl2j" path="res://Assets/3d_models/soiTavern/Tables/trn_table_round.tscn" id="17_6uo41"]
+[ext_resource type="PackedScene" uid="uid://ddm46cdni6xex" path="res://Assets/3d_models/soiTavern/Cauldron/trn_Cauldron.fbx" id="19_ellns"]
+[ext_resource type="PackedScene" uid="uid://etstqqqbwuna" path="res://Assets/3d_models/soiTavern/Shelves/trn_BedsideTable.fbx" id="20_bbkar"]
+[ext_resource type="PackedScene" uid="uid://bkiv2dnwpbdpj" path="res://Assets/3d_models/soiTavern/Shelves/trn_Cupboard.fbx" id="21_n3x3x"]
+[ext_resource type="PackedScene" uid="uid://b0ipny43txaov" path="res://Assets/3d_models/soiTavern/Shelves/trn_Pantry.fbx" id="22_57yjc"]
+[ext_resource type="PackedScene" uid="uid://cnlh0u6lnhtrp" path="res://Assets/3d_models/soiTavern/Shelves/trn_Rack.fbx" id="23_ccpk6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkiov"]
 
@@ -874,6 +882,45 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uw4c1")
 
+[node name="Node3D" type="Node3D" parent="Node3D/Node3D/Cube_017"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Node3D/Cube_017/Node3D"]
+
+[node name="tavolaImbandita" parent="Node3D/Node3D/Cube_017" instance=ExtResource("5_4t882")]
+transform = Transform3D(0.2, 0, 0, 0, 0.464, 0, 0, 0, 0.262, 0.3241884, -0.91910636, -0.7094407)
+
+[node name="barili" type="Node3D" parent="Node3D/Node3D/Cube_017"]
+
+[node name="trn_Barrel" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.9169767, -0.91349995, -0.80838525)
+
+[node name="trn_Barrel2" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.813161, -0.91349995, -0.80838525)
+
+[node name="trn_Barrel3" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.9169767, -0.91349995, -0.6370276)
+
+[node name="trn_Barrel4" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.9169767, -0.5179944, -0.80838525)
+
+[node name="trn_Barrel5" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.8148483, -0.5331281, -0.80838525)
+
+[node name="trn_Barrel6" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.7160119, -0.91349995, -0.80838525)
+
+[node name="trn_Barrel7" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.60947835, -0.91349995, -0.80838525)
+
+[node name="trn_Barrel8" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.81322515, -0.91349995, -0.6445515)
+
+[node name="trn_Barrel9" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.17200002, -0.70545495, -0.91349995, -0.65669024)
+
+[node name="trn_Barrel10" parent="Node3D/Node3D/Cube_017/barili" instance=ExtResource("6_etyrs")]
+transform = Transform3D(0.099902816, 0.015713869, -0.00343766, -0.0038288843, 0.3992457, 0.008252646, 0.0021833603, -0.018867448, 0.17176753, -0.9169767, -0.91349995, -0.45244384)
+
 [node name="Chair" parent="Node3D" instance=ExtResource("2_kdisg")]
 transform = Transform3D(-3.278354e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.278354e-08, -40.110947, -3.0093102, -9.158634)
 
@@ -1162,6 +1209,48 @@ shape = SubResource("SphereShape3D_ped")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Labyrinth/LabyrinthPedestal"]
 mesh = SubResource("BoxMesh_ped")
+
+[node name="trn_TableRound" parent="." instance=ExtResource("17_6uo41")]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, 3, 0, -3, -1.3113416e-07, 67.29343, 0.7738907, -21.996597)
+
+[node name="trn_Cauldron" parent="." instance=ExtResource("19_ellns")]
+transform = Transform3D(1.435791, 0, -1.3923018, 0, 2, 0, 1.3923018, 0, 1.435791, 33.701046, 0.77877605, -6.512383)
+
+[node name="trn_BedsideTable" parent="." instance=ExtResource("20_bbkar")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 51.155136, 0.773891, -4.148305)
+
+[node name="trn_Cupboard" parent="." instance=ExtResource("21_n3x3x")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 52.17063, 0.7738905, -25.178066)
+
+[node name="trn_Pantry" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 39.425808, 0.7742773, -3.8901005)
+
+[node name="trn_Rack" parent="." instance=ExtResource("23_ccpk6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 58.492485, 8.734325, -25.18022)
+
+[node name="trn_Pantry2" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42.3904, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry3" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 45.320606, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry4" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 48.2852, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry5" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.095165, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry6" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 57.059757, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry7" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 59.989964, 0.7742773, -3.8901005)
+
+[node name="trn_Pantry8" parent="." instance=ExtResource("22_57yjc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.954556, 0.7742773, -3.8901005)
+
+[node name="trn_Rack2" parent="." instance=ExtResource("23_ccpk6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 46.294853, 8.734325, -25.18022)
 
 [connection signal="body_entered" from="FogVolume2/player_collider" to="." method="_on_player_collider_body_entered"]
 
