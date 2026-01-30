@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7pepn2ctfp2"
 path.s3tc="res://.godot/imported/Goblet_Lapis_Lazuli_002_roughness.png-26a2f9df44abdb6e647a931a85166f57.s3tc.ctex"
+path.etc2="res://.godot/imported/Goblet_Lapis_Lazuli_002_roughness.png-26a2f9df44abdb6e647a931a85166f57.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/3d_models/Goblet_Lapis_Lazuli_002_roughness.png"
-dest_files=["res://.godot/imported/Goblet_Lapis_Lazuli_002_roughness.png-26a2f9df44abdb6e647a931a85166f57.s3tc.ctex"]
+dest_files=["res://.godot/imported/Goblet_Lapis_Lazuli_002_roughness.png-26a2f9df44abdb6e647a931a85166f57.s3tc.ctex", "res://.godot/imported/Goblet_Lapis_Lazuli_002_roughness.png-26a2f9df44abdb6e647a931a85166f57.etc2.ctex"]
 
 [params]
 

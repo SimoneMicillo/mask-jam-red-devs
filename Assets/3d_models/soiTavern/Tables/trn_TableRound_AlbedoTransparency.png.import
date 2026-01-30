@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://514piirxubep"
 path.s3tc="res://.godot/imported/trn_TableRound_AlbedoTransparency.png-f53f3fc1e8bbbc48aff70f6b49ae96ef.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_TableRound_AlbedoTransparency.png-f53f3fc1e8bbbc48aff70f6b49ae96ef.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Tables/trn_TableRound_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_TableRound_AlbedoTransparency.png-f53f3fc1e8bbbc48aff70f6b49ae96ef.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_TableRound_AlbedoTransparency.png-f53f3fc1e8bbbc48aff70f6b49ae96ef.s3tc.ctex", "res://.godot/imported/trn_TableRound_AlbedoTransparency.png-f53f3fc1e8bbbc48aff70f6b49ae96ef.etc2.ctex"]
 
 [params]
 

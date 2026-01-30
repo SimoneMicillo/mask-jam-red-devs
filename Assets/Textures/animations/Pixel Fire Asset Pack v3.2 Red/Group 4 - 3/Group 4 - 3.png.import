@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chwu30xloqryx"
 path.s3tc="res://.godot/imported/Group 4 - 3.png-73adffb13b089e0c26c0d65c9929c226.s3tc.ctex"
+path.etc2="res://.godot/imported/Group 4 - 3.png-73adffb13b089e0c26c0d65c9929c226.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/animations/Pixel Fire Asset Pack v3.2 Red/Group 4 - 3/Group 4 - 3.png"
-dest_files=["res://.godot/imported/Group 4 - 3.png-73adffb13b089e0c26c0d65c9929c226.s3tc.ctex"]
+dest_files=["res://.godot/imported/Group 4 - 3.png-73adffb13b089e0c26c0d65c9929c226.s3tc.ctex", "res://.godot/imported/Group 4 - 3.png-73adffb13b089e0c26c0d65c9929c226.etc2.ctex"]
 
 [params]
 

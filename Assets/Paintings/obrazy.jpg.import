@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ej1ccn7kx8a"
 path.s3tc="res://.godot/imported/obrazy.jpg-836860df177fd134dd2375cb168ad1c3.s3tc.ctex"
+path.etc2="res://.godot/imported/obrazy.jpg-836860df177fd134dd2375cb168ad1c3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Paintings/obrazy.jpg"
-dest_files=["res://.godot/imported/obrazy.jpg-836860df177fd134dd2375cb168ad1c3.s3tc.ctex"]
+dest_files=["res://.godot/imported/obrazy.jpg-836860df177fd134dd2375cb168ad1c3.s3tc.ctex", "res://.godot/imported/obrazy.jpg-836860df177fd134dd2375cb168ad1c3.etc2.ctex"]
 
 [params]
 

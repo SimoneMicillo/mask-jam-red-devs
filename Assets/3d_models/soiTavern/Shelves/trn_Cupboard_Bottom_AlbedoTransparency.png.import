@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://57cpoaabgcoj"
 path.s3tc="res://.godot/imported/trn_Cupboard_Bottom_AlbedoTransparency.png-f3606403073c00dbc94379b01f4515ba.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_Cupboard_Bottom_AlbedoTransparency.png-f3606403073c00dbc94379b01f4515ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Shelves/trn_Cupboard_Bottom_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_Cupboard_Bottom_AlbedoTransparency.png-f3606403073c00dbc94379b01f4515ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_Cupboard_Bottom_AlbedoTransparency.png-f3606403073c00dbc94379b01f4515ba.s3tc.ctex", "res://.godot/imported/trn_Cupboard_Bottom_AlbedoTransparency.png-f3606403073c00dbc94379b01f4515ba.etc2.ctex"]
 
 [params]
 

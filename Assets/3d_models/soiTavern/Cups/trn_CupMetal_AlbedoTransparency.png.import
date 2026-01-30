@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d15gcb1f10jig"
 path.s3tc="res://.godot/imported/trn_CupMetal_AlbedoTransparency.png-a19d688000052ff773b54ee23dcf108d.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_CupMetal_AlbedoTransparency.png-a19d688000052ff773b54ee23dcf108d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Cups/trn_CupMetal_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_CupMetal_AlbedoTransparency.png-a19d688000052ff773b54ee23dcf108d.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_CupMetal_AlbedoTransparency.png-a19d688000052ff773b54ee23dcf108d.s3tc.ctex", "res://.godot/imported/trn_CupMetal_AlbedoTransparency.png-a19d688000052ff773b54ee23dcf108d.etc2.ctex"]
 
 [params]
 

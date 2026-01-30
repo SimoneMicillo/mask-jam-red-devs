@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cehsscuj3obhk"
 path.s3tc="res://.godot/imported/old wood v3.jpg-7c071b180ce9e63fb64a9dce4a58a68c.s3tc.ctex"
+path.etc2="res://.godot/imported/old wood v3.jpg-7c071b180ce9e63fb64a9dce4a58a68c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/floor/old wood v3.jpg"
-dest_files=["res://.godot/imported/old wood v3.jpg-7c071b180ce9e63fb64a9dce4a58a68c.s3tc.ctex"]
+dest_files=["res://.godot/imported/old wood v3.jpg-7c071b180ce9e63fb64a9dce4a58a68c.s3tc.ctex", "res://.godot/imported/old wood v3.jpg-7c071b180ce9e63fb64a9dce4a58a68c.etc2.ctex"]
 
 [params]
 

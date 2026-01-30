@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://coshnl6fyisj7"
 path.s3tc="res://.godot/imported/BookAlbedo.png-6d1023f59e89e4828bb2d9e28d5d53ba.s3tc.ctex"
+path.etc2="res://.godot/imported/BookAlbedo.png-6d1023f59e89e4828bb2d9e28d5d53ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/Book/BookAlbedo.png"
-dest_files=["res://.godot/imported/BookAlbedo.png-6d1023f59e89e4828bb2d9e28d5d53ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/BookAlbedo.png-6d1023f59e89e4828bb2d9e28d5d53ba.s3tc.ctex", "res://.godot/imported/BookAlbedo.png-6d1023f59e89e4828bb2d9e28d5d53ba.etc2.ctex"]
 
 [params]
 

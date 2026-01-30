@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1e2cr2g0cdpt"
 path.s3tc="res://.godot/imported/trn_CandleStand_AlbedoTransparency.png-c92a68605d5d04034a51838fe16cbb67.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_CandleStand_AlbedoTransparency.png-c92a68605d5d04034a51838fe16cbb67.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/CandleStand/trn_CandleStand_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_CandleStand_AlbedoTransparency.png-c92a68605d5d04034a51838fe16cbb67.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_CandleStand_AlbedoTransparency.png-c92a68605d5d04034a51838fe16cbb67.s3tc.ctex", "res://.godot/imported/trn_CandleStand_AlbedoTransparency.png-c92a68605d5d04034a51838fe16cbb67.etc2.ctex"]
 
 [params]
 

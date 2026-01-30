@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cslehyyt0ah3b"
 path.s3tc="res://.godot/imported/trn_pantry_Normal.png-f6ce292a525cb7f48a89bbac8edd2a7c.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_pantry_Normal.png-f6ce292a525cb7f48a89bbac8edd2a7c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Shelves/trn_pantry_Normal.png"
-dest_files=["res://.godot/imported/trn_pantry_Normal.png-f6ce292a525cb7f48a89bbac8edd2a7c.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_pantry_Normal.png-f6ce292a525cb7f48a89bbac8edd2a7c.s3tc.ctex", "res://.godot/imported/trn_pantry_Normal.png-f6ce292a525cb7f48a89bbac8edd2a7c.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5nkukpjc7q0k"
 path.s3tc="res://.godot/imported/piedistallo.png-5f43dea2f9c8482bfa6c20e197c05a16.s3tc.ctex"
+path.etc2="res://.godot/imported/piedistallo.png-5f43dea2f9c8482bfa6c20e197c05a16.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/FirtstRoom/piedistallo.png"
-dest_files=["res://.godot/imported/piedistallo.png-5f43dea2f9c8482bfa6c20e197c05a16.s3tc.ctex"]
+dest_files=["res://.godot/imported/piedistallo.png-5f43dea2f9c8482bfa6c20e197c05a16.s3tc.ctex", "res://.godot/imported/piedistallo.png-5f43dea2f9c8482bfa6c20e197c05a16.etc2.ctex"]
 
 [params]
 

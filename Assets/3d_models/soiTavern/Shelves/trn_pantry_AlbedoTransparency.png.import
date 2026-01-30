@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://2ytgkl335k3m"
 path.s3tc="res://.godot/imported/trn_pantry_AlbedoTransparency.png-7fdf525b5b774f24a49930bca79f4cb7.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_pantry_AlbedoTransparency.png-7fdf525b5b774f24a49930bca79f4cb7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Shelves/trn_pantry_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_pantry_AlbedoTransparency.png-7fdf525b5b774f24a49930bca79f4cb7.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_pantry_AlbedoTransparency.png-7fdf525b5b774f24a49930bca79f4cb7.s3tc.ctex", "res://.godot/imported/trn_pantry_AlbedoTransparency.png-7fdf525b5b774f24a49930bca79f4cb7.etc2.ctex"]
 
 [params]
 

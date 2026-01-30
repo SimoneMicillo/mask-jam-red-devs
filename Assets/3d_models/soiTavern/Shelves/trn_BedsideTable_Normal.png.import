@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://q544r8ixpftj"
 path.s3tc="res://.godot/imported/trn_BedsideTable_Normal.png-fc671f3ec4af394da3fa249ebbc56881.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_BedsideTable_Normal.png-fc671f3ec4af394da3fa249ebbc56881.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Shelves/trn_BedsideTable_Normal.png"
-dest_files=["res://.godot/imported/trn_BedsideTable_Normal.png-fc671f3ec4af394da3fa249ebbc56881.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_BedsideTable_Normal.png-fc671f3ec4af394da3fa249ebbc56881.s3tc.ctex", "res://.godot/imported/trn_BedsideTable_Normal.png-fc671f3ec4af394da3fa249ebbc56881.etc2.ctex"]
 
 [params]
 

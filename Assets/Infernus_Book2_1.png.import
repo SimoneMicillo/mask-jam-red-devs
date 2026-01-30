@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg5fvi4pq8bft"
 path.s3tc="res://.godot/imported/Infernus_Book2_1.png-3ed64bd931e1f601aa825fb86be61927.s3tc.ctex"
+path.etc2="res://.godot/imported/Infernus_Book2_1.png-3ed64bd931e1f601aa825fb86be61927.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Infernus_Book2_1.png"
-dest_files=["res://.godot/imported/Infernus_Book2_1.png-3ed64bd931e1f601aa825fb86be61927.s3tc.ctex"]
+dest_files=["res://.godot/imported/Infernus_Book2_1.png-3ed64bd931e1f601aa825fb86be61927.s3tc.ctex", "res://.godot/imported/Infernus_Book2_1.png-3ed64bd931e1f601aa825fb86be61927.etc2.ctex"]
 
 [params]
 

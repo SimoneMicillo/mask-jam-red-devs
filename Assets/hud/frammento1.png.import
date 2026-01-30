@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://eeywme5d0gnp"
 path.s3tc="res://.godot/imported/frammento1.png-7cfad9157e1947eec9b6858f38b9a9d9.s3tc.ctex"
+path.etc2="res://.godot/imported/frammento1.png-7cfad9157e1947eec9b6858f38b9a9d9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/hud/frammento1.png"
-dest_files=["res://.godot/imported/frammento1.png-7cfad9157e1947eec9b6858f38b9a9d9.s3tc.ctex"]
+dest_files=["res://.godot/imported/frammento1.png-7cfad9157e1947eec9b6858f38b9a9d9.s3tc.ctex", "res://.godot/imported/frammento1.png-7cfad9157e1947eec9b6858f38b9a9d9.etc2.ctex"]
 
 [params]
 

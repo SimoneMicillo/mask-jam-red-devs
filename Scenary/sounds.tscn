@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpj6iinprd8ao"]
+[gd_scene load_steps=9 format=3 uid="uid://dpj6iinprd8ao"]
 
 [ext_resource type="AudioStream" uid="uid://d1gxbgsd5jm2y" path="res://Audio/book_read.mp3" id="1_yuqf3"]
 [ext_resource type="AudioStream" uid="uid://slwtnh6jamhi" path="res://Audio/chimney.mp3" id="2_tltr7"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://tpls6aeree68" path="res://Audio/lever.mp3" id="5_wnqtv"]
 [ext_resource type="AudioStream" uid="uid://8tm4eplxm04u" path="res://Audio/mask_pulled.mp3" id="6_74mdp"]
 [ext_resource type="AudioStream" uid="uid://dvl3o7pkp4hql" path="res://Audio/shreds_united.mp3" id="7_8kn6v"]
+[ext_resource type="AudioStream" uid="uid://dm4g6aul1f4vi" path="res://Audio/music.mp3" id="8_tltr7"]
 
 [node name="Sounds" type="Node3D"]
 
@@ -41,3 +42,8 @@ bus = &"SFX"
 [node name="shredsUnited" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8kn6v")
 bus = &"SFX"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tltr7")
+volume_db = 10.0
+bus = &"Music"

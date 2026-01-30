@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qj4dvmfv0i4s"
 path.s3tc="res://.godot/imported/trn_Apple_Red_AlbedoTransparency.png-9223d1e7a9c92db10573cb2209cfffa2.s3tc.ctex"
+path.etc2="res://.godot/imported/trn_Apple_Red_AlbedoTransparency.png-9223d1e7a9c92db10573cb2209cfffa2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3d_models/soiTavern/Apple/trn_Apple_Red_AlbedoTransparency.png"
-dest_files=["res://.godot/imported/trn_Apple_Red_AlbedoTransparency.png-9223d1e7a9c92db10573cb2209cfffa2.s3tc.ctex"]
+dest_files=["res://.godot/imported/trn_Apple_Red_AlbedoTransparency.png-9223d1e7a9c92db10573cb2209cfffa2.s3tc.ctex", "res://.godot/imported/trn_Apple_Red_AlbedoTransparency.png-9223d1e7a9c92db10573cb2209cfffa2.etc2.ctex"]
 
 [params]
 
