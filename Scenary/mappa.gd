@@ -10,3 +10,10 @@ func lastRoomTrigger(_body: Node3D) -> void:
 	hud.get_node("lastRoomLabl").show()
 	await get_tree().create_timer(3).timeout
 	hud.get_node("lastRoomLabl").hide()
+
+func _process(delta: float) -> void:
+	updateInfiniteCorridorUV(delta)
+
+func updateInfiniteCorridorUV(delta: float) -> void:
+	$Node3D/CorridorLoop.get_active_material(0).uv1_offset += Vector3(.25*delta,.25*delta,0)
+	$DoorLoopRoom_Wall/MeshInstance3D2.get_active_material(0).uv1_offset -= Vector3(.25*delta,.25*delta,0)

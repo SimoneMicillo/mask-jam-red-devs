@@ -21,6 +21,6 @@ func _on_klotski_solved() -> void:
 		# Small delay to let the puzzle UI closing animation finish or just for dramatic effect
 		await get_tree().create_timer(1.0).timeout 
 		door_logic.force_open()
-		$"../Sounds/camino".play()
+		Sounds.get_node("camino").play()
 	else:
 		print("ERROR: DoorLogic is null in FireplaceAutomation!")

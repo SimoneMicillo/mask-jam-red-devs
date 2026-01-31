@@ -124,6 +124,7 @@ func _change_frame(new_frame: int) -> void:
 func _change_frame_instant(frame_index: int) -> void:
 	# Calcola posizione del frame nella sprite sheet
 	var frame_x: int = frame_index % frames_horizontal
+	@warning_ignore("integer_division")
 	var frame_y: int = frame_index / frames_horizontal
 	
 	var region_x: float = frame_x * frame_size.x

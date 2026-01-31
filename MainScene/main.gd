@@ -15,7 +15,7 @@ func open_klotski_puzzle() -> void:
 	if puzzle and not puzzle.visible:
 		puzzle.open_puzzle()
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	# Block puzzle inputs if QTE is active
 	var qte_active = false
 	if has_node("QteSystem"):
@@ -30,7 +30,8 @@ func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/MainMenu/main_menu.tscn")
-func _on_tutorial_trigger_body_entered(body: Node3D) -> void:
-	$UI/tutlabel.show()
-	await get_tree().create_timer(3).timeout
-	$UI/tutlabel.show()
+func _on_tutorial_trigger_body_entered(_body: Node3D) -> void:
+	if !$UI/lastRoomLabl.visible:
+		$UI/tutlabel.show()
+		await get_tree().create_timer(3).timeout
+		$UI/tutlabel.show()

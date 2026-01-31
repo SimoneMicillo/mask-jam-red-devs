@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkqamdwhwwrih"]
+
+[ext_resource type="PackedScene" uid="uid://bkiv2dnwpbdpj" path="res://Assets/3d_models/soiTavern/Shelves/trn_Cupboard.fbx" id="1_1vjp5"]
+[ext_resource type="Texture2D" uid="uid://co5agyr31h4pr" path="res://Assets/obj_models/Textures/Wood-Dark.png" id="2_dw08e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndy55"]
+albedo_texture = ExtResource("2_dw08e")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="trn_Cupboard" instance=ExtResource("1_1vjp5")]
+
+[node name="trn_Cupboard" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ndy55")
+surface_material_override/1 = SubResource("StandardMaterial3D_ndy55")
+
+[node name="trn_CupboardDoor_Right" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ndy55")
+
+[node name="trn_CupboardDoor_Left" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ndy55")

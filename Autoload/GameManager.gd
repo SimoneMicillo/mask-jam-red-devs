@@ -9,6 +9,7 @@ signal sanity_changed(new_sanity: float)
 signal game_over()
 signal fragment_collected(current: int, total: int)
 signal all_fragments_collected()
+@warning_ignore("unused_signal")
 signal request_open_puzzle(puzzle_name: String)
 signal klotski_solved() # Emitted when Klotski is solved
 
@@ -93,7 +94,7 @@ func set_sanity_drain_paused(paused: bool) -> void:
 
 ## Collect a fragment from a puzzle
 func collect_fragment(puzzle_id: String) -> void:
-	var ui: CanvasLayer = $UI
+	var ui: CanvasLayer = get_tree().current_scene.get_node("UI")
 	if puzzle_id in _completed_puzzles:
 		return  # Already collected
 	
@@ -106,7 +107,6 @@ func collect_fragment(puzzle_id: String) -> void:
 		all_fragments_collected.emit()
 		Sounds.get_node("shredsUnited").play()
 		# Try to find UI in the current scene safely
-		var ui = get_tree().current_scene.find_child("UI", true, false)
 		if ui and ui.has_node("GameOver"):
 			ui.get_node("GameOver").show()
 	else:
@@ -149,7 +149,6 @@ func is_game_over() -> bool:
 	return _is_game_over
 
 # --- Private Methods ---
-
 func _drain_sanity(delta: float) -> void:
 	modify_sanity(-sanity_drain_rate * delta)
 

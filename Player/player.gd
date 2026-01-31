@@ -94,12 +94,13 @@ func can_stand_up() -> bool:
 	return result.is_empty()
 
 @onready var ui: CanvasLayer = $"../UI"
+var hasMask : bool = false
 func _input(event: InputEvent) -> void:
 	if isDead:
 		return
 	
 	# Mask toggle - uses global GameManager
-	if event.is_action_pressed("toggle_mask"):
+	if event.is_action_pressed("toggle_mask") and hasMask:
 		GameManager.toggle_mask()
 		if ui.get_node("maskCenterText").visible:
 			ui.get_node("maskCenterText").hide()

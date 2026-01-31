@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=24 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -7,14 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://7pvnrgf682gr" path="res://Assets/brain_full_sheet.png" id="6_5udhu"]
 [ext_resource type="Script" uid="uid://bthphnr5tm5xf" path="res://MainScene/Vignette/vignette_controller.gd" id="6_vignette"]
 [ext_resource type="PackedScene" uid="uid://cyu6cq5xuu3tj" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
-[ext_resource type="Script" uid="uid://dld4mciq2o7sy" path="res://Scripts/brain_sanity_indicator.gd" id="7_qq21k"]
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
+[ext_resource type="Script" uid="uid://dc7ssxvylq21o" path="res://MainScene/brain_sanity_meter.gd" id="8_qq21k"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
 [ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 [ext_resource type="PackedScene" uid="uid://sml4tlt7jbgk" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
 [ext_resource type="PackedScene" uid="uid://cv7fhl8qauyr4" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
 [ext_resource type="Texture2D" uid="uid://0ldm1bgbltsd" path="res://Assets/hud/hands_hud.png" id="15_oi62e"]
+[ext_resource type="Script" uid="uid://su0qqr1jsflh" path="res://MainScene/lab_tutorial.gd" id="17_oi62e"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 ambient_light_source = 1
@@ -40,8 +41,19 @@ shader_parameter/tintIntensity = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_phgjk"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq21k"]
+atlas = ExtResource("6_5udhu")
+region = Rect2(1157.793, 0.395, 283.421, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5udhu"]
+atlas = ExtResource("6_5udhu")
+region = Rect2(-2.092, 0, 287.241, 145)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx33o"]
 size = Vector3(4, 4, 2.5859375)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qq21k"]
+radius = 1.5753006
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ig7tw")
@@ -54,7 +66,24 @@ visible = false
 environment = SubResource("Environment_ig7tw")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 28.586533, 2.7692485, -7.119367)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 32.490845, -97.65508, -54.739708)
+
+[node name="HandsHUD" type="CanvasLayer" parent="."]
+
+[node name="HandsSprite" type="TextureRect" parent="HandsHUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -412.0
+offset_right = 389.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("15_oi62e")
+stretch_mode = 5
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_rg2y2")
@@ -73,6 +102,7 @@ texture = SubResource("CanvasTexture_phgjk")
 script = ExtResource("6_vignette")
 
 [node name="sanity" type="Label" parent="UI"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 2
 anchor_top = 1.0
@@ -85,20 +115,6 @@ grow_vertical = 0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "Sanity = "
-
-[node name="maskOnOff" type="Label" parent="UI"]
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -102.0
-offset_right = 146.0
-offset_bottom = -57.0
-grow_vertical = 0
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 32
-text = "Mask : "
 
 [node name="maskCenterText" type="Label" parent="UI"]
 visible = false
@@ -148,7 +164,7 @@ offset_right = 378.5
 offset_bottom = 63.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 text = "I need to find a way to continue to the next room... Maybe there is a button or a lever around here"
 
 [node name="tutlabel" type="Label" parent="UI"]
@@ -162,8 +178,10 @@ offset_right = 378.5
 offset_bottom = 63.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 text = "Maybe I have to look around in one of these empty rooms..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOver" type="Control" parent="UI"]
 visible = false
@@ -229,16 +247,21 @@ layout_mode = 2
 text = "QUIT
 "
 
-[node name="BrainIndicator" type="TextureRect" parent="UI"]
-anchors_preset = -1
+[node name="BrainSanityMeter" type="TextureProgressBar" parent="UI"]
+visible = false
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -220.0
-offset_right = 148.0
+offset_left = -40.0
+offset_top = -161.0
+offset_right = 247.0
+offset_bottom = -16.0
 grow_vertical = 0
-script = ExtResource("7_qq21k")
-brain_texture = ExtResource("6_5udhu")
+value = 100.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_qq21k")
+texture_progress = SubResource("AtlasTexture_5udhu")
+script = ExtResource("8_qq21k")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_pause")]
 
@@ -263,22 +286,27 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70703125)
 shape = SubResource("BoxShape3D_vx33o")
 
-[node name="HandsHUD" type="CanvasLayer" parent="."]
+[node name="fairy" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.070446, -97, -33.117)
+visible = false
+light_color = Color(0.9764706, 0, 0.2627451, 1)
+light_energy = 25.0
+light_volumetric_fog_energy = 25.0
+omni_range = 0.5
+omni_attenuation = 2.0
 
-[node name="HandsSprite" type="TextureRect" parent="HandsHUD"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -389.0
-offset_top = -412.0
-offset_right = 389.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("15_oi62e")
-stretch_mode = 5
+[node name="LabTutorial" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.11424, -91.9135, -35.60043)
+script = ExtResource("17_oi62e")
+fairy_starting_point = Vector3(25.947, -97, -33.117)
+
+[node name="01" type="Area3D" parent="LabTutorial"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LabTutorial/01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.263035, -6.514473, -10.448025)
+shape = SubResource("SphereShape3D_qq21k")
 
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/quit" to="." method="_on_quit_pressed"]
