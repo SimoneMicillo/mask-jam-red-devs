@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=18 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
 [ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
+[ext_resource type="Texture2D" uid="uid://0ldm1bgbltsd" path="res://Assets/hands_hud.png" id="13_8kith"]
 [ext_resource type="PackedScene" uid="uid://sml4tlt7jbgk" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
 [ext_resource type="PackedScene" uid="uid://cv7fhl8qauyr4" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
 
@@ -249,6 +250,23 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70703125)
 shape = SubResource("BoxShape3D_vx33o")
+
+[node name="HandsHUD" type="CanvasLayer" parent="."]
+
+[node name="HandsSprite" type="TextureRect" parent="HandsHUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -412.0
+offset_right = 389.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("13_8kith")
+stretch_mode = 5
 
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/quit" to="." method="_on_quit_pressed"]
