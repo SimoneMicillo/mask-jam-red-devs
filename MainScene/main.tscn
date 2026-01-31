@@ -1,17 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://c78f8r4vd1t6k"]
+[gd_scene load_steps=20 format=3 uid="uid://c78f8r4vd1t6k"]
 
 [ext_resource type="Script" uid="uid://b4hqcpc82bdl6" path="res://MainScene/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dyvovyhheeqkm" path="res://Player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://dyjukqtmrb0qe" path="res://MainScene/ui.gd" id="4_rg2y2"]
 [ext_resource type="Shader" uid="uid://c5e6hn8cfguui" path="res://MainScene/Vignette/vignette.gdshader" id="5_phgjk"]
+[ext_resource type="Texture2D" uid="uid://7pvnrgf682gr" path="res://Assets/brain_full_sheet.png" id="6_5udhu"]
 [ext_resource type="Script" uid="uid://bthphnr5tm5xf" path="res://MainScene/Vignette/vignette_controller.gd" id="6_vignette"]
 [ext_resource type="PackedScene" uid="uid://cyu6cq5xuu3tj" path="res://UI/PauseMenu/pause_menu.tscn" id="7_pause"]
+[ext_resource type="Script" uid="uid://dld4mciq2o7sy" path="res://Scripts/brain_sanity_indicator.gd" id="7_qq21k"]
 [ext_resource type="PackedScene" uid="uid://mds354b75q1q" path="res://UI/Shared/death_screen.tscn" id="8_death"]
 [ext_resource type="PackedScene" uid="uid://b05mgyb2eep3f" path="res://UI/QTE/qte_system.tscn" id="9_0xrwe"]
 [ext_resource type="PackedScene" uid="uid://ct2e0h3wxwujt" path="res://Scenary/mappa.tscn" id="10_cvl78"]
 [ext_resource type="PackedScene" uid="uid://bri77n2yk81wa" path="res://UI/QTE/demon_warning.tscn" id="11_demon"]
 [ext_resource type="PackedScene" uid="uid://sml4tlt7jbgk" path="res://UI/HUD/fragments_hud.tscn" id="13_fragments"]
 [ext_resource type="PackedScene" uid="uid://cv7fhl8qauyr4" path="res://UI/Puzzles/klotski_puzzle.tscn" id="14_klotski"]
+[ext_resource type="Texture2D" uid="uid://0ldm1bgbltsd" path="res://Assets/hud/hands_hud.png" id="15_oi62e"]
 
 [sub_resource type="Environment" id="Environment_ig7tw"]
 ambient_light_source = 1
@@ -100,14 +103,13 @@ text = "Mask : "
 [node name="maskCenterText" type="Label" parent="UI"]
 visible = false
 modulate = Color(1, 0.3, 0.3, 1)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -123.0
-offset_right = 276.0
-offset_bottom = -56.0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 67.0
+grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 48
@@ -227,6 +229,17 @@ layout_mode = 2
 text = "QUIT
 "
 
+[node name="BrainIndicator" type="TextureRect" parent="UI"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = 148.0
+grow_vertical = 0
+script = ExtResource("7_qq21k")
+brain_texture = ExtResource("6_5udhu")
+
 [node name="PauseMenu" parent="." instance=ExtResource("7_pause")]
 
 [node name="DeathScreen" parent="." instance=ExtResource("8_death")]
@@ -249,6 +262,23 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorialTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70703125)
 shape = SubResource("BoxShape3D_vx33o")
+
+[node name="HandsHUD" type="CanvasLayer" parent="."]
+
+[node name="HandsSprite" type="TextureRect" parent="HandsHUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -389.0
+offset_top = -412.0
+offset_right = 389.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("15_oi62e")
+stretch_mode = 5
 
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="UI/GameOver/Panel/vbox/quit" to="." method="_on_quit_pressed"]
