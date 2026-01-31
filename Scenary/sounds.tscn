@@ -14,20 +14,22 @@
 [node name="bookSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.056479, 3.052309, -85.29691)
 stream = ExtResource("1_yuqf3")
-volume_db = 10.0
 bus = &"SFX"
 
 [node name="camino" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.015022, 3.2604895, -92.31429)
 stream = ExtResource("2_tltr7")
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="shredobtained" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2nqet")
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="demonapproach" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_v6ws3")
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="leverSound" type="AudioStreamPlayer" parent="."]
@@ -41,6 +43,7 @@ bus = &"SFX"
 
 [node name="shredsUnited" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8kn6v")
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
